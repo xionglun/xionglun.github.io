@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Allen&#39;s Blog</title>
+    <link>http://dmdgeeker.com/</link>
+    <description>Recent content on Allen&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
+    <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
+    <copyright>(c) 2016 Allen Heavey.</copyright>
+    <lastBuildDate>Thu, 28 Jul 2016 10:20:25 +0800</lastBuildDate>
+    <atom:link href="http://dmdgeeker.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TiDB 集群安装</title>
+      <link>http://dmdgeeker.com/2016/07/28/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/2016/07/28/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/</guid>
+      <description>
+
+&lt;h1 id=&#34;安装-tidb&#34;&gt;安装 TiDB&lt;/h1&gt;
+
+&lt;p&gt;TiDB 需要安装 TiKV，RocksDB, PD等软件。&lt;/p&gt;
+
+&lt;h3 id=&#34;环境&#34;&gt;环境&lt;/h3&gt;
+
+&lt;p&gt;Ubuntu 14.04.4 (64bit)&lt;/p&gt;
+
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://0xffff.me/install-tidb-tikv-on-centos-7/&#34;&gt;CentOS 7 安装&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/pingcap/tikv/blob/master/USAGE.md&#34;&gt;TiKV Usage&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;编译二进制文件&#34;&gt;编译二进制文件&lt;/h2&gt;
+
+&lt;p&gt;二进制程序如&lt;code&gt;tidb-server&lt;/code&gt;, &lt;code&gt;tikv-server&lt;/code&gt;, &lt;code&gt;pd-server&lt;/code&gt;都可以在一台主机上编译后分发到其它主机上去，只要保持主机环境基本一致即可。&lt;/p&gt;
+
+&lt;p&gt;而&lt;code&gt;RocksDB&lt;/code&gt;是编译成动态库文件，在不同主机上共享比较麻烦（甚至无法共享？），所以建议每台放置TiKV组件的主机上都进行一次编译。&lt;/p&gt;
+
+&lt;h3 id=&#34;编译pd&#34;&gt;编译PD&lt;/h3&gt;
+
+&lt;p&gt;1）安装Golang&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;wget https://storage.googleapis.com/golang/go1.6.3.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.6.3.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2）编译PD&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git clone https://github.com/pingcap/pd
+cd pd
+make build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;安装rocksdb&#34;&gt;安装RocksDB&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;apt-get update
+apt-get install libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev -y
+wget https://github.com/facebook/rocksdb/archive/v4.8.tar.gz
+tar xzvf v4.8.tar.gz
+cd rocksdb-4.8
+make shared_lib -j4
+cp librocksdb.so.4.8.0 /usr/local/lib
+ln -fs /usr/local/lib/librocksdb.so.4.8.0 /usr/local/lib/librocksdb.so
+ln -fs /usr/local/lib/librocksdb.so.4.8.0 /usr/local/lib/librocksdb.so.4
+ln -fs /usr/local/lib/librocksdb.so.4.8.0 /usr/local/lib/librocksdb.so.4.8
+ldconfig
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;编译tikv&#34;&gt;编译TiKV&lt;/h3&gt;
+
+&lt;p&gt;1）安装rust&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- --channel=nightly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2）编译TiKV&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git clone https://github.com/pingcap/tikv
+cd tikv
+make release
+cp target/release/tikv-server /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;编译tidb&#34;&gt;编译TiDB&lt;/h3&gt;
+
+&lt;p&gt;1）安装Golang&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;wget https://storage.googleapis.com/golang/go1.6.3.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.6.3.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2）编译TiDB&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git clone https://github.com/pingcap/tidb.git $GOPATH/src/github.com/pingcap/tidb
+cd $GOPATH/src/github.com/pingcap/tidb
+make server
+cp $GOPATH/bin/tidb-server /usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;运行tidb&#34;&gt;运行TiDB&lt;/h2&gt;
+
+&lt;p&gt;运行TiDB需要依次运行：pd, tikv, tidb&lt;/p&gt;
+
+&lt;h3 id=&#34;架构分布&#34;&gt;架构分布&lt;/h3&gt;
+
+&lt;p&gt;TiDB:    192.168.100.3, 192.168.100.4, 192.168.100.5&lt;br /&gt;
+PD:       192.168.100.6, 192.168.100.7, 192.168.100.8&lt;br /&gt;
+TiKV:     192.168.100.9, 192.168.100.10, 192.168.100.11&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://dmdgeeker.com/images/tidb-cluster-machines.png&#34; alt=&#34;Hosts&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;运行pd&#34;&gt;运行pd&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt; 需要在很短时间将几个pd-server同时运行起来，否则会造成找不到的状况，然后一个一个出错退出。&lt;/p&gt;
+
+&lt;p&gt;1) pd1（在192.168.100.6这台主机上运行）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pd-server --cluster-id=1 \
+      --addr=&amp;quot;192.168.100.6:1234&amp;quot; \
+      --advertise-addr=&amp;quot;192.168.100.6:1234&amp;quot; \
+      --http-addr=&amp;quot;192.168.100.6:9090&amp;quot; \
+      --etcd-name=pd1 \
+      --etcd-advertise-client-url=&amp;quot;http://192.168.100.6:2379&amp;quot; \
+      --etcd-advertise-peer-url=&amp;quot;http://192.168.100.6:2380&amp;quot; \
+      --etcd-initial-cluster=&amp;quot;pd1=http://192.168.100.6:2380,pd2=http://192.168.100.7:2380,pd3=http://192.168.100.8:2380&amp;quot; \
+      --etcd-listen-peer-url=&amp;quot;http://192.168.100.6:2380&amp;quot; \
+      --etcd-listen-client-url=&amp;quot;http://192.168.100.6:2379&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2) pd2（在192.168.100.7这台主机上运行）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pd-server --cluster-id=1 \
+      --addr=&amp;quot;192.168.100.7:1234&amp;quot; \
+      --advertise-addr=&amp;quot;192.168.100.7:1234&amp;quot; \
+      --http-addr=&amp;quot;192.168.100.7:9090&amp;quot; \
+      --etcd-name=pd2 \
+      --etcd-advertise-client-url=&amp;quot;http://192.168.100.7:2379&amp;quot; \
+      --etcd-advertise-peer-url=&amp;quot;http://192.168.100.7:2380&amp;quot; \
+      --etcd-initial-cluster=&amp;quot;pd1=http://192.168.100.6:2380,pd2=http://192.168.100.7:2380,pd3=http://192.168.100.8:2380&amp;quot; \
+      --etcd-listen-peer-url=&amp;quot;http://192.168.100.7:2380&amp;quot; \
+      --etcd-listen-client-url=&amp;quot;http://192.168.100.7:2379&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3) pd3（在192.168.100.8这台主机上运行）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pd-server --cluster-id=1 \
+      --addr=&amp;quot;192.168.100.8:1234&amp;quot; \
+      --advertise-addr=&amp;quot;192.168.100.8:1234&amp;quot; \
+      --http-addr=&amp;quot;192.168.100.8:9090&amp;quot; \
+      --etcd-name=pd3 \
+      --etcd-advertise-client-url=&amp;quot;http://192.168.100.8:2379&amp;quot; \
+      --etcd-advertise-peer-url=&amp;quot;http://192.168.100.8:2380&amp;quot; \
+      --etcd-initial-cluster=&amp;quot;pd1=http://192.168.100.6:2380,pd2=http://192.168.100.7:2380,pd3=http://192.168.100.8:2380&amp;quot; \
+      --etcd-listen-peer-url=&amp;quot;http://192.168.100.8:2380&amp;quot; \
+      --etcd-listen-client-url=&amp;quot;http://192.168.100.8:2379&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;运行tikv&#34;&gt;运行TiKV&lt;/h3&gt;
+
+&lt;p&gt;由于TiKV依赖于RocksDB，所以需要先安装RocksDB。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt; TiKV二进制文件&lt;strong&gt;tikv-server&lt;/strong&gt;可以在一台主机上编译了放到其它主机上运行，但是RocksDB好像不可以。
+所以每一台主机上都需要进行一次RocksDB的安装。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;安装RocksDB&lt;br /&gt;
+在192.168.100.9, 192.168.100.10, 192.168.100.11 这三台主机上，分别进行RocksDB的安装。&lt;/li&gt;
+&lt;li&gt;将编译过后的&lt;strong&gt;tikv-server&lt;/strong&gt;文件分发到上面三台主机上，放到系统PATH目录中。&lt;/li&gt;
+&lt;li&gt;运行TiKV&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 在192.168.100.9这台主机上运行
+tikv-server -S raftkv --addr 192.168.100.9:5050 --etcd 192.168.100.6:2379,192.168.100.7:2379,192.168.100.8:2379 -s /data --cluster-id 1
+
+# 在192.168.100.10这台主机上运行
+tikv-server -S raftkv --addr 192.168.100.10:5050 --etcd 192.168.100.6:2379,192.168.100.7:2379,192.168.100.8:2379 -s /data --cluster-id 1
+
+# 在192.168.100.11这台主机上运行
+tikv-server -S raftkv --addr 192.168.100.11:5050 --etcd 192.168.100.6:2379,192.168.100.7:2379,192.168.100.8:2379 -s /data --cluster-id 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;运行tidb-1&#34;&gt;运行TiDB&lt;/h3&gt;
+
+&lt;p&gt;将&lt;strong&gt;tidb-server&lt;/strong&gt;分发到192.168.100.3, 192.168.100.4, 192.168.100.5这三台主机上去，放置于类似/usr/local/bin目录中。&lt;/p&gt;
+
+&lt;p&gt;在这三台主机上都运行如下命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;tidb-server --store=tikv --path=&amp;quot;192.168.100.6:2379,192.168.100.7:2379,192.168.100.8:2379/pd?cluster=1&amp;quot; -lease 1 -P 3306
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;反向代理&#34;&gt;反向代理&lt;/h3&gt;
+
+&lt;p&gt;三台TiDB同时运行，三者互不干涉，需要一个反向代理来进行负载均衡与流量分发。这里使用的是Nginx 1.10.1来进行TCP反向代理。&lt;/p&gt;
+
+&lt;h3 id=&#34;效果图&#34;&gt;效果图&lt;/h3&gt;
+
+&lt;p&gt;使用客户端连接，效果图如下：
+&lt;img src=&#34;http://dmdgeeker.com/images/tidb-cluster-client.png&#34; alt=&#34;Client&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;后记&#34;&gt;后记&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Tips&lt;/strong&gt; 上面各台主机上运行的命令都是使用tmux前台运行的。
+如果没有使用&lt;code&gt;systemd&lt;/code&gt;或&lt;code&gt;supervisor&lt;/code&gt;之类工具进行启动的话，最好使用&lt;code&gt;nohup&lt;/code&gt;或者&lt;code&gt;tmux&lt;/code&gt;与&lt;code&gt;screen&lt;/code&gt;等方式运行。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>关于我</title>
+      <link>http://dmdgeeker.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
+
+&lt;p&gt;This is Allen.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

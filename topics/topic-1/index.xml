@@ -19,9 +19,14 @@
       <guid>http://dmdgeeker.com/about/</guid>
       <description>
 
-&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
+&lt;h3 id=&#34;开源项目&#34;&gt;开源项目&lt;/h3&gt;
 
-&lt;p&gt;This is Allen.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/xionglun/rando&#34;&gt;rando&lt;/a&gt; 随机数生成器
+&lt;a href=&#34;https://github.com/xionglun/samljs&#34;&gt;samljs&lt;/a&gt; SAML 2.0客户端&lt;/p&gt;
+
+&lt;h3 id=&#34;书籍&#34;&gt;书籍&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;dmdgeeker.com/goBook&#34;&gt;Go Book&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

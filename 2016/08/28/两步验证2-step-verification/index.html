@@ -215,7 +215,7 @@ HOTP(HMAC-based One-time Password)是指基于计数的一次性密码。</p>
 
 <p>现假设有一系统<code>S</code>，用户<code>A</code>进行两步验证</p>
 
-<p>绑定流程一般如下：
+<p>绑定流程一般如下：<br />
 1. 用户<code>A</code>注册/登录系统<code>S</code>后，<code>S</code>后台生成一个OTP链接，在前端生成并显示该链接的二维码
 2. 用户<code>A</code>用手机通过Google Authenticator之类的验证器<code>G</code>扫描二维码进行绑定
 3. 验证器<code>G</code>会生成动态密码<code>C</code>，用户<code>A</code>将动态密码<code>C</code>输入到系统<code>S</code>的绑定验证框内
@@ -223,7 +223,7 @@ HOTP(HMAC-based One-time Password)是指基于计数的一次性密码。</p>
 
 <p><img src="/images/2step-verification-bind.png" alt="示意图" /></p>
 
-<p>验证流程如下:
+<p>验证流程如下:<br />
 1. 用户<code>A</code>通过账号密码登录系统<code>S</code>
 2. 系统<code>S</code>验证账号和密码匹配后，跳转到两步验证页面
 3. 用户<code>A</code>将验证器<code>G</code>里的动态验证码<code>C</code>输入到两步验证页面的验证框中
@@ -241,13 +241,13 @@ HOTP(HMAC-based One-time Password)是指基于计数的一次性密码。</p>
 
 <p>示例：<code>otpauth://totp/Google:alice@google.com?secret=JBSWY3DPEHPK3PXP&amp;issuer=Google</code></p>
 
-<p>其中，前面一段<code>otpauth://totp/Example:alice@google.com</code>中各部份的意义如下：
+<p>其中，前面一段<code>otpauth://totp/Example:alice@google.com</code>中各部份的意义如下：<br />
 1. <code>otpauth</code>表示OTP认证协议
 2. <code>totp</code>表示使用TOTP算法
 3. <code>Google</code>表示生成此链接的公司或软件名称
 4. <code>alice@google.com</code>表示该链接所对应的用户的用户名</p>
 
-<p>而后面一段查询参数中各部份意义如下：
+<p>而后面一段查询参数中各部份意义如下：<br />
 1. <code>secret</code>是由服务端<strong>Base32</strong>编码生成的字符串。其内容不重要，只要保证随机性即可，应保证每个用户都拥有一个独立的<code>secret</code>。
 2. <code>issuer</code>表示生成此链接的公司或软件名称，应与前一段中相应部份一致。</p>
 
@@ -288,11 +288,11 @@ func computeCode(secret string, timeValue int64) string {
 
 <h3 id="两步验证的优缺点">两步验证的优缺点</h3>
 
-<p>两步验证的优点：
+<p>两步验证的优点：<br />
 1. 系统的安全性提高，即使其它网站泄露了用户的明文密码，仍可以保证用户账户不受攻击。
 2. 动态按时间生成验证码，防止重放攻击。</p>
 
-<p>两步验证的缺点：
+<p>两步验证的缺点：<br />
 1. 复杂度提高。用户不仅需要输入密码，还需要输入动态验证码。
 2. 需要另一个可信设备。即默认用户在绑定时候所使用的设备是安全的。
 3. 当验证器不可用时（设备丢失或不在身边），无法登录。
@@ -300,16 +300,16 @@ func computeCode(secret string, timeValue int64) string {
 
 <h3 id="其它验证方式">其它验证方式</h3>
 
-<p>一、短信认证
+<p>一、短信认证<br />
 短信验证码方式可能是当前中国各大厂商用得最多的一种验证方式。
 在用户绑定某个手机号后，将用户与此手机号关联。在有需要进行二次验证的地方，
 发送二次验证码短信，用户接收短信并输入该验证码。</p>
 
-<p>二、扫码认证
+<p>二、扫码认证<br />
 这在微信登录桌面端与web端的唯一方式。
 如果你在桌面web端使用支付宝，通常也可以通过手机支付宝扫页面上二维码进行支付确认。</p>
 
-<p>三、推送认证
+<p>三、推送认证<br />
 当微信桌面端已登录过，保存有信息时，通常会推送一条登录请求给手机微信端，需要在手机端确认。</p>
 
 <h3 id="引用">引用</h3>

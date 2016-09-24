@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Markdown 语法  &middot; Allen&#39;s Blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Markdown 语法指南" />
+
+<meta name="keywords" content="markdown, ">
+
+
+<meta property="og:title" content="Markdown 语法  &middot; Allen&#39;s Blog ">
+<meta property="og:site_name" content="Allen&#39;s Blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/2016/09/24/markdown-%E8%AF%AD%E6%B3%95/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Markdown 语法指南"/>
+<meta property="og:article:published_time" content="2016-09-24T14:36:06&#43;08:00" />
+<meta property="og:article:modified_time" content="2016-09-24T14:36:06&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="markdown">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Markdown 语法" />
+<meta name="twitter:description" content="Markdown 语法指南" />
+<meta name="twitter:url" content="http://dmdgeeker.com/2016/09/24/markdown-%E8%AF%AD%E6%B3%95/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Markdown 语法",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-09-24",
+    "description": "Markdown 语法指南",
+    "wordCount":  1873 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/2016/09/24/markdown-%E8%AF%AD%E6%B3%95/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+<meta name="theme-color" content="#2053AB">
+<meta name="generator" content="Hugo 0.16" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  DMDGeeker
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  This is allen!
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/about">关于</a>
+
+<a href="http://dmdgeeker.com/post" title="所有文章归档">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Markdown 语法
+</h1>
+
+  <div class="metas">
+<time datetime="2016-09-24">24 Sep, 2016</time>
+
+
+  
+  &middot; Read in about 9 min
+  &middot; (1873 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/tool">tool</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p><strong>声明</strong> 本文转载自<a href="https://bitbucket.org/tutorials/markdowndemo">Bitbucket</a></p>
+
+<p><a href="http://daringfireball.net/projects/markdown/">Markdown</a> for readmes is pretty popular.  So, I&rsquo;ve given you a demo
+here of all the markup we support. In some cases, I copied the doc/examples entirely from the Fireball Markdown site.</p>
+
+<p>I didn&rsquo;t duplicate all the Markdown doc everything tho. For the entire docs and a deeper explanation of Markdown, you still need to go to the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> site.</p>
+
+<p>You can also use <a href="https://confluence.atlassian.com/x/xTAvEw">Bitbucket mark up</a> in comments, issues, and commit messages.</p>
+
+<p>On this page:</p>
+
+<ul>
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-span-elements">Span Elements</a></p>
+
+<ul>
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-emphasis">Emphasis</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-strikethrough">Strikethrough</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-preformatted-code">Preformatted code</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-links">Links</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-images">Images</a></p></li>
+</ul></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-block-elements">Block Elements</a></p>
+
+<ul>
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-headings">Headings</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-paragraphs-and-blockquotes">Paragraphs and blockquotes</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-lists">Lists</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-tables">Tables</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-code-and-syntax-highlighting">Code and Syntax highlighting</a></p></li>
+
+<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-horizontal-rules">Horizontal rules</a></p></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h1 id="bitbucket-does-not-support">Bitbucket does NOT support</h1>
+
+<p>Please note, we don&rsquo;t support arbitrary HTML in Markdown, for example <code>&lt;table&gt;</code> tags. Instead, we use
+<a href="http://pythonhosted.org/Markdown/reference.html#safe_mode">safe mode</a>. Safe mode requires that you replace, remove, or escape HTML tags appropriately.</p>
+
+<hr />
+
+<h1 id="span-elements">Span Elements</h1>
+
+<p>These elements occur within a line of text.  So, for example font changes or links.</p>
+
+<h2 id="emphasis">Emphasis</h2>
+
+<p>Markdown treats * (asterisk) and _ (underscores) as emphasis markers.</p>
+
+<p><em>single asterisks</em></p>
+
+<p><em>single underscores</em></p>
+
+<p><strong>double asterisks</strong></p>
+
+<p><strong>double underscores</strong></p>
+
+<p>All are created from this:</p>
+
+<pre><code>*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+</code></pre>
+
+<p>You must use the same character must be used to open and close an emphasis span. Emphasis can be used in the mi*dd*le of a word.</p>
+
+<pre><code>Emphasis can be used in the mi*dd*le of a word.
+</code></pre>
+
+<p>But if you surround an * or _ with spaces, it’ll be treated as a literal asterisk or underscore.</p>
+
+<p>To produce a literal asterisk or underscore at a position where it would otherwise be used as an emphasis delimiter, you can backslash escape it:</p>
+
+<pre><code>\*this text is surrounded by literal asterisks\*
+</code></pre>
+
+<h2 id="strikethrough">Strikethrough</h2>
+
+<p>Bitbucket&rsquo;s Markdown parser supports strikethrough by wrapping text in <code>~~</code>:</p>
+
+<p><del>text that has been struckthrough</del></p>
+
+<p>is created from:</p>
+
+<pre><code>~~text that has been struckthrough~~
+</code></pre>
+
+<h2 id="preformatted-code">Preformatted code</h2>
+
+<p>To indicate a span of code, wrap it with <code>`</code> (backtick). Unlike a pre-formatted code block, a code span indicates code within a normal paragraph. For example:</p>
+
+<p>Use the <code>printf()</code> function.</p>
+
+<p>is produced from:</p>
+
+<pre><code>Use the `printf()` function.
+</code></pre>
+
+<p>To include a literal backtick character within a code span, you can use multiple backticks as the opening and closing delimiters:</p>
+
+<p><code>There is a literal backtick (`) here.</code></p>
+
+<h2 id="links">Links</h2>
+
+<p>Markdown supports inline and reference links. In both styles, the link text is delimited by [square brackets]. To create an inline link, use this syntax:</p>
+
+<pre><code>[ Text for the link ](URL)
+</code></pre>
+
+<p>So an inline link to <a href="http://www.yahoo.com">Yahoo</a> looks like this:</p>
+
+<pre><code>So an inline link to [Yahoo](http://www.yahoo.com) looks like this:
+</code></pre>
+
+<p>Reference-style links use a second set of square brackets, inside which you place a label of your choosing to identify the link:</p>
+
+<pre><code>This is [an example][id] reference-style link.
+</code></pre>
+
+<p>Which gives you a link like this:</p>
+
+<p>This is <a href="http://example.com/" title="Optional Title Here">an example</a> reference-style link.</p>
+
+<p>Elsewhere in the document, usually at the bottom of the file, you define your link label on a line by itself:</p>
+
+<pre><code>[id]: http://example.com/  &quot;Optional Title Here&quot;
+</code></pre>
+
+<p>Links can get pretty fancy, so if you want the long form version, visit the
+ official <a href="http://daringfireball.net/projects/markdown/">Markdown</a> docs.</p>
+
+<h2 id="images">Images</h2>
+
+<p>Markdown uses an image syntax that is intended to resemble the syntax for links, allowing for two styles: inline and reference. Images appear like this:</p>
+
+<p><img src="http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png" alt="Alt text" /></p>
+
+<pre><code>![Alt text](http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png)
+
+![Alt text](http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png &quot;Optional title&quot;)
+</code></pre>
+
+<hr />
+
+<h1 id="block-elements">Block Elements</h1>
+
+<p>These are elements that are a single or multiple lines in length</p>
+
+<h2 id="headings">Headings</h2>
+
+<p>You can create Atx-style headings by prefixing with a # (hash mark)</p>
+
+<h1 id="heading-1-markup-heading-1">Heading 1 markup  <code># Heading 1</code></h1>
+
+<h2 id="heading-2-markup-heading-2">Heading 2 markup  <code>## Heading 2</code></h2>
+
+<h3 id="heading-3-markup-heading-3">Heading 3 markup   <code>### Heading 3</code></h3>
+
+<h4 id="heading-4-markup-heading-4">Heading 4 markup  <code>#### Heading 4</code></h4>
+
+<h5 id="heading-5-markup-heading-5">Heading 5 markup  <code>##### Heading 5</code></h5>
+
+<h6 id="heading-6-markup-heading-6">Heading 6 markup  <code>###### Heading 6</code></h6>
+
+<p>You can also create Setext-style headings which have two levels.</p>
+
+<h1 id="level-1-markup-use-an-equal-sign-equal-sign">Level 1 markup use an equal sign = (equal sign)</h1>
+
+<pre><code> Level 1 markup use an equal sign = (equal sign)     
+ ==============================
+</code></pre>
+
+<h2 id="level-2-markup-uses-dashes">Level 2 markup uses - (dashes)</h2>
+
+<pre><code>Level 2 markup uses - (dashes) 
+-------------
+</code></pre>
+
+<h2 id="paragraphs-and-blockquotes">PARAGRAPHS and BLOCKQUOTES</h2>
+
+<p>A paragraph is one or more consecutive lines of text separated by one or more
+blank lines. A blank line contains nothing but spaces or tabs. Do not indent
+normal paragraphs with spaces or tabs.</p>
+
+<p>This is one paragraph.</p>
+
+<p>This is a second.</p>
+
+<pre><code>This is one paragraph.
+
+This is a second.
+</code></pre>
+
+<p>Markdown uses email-style &gt; (greater than) characters for blockquoting. If you’re familiar with quoting passages of text in an email message, then you know how to create a blockquote in Markdown. It looks best if you hard wrap the text and put a &gt; before every line:</p>
+
+<blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
+
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; 
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<p>Blockquotes can be nested (i.e. a blockquote-in-a-blockquote):</p>
+
+<blockquote>
+<p>This is the first level of quoting.</p>
+
+<blockquote>
+<p>This is nested blockquote.</p>
+</blockquote>
+
+<p>Back to the first level.</p>
+</blockquote>
+
+<pre><code>&gt; This is the first level of quoting.
+&gt;
+&gt; &gt; This is nested blockquote.
+&gt;
+&gt; Back to the first level.
+</code></pre>
+
+<p>Blockquotes can contain other Markdown elements, including headers, lists, and code blocks:</p>
+
+<blockquote>
+<h2 id="this-is-a-header">This is a header.</h2>
+
+<ol>
+<li>This is the first list item.</li>
+<li>This is the second list item.</li>
+</ol>
+
+<p>Here&rsquo;s some example code:</p>
+
+<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre>
+</blockquote>
+
+<pre><code>&gt; ## This is a header.
+&gt; 
+&gt; 1.   This is the first list item.
+&gt; 2.   This is the second list item.
+&gt; 
+&gt; Here's some example code:
+&gt; 
+&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre>
+
+<h2 id="lists">Lists</h2>
+
+<p>Markdown supports ordered (numbered) and unordered (bulleted) lists.  List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.</p>
+
+<p>Form bulleted lists with any of * (asterisk), + (plus), or - (dash). You can one or any or mix of these to form a list:</p>
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+
+<li><p>Blue</p>
+
+<pre><code>* Red
++ Green
+- Blue
+</code></pre></li>
+</ul>
+
+<p>Ordered lists require a numeric character followed by a . (period).</p>
+
+<ol>
+<li>Item one</li>
+<li>Item two</li>
+
+<li><p>Item three</p>
+
+<pre><code>1. Item one
+1. Item two 
+1. Item three
+</code></pre></li>
+</ol>
+
+<p>Notice the actual value of the number doesn&rsquo;t matter in the list result. However, for readability better to use this markup:</p>
+
+<pre><code>    1. Item one
+    2. Item two 
+    3. Item three
+</code></pre>
+
+<p>Lists can be embedded in lists. List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either 4 spaces or one tab:</p>
+
+<ul>
+<li>Red</li>
+<li>Green
+
+<ul>
+<li>dark  green</li>
+<li>lime<br /></li>
+</ul></li>
+
+<li><p>Blue</p>
+
+<ol>
+<li>Item one
+
+<ol>
+<li>subitem 1</li>
+<li>subitem 2</li>
+</ol></li>
+
+<li><p>Item two</p>
+
+<p>This is is a first paragraph.</p>
+
+<ul>
+<li>Green</li>
+<li>Blue
+<br /></li>
+</ul>
+
+<p>This is a second paragraph.</p></li>
+
+<li><p>Item three</p></li>
+</ol></li>
+</ul>
+
+<p>The code for these embedded lists or paragraphs is:</p>
+
+<pre><code>        * Red 
+        + Green 
+            * dark  green 
+            * lime  
+        - Blue      
+            1. Item one
+                1. subitem 1
+                1. subitem 2
+            1. Item two 
+
+                This is is a first paragraph. 
+
+                * Green 
+                * Blue
+
+                This is a second paragraph.
+
+            1. Item three
+</code></pre>
+
+<p>You can also embed blockquotes in a list.</p>
+
+<ul>
+<li>Green
+&gt; What is this?  It is embedded blockquote.  Mix &lsquo;em and match &lsquo;em.</li>
+<li>Blue</li>
+
+<li><p>Red</p>
+
+<pre><code>* Green
+&gt; What is this?  It is embedded blockquote.  Mix 'em and match 'em.
+* Blue
+* Red
+</code></pre></li>
+</ul>
+
+<p>You can also embed code blocks in a list.</p>
+
+<ul>
+<li><p>Green</p>
+
+<p>Try this code:</p>
+
+<pre><code>This is an embedded code block.
+</code></pre>
+
+<p>Then this:</p>
+
+<pre><code>More code!
+</code></pre></li>
+
+<li><p>Blue</p></li>
+
+<li><p>Red</p>
+
+<pre><code>* Green
+
+    Try this code:
+
+        This is an embedded code block.
+
+    Then this:
+
+        More code!
+
+* Blue
+* Red
+</code></pre></li>
+</ul>
+
+<h2 id="tables">Tables</h2>
+
+<p>Bitbucket does not support <code>&lt;html&gt;</code> so you need to use the - (dash) and the | (pipe) symbols to construct a table. The first line contains column headers. Separate columns with the pipe symbol.</p>
+
+<p>The  second line must be a mandatory separator line between the headers and the content. Subsequent lines are table rows. Columns are always separated by the pipe (|) character.  For example this table:</p>
+
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+
+<p>Comes from this code:</p>
+
+<pre><code>First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+</code></pre>
+
+<p>You can only put simple lines in a table.</p>
+
+<p>You can specify alignment for each column by adding colons to separator lines. A colon at the left of the separator line, left-aligns the column. A colon on the right, right-aligns the column. Add colons to both sides to center the column is center-aligned.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Right</th>
+<th align="left">Left</th>
+<th align="center">Center</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">Computer</td>
+<td align="left">$1600</td>
+<td align="center">one</td>
+</tr>
+
+<tr>
+<td align="right">Phone</td>
+<td align="left">$12</td>
+<td align="center">three</td>
+</tr>
+
+<tr>
+<td align="right">Pipe</td>
+<td align="left">$1</td>
+<td align="center">eleven</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code>Right     | Left   | Center 
+---------:| :----- |:-----:
+Computer  |  $1600 | one
+Phone     |    $12 | three
+Pipe      |     $1 | eleven
+</code></pre>
+
+<p>You can apply inline formatting (span-level changes such as fonts or links) to the content of each cell using regular Markdown syntax:</p>
+
+<table>
+<thead>
+<tr>
+<th>Function name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>help()</code></td>
+<td>Display the <strong>help</strong> window.</td>
+</tr>
+
+<tr>
+<td><code>destroy()</code></td>
+<td><strong>Destroy your computer!</strong></td>
+</tr>
+</tbody>
+</table>
+
+<pre><code>| Function name | Description                    |
+| ------------- | ------------------------------ |
+| `help()`      | Display the __help__ window.   |
+| `destroy()`   | **Destroy your computer!**     |
+</code></pre>
+
+<hr />
+
+<h2 id="code-and-syntax-highlighting">Code and Syntax highlighting</h2>
+
+<p>Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal paragraphs, the code block linesare interpreted literally.  Markdown wraps a code block in both <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> tags.</p>
+
+<p>To produce a code block in Markdown, indent every line of the block by at least 4 spaces or 1 tab. For :</p>
+
+<p>This is a normal paragraph:</p>
+
+<pre><code>This is a code block.
+</code></pre>
+
+<p>The code reveals the indentation.</p>
+
+<pre><code>    This is a normal paragraph:
+
+        This is a code block.
+</code></pre>
+
+<p>A code block continues until it reaches a line that is not indented (or the end of the page).</p>
+
+<p>Within a code block, &amp; (ampersands) and &lt; &gt; (angle brackets) are automatically converted into HTML entities. This makes it very easy to include example HTML source code using Markdown — just paste it and indent it. Markdown will handle the hassle of encoding the ampersands and angle brackets. For example, this:</p>
+
+<p>Here is an example of AppleScript:</p>
+
+<pre><code>&lt;p&gt;Here is an example of AppleScript:&lt;/p&gt;
+</code></pre>
+
+<p>To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab. For example, given this input:</p>
+
+<p>You can also highlight snippets of text (Bitbucket uses the excellent <a href="http://www.pygments.org/">Pygments</a> library) to allow you to use code highlighting  Here&rsquo;s an example of some Python code:</p>
+
+<pre><code>#!python
+#
+def wiki_rocks(text): formatter = lambda t: &quot;funky&quot;+t return formatter(text)        
+</code></pre>
+
+<p>To do this, do not indent the block. Start the block with ` three ticks. Then, provide the comment with the type of syntax you are using.  There is a <a href="http://pygments.org/docs/lexers/">the vast library of Pygment lexers</a>. Bitbucket accepts the &lsquo;short name&rsquo; or the &lsquo;mimetype&rsquo; of anything in there.</p>
+
+<p>You can also use a fence style for code.</p>
+
+<pre><code>This is a code block, fenced-style
+</code></pre>
+
+<p>Which you create with this code:</p>
+
+<pre><code>~~~~
+This is a code block, fenced-style
+~~~~
+</code></pre>
+
+<p>See <a href="http://michelf.ca/projects/php-markdown/extra/">Michel Fortin&rsquo;s blog</a> to try out more examples of this coding style. Not everything he demos is guaranteed to work though.</p>
+
+<hr />
+
+<h1 id="horizontal-rules">Horizontal Rules</h1>
+
+<p>You can produce a horizontal line with any of the following codes:</p>
+
+<pre><code>* * *
+
+***
+
+*****
+
+- - - -
+
+-----------------------
+</code></pre>
+
+<p>The output looks like this:</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<hr />
+
+<hr />
+
+<hr />
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/2016/08/28/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/" title="两步验证(2-step verification)">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48344744-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    
+  </body>
+</html>
+

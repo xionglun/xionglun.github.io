@@ -55,7 +55,7 @@
     },
     "datePublished": "2016-09-24",
     "description": "Markdown 语法指南",
-    "wordCount":  1873 
+    "wordCount":  475 
   }
 </script>
 
@@ -180,8 +180,8 @@
 
 
   
-  &middot; Read in about 9 min
-  &middot; (1873 Words)
+  &middot; Read in about 3 min
+  &middot; (475 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/tool">tool</a>
@@ -195,462 +195,457 @@
   <div class="container content">
   
 
-<p><strong>声明</strong> 本文转载自<a href="https://bitbucket.org/tutorials/markdowndemo">Bitbucket</a></p>
-
-<p><a href="http://daringfireball.net/projects/markdown/">Markdown</a> for readmes is pretty popular.  So, I&rsquo;ve given you a demo
-here of all the markup we support. In some cases, I copied the doc/examples entirely from the Fireball Markdown site.</p>
-
-<p>I didn&rsquo;t duplicate all the Markdown doc everything tho. For the entire docs and a deeper explanation of Markdown, you still need to go to the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> site.</p>
-
-<p>You can also use <a href="https://confluence.atlassian.com/x/xTAvEw">Bitbucket mark up</a> in comments, issues, and commit messages.</p>
-
-<p>On this page:</p>
+<p><a href="http://daringfireball.net/projects/markdown/">Markdown</a> 在用于写简单文本非常方便。在这里将给出一些示例来示范Markdown所支持的标记语法。
+这里并没有介绍所有Markdown文档，如果你需要完整版来进行深入了解，请查看<a href="http://daringfireball.net/projects/markdown/">Markdown</a>这个网站。</p>
 
 <ul>
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-span-elements">Span Elements</a></p>
-
-<ul>
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-emphasis">Emphasis</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-strikethrough">Strikethrough</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-preformatted-code">Preformatted code</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-links">Links</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-images">Images</a></p></li>
-</ul></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-block-elements">Block Elements</a></p>
-
-<ul>
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-headings">Headings</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-paragraphs-and-blockquotes">Paragraphs and blockquotes</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-lists">Lists</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-tables">Tables</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-code-and-syntax-highlighting">Code and Syntax highlighting</a></p></li>
-
-<li><p><a href="https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-horizontal-rules">Horizontal rules</a></p></li>
-</ul></li>
+<li><a href="#强调">强调</a></li>
+<li><a href="#删除">删除</a></li>
+<li><a href="#代码">代码</a></li>
+<li><a href="#链接">链接</a></li>
+<li><a href="#图像">图像</a></li>
+<li><a href="#标题">标题</a></li>
+<li><a href="#段落">段落</a></li>
+<li><a href="#引用">引用</a></li>
+<li><a href="#列表">列表</a></li>
+<li><a href="#表格">表格</a></li>
+<li><a href="#代码高亮">代码高亮</a></li>
+<li><a href="#水平分隔线">水平分隔线</a></li>
 </ul>
 
 <hr />
 
-<h1 id="bitbucket-does-not-support">Bitbucket does NOT support</h1>
+<h2 id="强调">强调</h2>
 
-<p>Please note, we don&rsquo;t support arbitrary HTML in Markdown, for example <code>&lt;table&gt;</code> tags. Instead, we use
-<a href="http://pythonhosted.org/Markdown/reference.html#safe_mode">safe mode</a>. Safe mode requires that you replace, remove, or escape HTML tags appropriately.</p>
+<p>Markdown 通过 * (星号) 和 _ (下划线) 来作为着重表示的标记。 如下所示：</p>
 
-<hr />
+<p><em>单个星号</em></p>
 
-<h1 id="span-elements">Span Elements</h1>
+<p><em>单个下划线</em></p>
 
-<p>These elements occur within a line of text.  So, for example font changes or links.</p>
+<p><strong>两个星号</strong></p>
 
-<h2 id="emphasis">Emphasis</h2>
+<p><strong>两个下划线</strong></p>
 
-<p>Markdown treats * (asterisk) and _ (underscores) as emphasis markers.</p>
+<p>示例代码:</p>
 
-<p><em>single asterisks</em></p>
+<pre><code>*单个星号*
 
-<p><em>single underscores</em></p>
+_单个下划线_
 
-<p><strong>double asterisks</strong></p>
+**两个星号**
 
-<p><strong>double underscores</strong></p>
-
-<p>All are created from this:</p>
-
-<pre><code>*single asterisks*
-
-_single underscores_
-
-**double asterisks**
-
-__double underscores__
+__两个下划线__
 </code></pre>
 
-<p>You must use the same character must be used to open and close an emphasis span. Emphasis can be used in the mi*dd*le of a word.</p>
+<p>你必须使用相同的标记来开关标记块。</p>
 
-<pre><code>Emphasis can be used in the mi*dd*le of a word.
+<p>某些情况下，强调可以只是放置于词中间(如he*ll*o), 如Github等。但也有一些不会渲染出效果，如本博客所示。
+但是如果在 * 和 _ 两边加上空格，那它会以普通文本形式进行渲染。 如果有需要, 你也可以在星号和下划线前加入反斜线进行转译。</p>
+
+<pre><code>\*这段文本在普通星号之间\*
 </code></pre>
 
-<p>But if you surround an * or _ with spaces, it’ll be treated as a literal asterisk or underscore.</p>
+<h2 id="删除">删除</h2>
 
-<p>To produce a literal asterisk or underscore at a position where it would otherwise be used as an emphasis delimiter, you can backslash escape it:</p>
+<p>删除标记使用的是<code>~~</code>:</p>
 
-<pre><code>\*this text is surrounded by literal asterisks\*
+<p><del>这是待删除的文本</del></p>
+
+<p>示例代码:</p>
+
+<pre><code>~~这是待删除的文本~~
 </code></pre>
 
-<h2 id="strikethrough">Strikethrough</h2>
+<h2 id="代码">代码</h2>
 
-<p>Bitbucket&rsquo;s Markdown parser supports strikethrough by wrapping text in <code>~~</code>:</p>
+<p>使用<code>`</code>(反引号)来表示行内代码，与格式化代码块不同，行内代码表示其在一行中，如：</p>
 
-<p><del>text that has been struckthrough</del></p>
+<p>使用<code>printf()</code>函数。</p>
 
-<p>is created from:</p>
+<p>示例代码:</p>
 
-<pre><code>~~text that has been struckthrough~~
+<pre><code>使用 `printf()` 函数。
 </code></pre>
 
-<h2 id="preformatted-code">Preformatted code</h2>
+<p>如果你想在代码中使用反引号，可以使用多个反引号作为开闭标记。
+<code>这是一个普通的(`)反引号.</code></p>
 
-<p>To indicate a span of code, wrap it with <code>`</code> (backtick). Unlike a pre-formatted code block, a code span indicates code within a normal paragraph. For example:</p>
+<p>示例代码：</p>
 
-<p>Use the <code>printf()</code> function.</p>
-
-<p>is produced from:</p>
-
-<pre><code>Use the `printf()` function.
+<pre><code>``这是一个普通的(`)反引号.``
 </code></pre>
 
-<p>To include a literal backtick character within a code span, you can use multiple backticks as the opening and closing delimiters:</p>
+<h2 id="链接">链接</h2>
 
-<p><code>There is a literal backtick (`) here.</code></p>
+<p>Markdown支持内联和引用链接，这两种方式的链接名都放在方括号(<code>[]</code>)中。</p>
 
-<h2 id="links">Links</h2>
+<p>创建一个链接</p>
 
-<p>Markdown supports inline and reference links. In both styles, the link text is delimited by [square brackets]. To create an inline link, use this syntax:</p>
-
-<pre><code>[ Text for the link ](URL)
+<pre><code>[链接名](链接地址)
 </code></pre>
 
-<p>So an inline link to <a href="http://www.yahoo.com">Yahoo</a> looks like this:</p>
+<p>创建一个Github链接<a href="https://github.com" title="可选的链接标题">Github</a>如下所示:</p>
 
-<pre><code>So an inline link to [Yahoo](http://www.yahoo.com) looks like this:
+<pre><code>[Github](https://github.com &quot;可选的链接标题&quot;)
 </code></pre>
 
-<p>Reference-style links use a second set of square brackets, inside which you place a label of your choosing to identify the link:</p>
+<p>引用链接第二部份也是使用方括号，里面放置一个引用链接的标签。</p>
 
-<pre><code>This is [an example][id] reference-style link.
+<pre><code>这是一个[示例][example]引用链接。
 </code></pre>
 
-<p>Which gives you a link like this:</p>
+<p>效果如下:
+这是一个<a href="http://example.com/" title="可选的标题">示例</a>引用链接。</p>
 
-<p>This is <a href="http://example.com/" title="Optional Title Here">an example</a> reference-style link.</p>
+<p>在文档的其它地方（通常是文尾）放置一个标签定义:</p>
 
-<p>Elsewhere in the document, usually at the bottom of the file, you define your link label on a line by itself:</p>
-
-<pre><code>[id]: http://example.com/  &quot;Optional Title Here&quot;
+<pre><code>[example]: http://example.com/  &quot;可选的标题&quot;
 </code></pre>
 
-<p>Links can get pretty fancy, so if you want the long form version, visit the
- official <a href="http://daringfireball.net/projects/markdown/">Markdown</a> docs.</p>
+<p>链接这一部份还有很多细节，具体详情可以参见<a href="http://daringfireball.net/projects/markdown/syntax#link">链接说明</a></p>
 
-<h2 id="images">Images</h2>
+<h2 id="图像">图像</h2>
 
-<p>Markdown uses an image syntax that is intended to resemble the syntax for links, allowing for two styles: inline and reference. Images appear like this:</p>
+<p>在Markdown里引用一张图片与一个链接非常类似，也如链接一样有两种方式。其它链接不同的是，在语法前加了一个<code>!</code>（感叹号)。</p>
 
-<p><img src="http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png" alt="Alt text" /></p>
+<p><img src="http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png" alt="图片标题" /></p>
 
-<pre><code>![Alt text](http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png)
-
-![Alt text](http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png &quot;Optional title&quot;)
+<pre><code>![图片标题](http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png)
+![图片标题](http://www.addictedtoibiza.com/wp-content/uploads/2012/12/example.png &quot;可选标题&quot;)
 </code></pre>
 
-<hr />
+<h3 id="标题">标题</h3>
 
-<h1 id="block-elements">Block Elements</h1>
+<p><a href="http://daringfireball.net/projects/markdown/syntax#header">标准文档</a></p>
 
-<p>These are elements that are a single or multiple lines in length</p>
+<p>使用<code>Atx</code>方式标记标题</p>
 
-<h2 id="headings">Headings</h2>
+<h1 id="一级标题">一级标题</h1>
 
-<p>You can create Atx-style headings by prefixing with a # (hash mark)</p>
-
-<h1 id="heading-1-markup-heading-1">Heading 1 markup  <code># Heading 1</code></h1>
-
-<h2 id="heading-2-markup-heading-2">Heading 2 markup  <code>## Heading 2</code></h2>
-
-<h3 id="heading-3-markup-heading-3">Heading 3 markup   <code>### Heading 3</code></h3>
-
-<h4 id="heading-4-markup-heading-4">Heading 4 markup  <code>#### Heading 4</code></h4>
-
-<h5 id="heading-5-markup-heading-5">Heading 5 markup  <code>##### Heading 5</code></h5>
-
-<h6 id="heading-6-markup-heading-6">Heading 6 markup  <code>###### Heading 6</code></h6>
-
-<p>You can also create Setext-style headings which have two levels.</p>
-
-<h1 id="level-1-markup-use-an-equal-sign-equal-sign">Level 1 markup use an equal sign = (equal sign)</h1>
-
-<pre><code> Level 1 markup use an equal sign = (equal sign)     
- ==============================
+<pre><code># 一级标题
 </code></pre>
 
-<h2 id="level-2-markup-uses-dashes">Level 2 markup uses - (dashes)</h2>
+<h2 id="二级标题">二级标题</h2>
 
-<pre><code>Level 2 markup uses - (dashes) 
--------------
+<pre><code>## 二级标题
 </code></pre>
 
-<h2 id="paragraphs-and-blockquotes">PARAGRAPHS and BLOCKQUOTES</h2>
+<h3 id="三级标题">三级标题</h3>
 
-<p>A paragraph is one or more consecutive lines of text separated by one or more
-blank lines. A blank line contains nothing but spaces or tabs. Do not indent
-normal paragraphs with spaces or tabs.</p>
-
-<p>This is one paragraph.</p>
-
-<p>This is a second.</p>
-
-<pre><code>This is one paragraph.
-
-This is a second.
+<pre><code>### 三级标题
 </code></pre>
 
-<p>Markdown uses email-style &gt; (greater than) characters for blockquoting. If you’re familiar with quoting passages of text in an email message, then you know how to create a blockquote in Markdown. It looks best if you hard wrap the text and put a &gt; before every line:</p>
+<h4 id="四级标题">四级标题</h4>
+
+<pre><code>#### 四级标题
+</code></pre>
+
+<h5 id="五级标题">五级标题</h5>
+
+<pre><code>##### 五级标题
+</code></pre>
+
+<h6 id="六级标题">六级标题</h6>
+
+<pre><code>###### 六级标题
+</code></pre>
+
+<p>你也可以使用<code>Setext</code>方式来标记标题.</p>
+
+<h1 id="一级标题-使用-号">一级标题(使用=号)</h1>
+
+<pre><code>一级标题(使用=号)
+==============================
+</code></pre>
+
+<h2 id="二级标题-使用-号">二级标题(使用-号)</h2>
+
+<pre><code>二级标题(使用-号)
+-----------------------------
+</code></pre>
+
+<h2 id="段落">段落</h2>
+
+<p>Markdown文本段落之间通过空行进行分隔， 直接回车换行不会产生一个新的段落， 上下两行中间不加空行会连接成一个段落。</p>
+
+<p>这是一个段落</p>
+
+<p>这是另外一个段落</p>
+
+<p>示例：</p>
+
+<pre><code>这是一个段落
+
+这是另外一个段落
+</code></pre>
+
+<p>如果你只是想进行换行而不是需要一个段落，可以在一行结尾处添加两个以上的空格。</p>
+
+<p>这是一行结尾。<br />
+这行接着上一行。</p>
+
+<p>示例代码：</p>
+
+<pre><code>这是一行结尾。[空格][空格]
+这行接着上一行。
+</code></pre>
+
+<p>不要使用空格或者tab来缩进段落。</p>
+
+<h2 id="引用">引用</h2>
+
+<p>Markdown使用<code>&gt;</code>来标记引用, 在每一行引用前添加<code>&gt;</code>符号。</p>
 
 <blockquote>
-<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
+<p>这是一个引用，它有两个段落。</p>
 
-<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.</p>
+<p>这是第二个段落。</p>
 </blockquote>
 
-<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-&gt; 
-&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-&gt; id sem consectetuer libero luctus adipiscing.
-</code></pre>
+<p>示例：</p>
 
-<p>Blockquotes can be nested (i.e. a blockquote-in-a-blockquote):</p>
-
-<blockquote>
-<p>This is the first level of quoting.</p>
-
-<blockquote>
-<p>This is nested blockquote.</p>
-</blockquote>
-
-<p>Back to the first level.</p>
-</blockquote>
-
-<pre><code>&gt; This is the first level of quoting.
+<pre><code>&gt; 这是一个引用，它有两个段落。
 &gt;
-&gt; &gt; This is nested blockquote.
-&gt;
-&gt; Back to the first level.
+&gt; 这是第二个段落。
 </code></pre>
 
-<p>Blockquotes can contain other Markdown elements, including headers, lists, and code blocks:</p>
+<p>引用还可以嵌套使用，如下：</p>
 
 <blockquote>
-<h2 id="this-is-a-header">This is a header.</h2>
+<p>这是外面的引用</p>
+
+<blockquote>
+<p>这是里面的引用</p>
+</blockquote>
+
+<p>这是外面的引用</p>
+</blockquote>
+
+<p>示例：</p>
+
+<pre><code>&gt; 这是外面的引用
+&gt;
+&gt; &gt; 这是里面的引用
+&gt;
+&gt; 这是外面的引用
+</code></pre>
+
+<p>引用中也可以使用其它Markdown的标记，如标题、列表、代码块等。</p>
+
+<blockquote>
+<h2 id="这是一个标题">这是一个标题</h2>
 
 <ol>
-<li>This is the first list item.</li>
-<li>This is the second list item.</li>
+<li>这是有序列表的第一行</li>
+<li>这是有序列表的第二行</li>
 </ol>
 
-<p>Here&rsquo;s some example code:</p>
+<p>引用内放置代码:</p>
 
 <pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);
 </code></pre>
 </blockquote>
 
-<pre><code>&gt; ## This is a header.
-&gt; 
-&gt; 1.   This is the first list item.
-&gt; 2.   This is the second list item.
-&gt; 
-&gt; Here's some example code:
-&gt; 
+<p>示例：</p>
+
+<pre><code>&gt; ## 这是一个标题
+&gt;
+&gt; 1. 这是有序列表的第一行
+&gt; 2. 这是有序列表的第二行
+&gt;
+&gt; 引用内放置代码:
+&gt;
 &gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
 </code></pre>
 
-<h2 id="lists">Lists</h2>
+<h2 id="列表">列表</h2>
 
-<p>Markdown supports ordered (numbered) and unordered (bulleted) lists.  List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.</p>
+<p>Markdown支持有序和无序列表。</p>
 
-<p>Form bulleted lists with any of * (asterisk), + (plus), or - (dash). You can one or any or mix of these to form a list:</p>
+<p>列表项标记位于列表左边，后面至少有一个空格或者一个tab。</p>
+
+<p>无序列表可以使用<code>*</code>、<code>+</code>或者<code>-</code>作为列表项标记，你也可以混用它们。</p>
 
 <ul>
 <li>Red</li>
 <li>Green</li>
+<li>Blue</li>
+</ul>
 
-<li><p>Blue</p>
+<p>示例:</p>
 
 <pre><code>* Red
 + Green
 - Blue
-</code></pre></li>
-</ul>
+</code></pre>
 
-<p>Ordered lists require a numeric character followed by a . (period).</p>
+<p>有序列表使用一个数字后跟一个小数点(.)来作为列表项标记，注意，数字可以是任意的，如下:</p>
 
 <ol>
-<li>Item one</li>
-<li>Item two</li>
-
-<li><p>Item three</p>
-
-<pre><code>1. Item one
-1. Item two 
-1. Item three
-</code></pre></li>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
 </ol>
 
-<p>Notice the actual value of the number doesn&rsquo;t matter in the list result. However, for readability better to use this markup:</p>
+<p>示例：</p>
 
-<pre><code>    1. Item one
-    2. Item two 
-    3. Item three
+<pre><code>1. 第一行
+1. 第二行
+1. 第三行
 </code></pre>
 
-<p>Lists can be embedded in lists. List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either 4 spaces or one tab:</p>
+<p>注意 从上面可以看出，列表第几行与前面数字并无关系，只需要是个数字即可，最终显示的数字以实际在第几行来定。 但是一般来说，使用有序的数字让人容易理解。</p>
+
+<p>列表也是可以嵌套的，每一级嵌套列表必须使用4个空格或者一个tab。</p>
 
 <ul>
-<li>Red</li>
-<li>Green
+<li>无序列表第三行，以<code>*</code>开始</li>
+<li>无序列表第三行，以<code>+</code>开始
 
 <ul>
-<li>dark  green</li>
-<li>lime<br /></li>
+<li>这是嵌套的无序列表第一行，使用了4个空格进行缩进</li>
+<li>这是嵌套的无序列表第二行，使用了一次tab进行缩进</li>
 </ul></li>
 
-<li><p>Blue</p>
+<li><p>无序列表第三行，以<code>-</code>开始</p>
 
 <ol>
-<li>Item one
+<li>这是嵌套的有序列表第一行，使用了4个空格进行缩进
 
 <ol>
-<li>subitem 1</li>
-<li>subitem 2</li>
+<li>这是嵌套的有序列表中嵌套的有序列表第一行，以8个空格缩进</li>
+<li>这是嵌套的有序列表中嵌套的有序列表第二行，使用了一次tab加4个空格缩进</li>
 </ol></li>
 
-<li><p>Item two</p>
+<li><p>这是嵌套的有序列表第二行，使用了一次tab进行缩进</p>
 
-<p>This is is a first paragraph.</p>
+<p>这是第一个嵌套段落，使用了两次tab进行缩进，上下有空行</p>
 
 <ul>
-<li>Green</li>
-<li>Blue
-<br /></li>
+<li>这是嵌套的有序列表中嵌套的无序列表第一行，使用了一次tab加4个空格缩进</li>
+<li>这是嵌套的有序列表中嵌套的无序列表第二行，使用了两次tab缩进</li>
 </ul>
 
-<p>This is a second paragraph.</p></li>
+<p>这是第一个嵌套段落，使用了一次tab加4个空格进行缩进，上下有空行</p></li>
 
-<li><p>Item three</p></li>
+<li><p>这是嵌套的有序列表第三行，使用了一次tab进行缩进</p></li>
 </ol></li>
 </ul>
 
-<p>The code for these embedded lists or paragraphs is:</p>
+<p>示例:</p>
 
-<pre><code>        * Red 
-        + Green 
-            * dark  green 
-            * lime  
-        - Blue      
-            1. Item one
-                1. subitem 1
-                1. subitem 2
-            1. Item two 
+<pre><code>* 无序列表第三行，以`*`开始
++ 无序列表第三行，以`+`开始
+	* 这是嵌套的无序列表第一行，使用了4个空格进行缩进
+	* 这是嵌套的无序列表第二行，使用了一次tab进行缩进
+- 无序列表第三行，以`-`开始
+    1. 这是嵌套的有序列表第一行，使用了4个空格进行缩进
+        1. 这是嵌套的有序列表中嵌套的有序列表第一行，以8个空格缩进
+	    1. 这是嵌套的有序列表中嵌套的有序列表第二行，使用了一次tab加4个空格缩进
+	1. 这是嵌套的有序列表第二行，使用了一次tab进行缩进
 
-                This is is a first paragraph. 
+		这是第一个嵌套段落，使用了两次tab进行缩进，上下有空行
 
-                * Green 
-                * Blue
+	    * 这是嵌套的有序列表中嵌套的无序列表第一行，使用了一次tab加4个空格缩进
+		* 这是嵌套的有序列表中嵌套的无序列表第二行，使用了两次tab缩进
 
-                This is a second paragraph.
+	    这是第一个嵌套段落，使用了一次tab加4个空格进行缩进，上下有空行
 
-            1. Item three
+	1. 这是嵌套的有序列表第三行，使用了一次tab进行缩进
 </code></pre>
 
-<p>You can also embed blockquotes in a list.</p>
+<p>你也可以在列表中嵌套一个引用块。</p>
 
-<ul>
-<li>Green
-&gt; What is this?  It is embedded blockquote.  Mix &lsquo;em and match &lsquo;em.</li>
-<li>Blue</li>
+<ol>
+<li><p>第一行</p>
 
-<li><p>Red</p>
+<blockquote>
+<p>这里是内嵌的引用块，前面有一个空行，使用了一次tab缩进</p>
+</blockquote></li>
 
-<pre><code>* Green
-&gt; What is this?  It is embedded blockquote.  Mix 'em and match 'em.
-* Blue
-* Red
-</code></pre></li>
-</ul>
+<li><p>第二行</p></li>
 
-<p>You can also embed code blocks in a list.</p>
+<li><p>第三行</p></li>
+</ol>
 
-<ul>
-<li><p>Green</p>
+<p>示例：</p>
 
-<p>Try this code:</p>
+<pre><code>1. 第一行
 
-<pre><code>This is an embedded code block.
+	&gt; 这里是内嵌的引用块，前面有一个空行，使用了一次tab缩进
+1. 第二行
+1. 第三行
 </code></pre>
 
-<p>Then this:</p>
+<ul>
+<li><p>列表第一项</p>
 
-<pre><code>More code!
+<p>内嵌段落，以4个空格缩进，前后有空行:</p>
+
+<pre><code>这是内嵌的代码块，以8个空格缩进，前后有空行。
+</code></pre>
+
+<p>内嵌段落，使用一次tab缩进，前后有空行:</p>
+
+<pre><code>这是内嵌的代码块，使用两次tab缩进，前后有空行!
 </code></pre></li>
 
-<li><p>Blue</p></li>
+<li><p>列表第二项</p></li>
 
-<li><p>Red</p>
-
-<pre><code>* Green
-
-    Try this code:
-
-        This is an embedded code block.
-
-    Then this:
-
-        More code!
-
-* Blue
-* Red
-</code></pre></li>
+<li><p>列表第三项</p></li>
 </ul>
 
-<h2 id="tables">Tables</h2>
+<p>示例：</p>
 
-<p>Bitbucket does not support <code>&lt;html&gt;</code> so you need to use the - (dash) and the | (pipe) symbols to construct a table. The first line contains column headers. Separate columns with the pipe symbol.</p>
+<pre><code>* 列表第一项
 
-<p>The  second line must be a mandatory separator line between the headers and the content. Subsequent lines are table rows. Columns are always separated by the pipe (|) character.  For example this table:</p>
+    内嵌段落，以4个空格缩进，前后有空行:
+
+        这是内嵌的代码块，以8个空格缩进，前后有空行。
+
+	内嵌段落，使用一次tab缩进，前后有空行:
+
+		这是内嵌的代码块，使用两次tab缩进，前后有空行!
+
+* 列表第二项
+* 列表第三项
+</code></pre>
+
+<h2 id="表格">表格</h2>
+
+<p>表格标记是使用<code>-</code>和<code>|</code>这两个符号。</p>
 
 <table>
 <thead>
 <tr>
-<th>First Header</th>
-<th>Second Header</th>
+<th>表头第一列</th>
+<th>表头第二列</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
+<td>表格第一行第一列</td>
+<td>表格第一行第二列</td>
 </tr>
 
 <tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
+<td>表格第二行第一列</td>
+<td>表格第二行第二列</td>
 </tr>
 </tbody>
 </table>
 
-<p>Comes from this code:</p>
+<p>示例：</p>
 
-<pre><code>First Header  | Second Header
+<pre><code>表头第一列 | 表头第二列
 ------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+表格第一行第一列  | 表格第一行第二列
+表格第二行第一列  | 表格第二行第二列
 </code></pre>
 
-<p>You can only put simple lines in a table.</p>
-
-<p>You can specify alignment for each column by adding colons to separator lines. A colon at the left of the separator line, left-aligns the column. A colon on the right, right-aligns the column. Add colons to both sides to center the column is center-aligned.</p>
+<p>在某些Markdown实现(如GFM)中，你还可以通过:来实现对齐(此处因博客Markdown解析器不支持，故未能正确显示)。</p>
 
 <table>
 <thead>
@@ -682,14 +677,16 @@ Content Cell  | Content Cell
 </tbody>
 </table>
 
-<pre><code>Right     | Left   | Center 
+<p>示例：</p>
+
+<pre><code>Right     | Left   | Center
 ---------:| :----- |:-----:
 Computer  |  $1600 | one
 Phone     |    $12 | three
 Pipe      |     $1 | eleven
 </code></pre>
 
-<p>You can apply inline formatting (span-level changes such as fonts or links) to the content of each cell using regular Markdown syntax:</p>
+<p>你也可以在表格中使用Markdown支持的内联标记:</p>
 
 <table>
 <thead>
@@ -712,71 +709,83 @@ Pipe      |     $1 | eleven
 </tbody>
 </table>
 
+<p>示例：</p>
+
 <pre><code>| Function name | Description                    |
 | ------------- | ------------------------------ |
 | `help()`      | Display the __help__ window.   |
 | `destroy()`   | **Destroy your computer!**     |
 </code></pre>
 
-<hr />
+<h2 id="代码高亮">代码高亮</h2>
 
-<h2 id="code-and-syntax-highlighting">Code and Syntax highlighting</h2>
+<p>在标准的Markdown实现中，代码块通过缩进(tab或者4个空格)来控制。
+直到它遇到一行没有缩进的行(忽略中间的空行)或者文档末尾为止。</p>
 
-<p>Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal paragraphs, the code block linesare interpreted literally.  Markdown wraps a code block in both <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> tags.</p>
+<pre><code>    这是代码块第一行，使用了两次tab进行缩进:
 
-<p>To produce a code block in Markdown, indent every line of the block by at least 4 spaces or 1 tab. For :</p>
-
-<p>This is a normal paragraph:</p>
-
-<pre><code>This is a code block.
+        这是代码块第二行，使用了三次tab进行缩进，上面有一行空行。
 </code></pre>
 
-<p>The code reveals the indentation.</p>
+<p>示例：</p>
 
-<pre><code>    This is a normal paragraph:
+<pre><code>[tab][tab]这是代码块第一行，使用了两次tab进行缩进:
 
-        This is a code block.
+[tab][tab][tab]这是代码块第二行，使用了三次tab进行缩进，上面有一行空行。
 </code></pre>
 
-<p>A code block continues until it reaches a line that is not indented (or the end of the page).</p>
+<p>如果你需要进行代码高亮，可以使用<code>```</code>或者<code>~~~</code>将代码块包括进来。<br />
+注意：代码高亮不是Markdown标准的一部份，在不同实现中可能会有不同的效果。</p>
 
-<p>Within a code block, &amp; (ampersands) and &lt; &gt; (angle brackets) are automatically converted into HTML entities. This makes it very easy to include example HTML source code using Markdown — just paste it and indent it. Markdown will handle the hassle of encoding the ampersands and angle brackets. For example, this:</p>
-
-<p>Here is an example of AppleScript:</p>
-
-<pre><code>&lt;p&gt;Here is an example of AppleScript:&lt;/p&gt;
+<pre><code class="language-js">var a = 3;
+var b = function () {
+    var c = 'hello';
+};
 </code></pre>
 
-<p>To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab. For example, given this input:</p>
+<p>示例：</p>
 
-<p>You can also highlight snippets of text (Bitbucket uses the excellent <a href="http://www.pygments.org/">Pygments</a> library) to allow you to use code highlighting  Here&rsquo;s an example of some Python code:</p>
-
-<pre><code>#!python
-#
-def wiki_rocks(text): formatter = lambda t: &quot;funky&quot;+t return formatter(text)        
+<pre><code>```js
+var a = 3;
+var b = function () {
+    var c = 'hello';
+};
+```
 </code></pre>
 
-<p>To do this, do not indent the block. Start the block with ` three ticks. Then, provide the comment with the type of syntax you are using.  There is a <a href="http://pygments.org/docs/lexers/">the vast library of Pygment lexers</a>. Bitbucket accepts the &lsquo;short name&rsquo; or the &lsquo;mimetype&rsquo; of anything in there.</p>
+<p>使用<code>~~~~</code>如下所示：</p>
 
-<p>You can also use a fence style for code.</p>
-
-<pre><code>This is a code block, fenced-style
+<pre><code>var a = 3;
+var b = function () {
+    var c = 'hello';
+};
 </code></pre>
 
-<p>Which you create with this code:</p>
+<p>示例：</p>
 
 <pre><code>~~~~
-This is a code block, fenced-style
+var a = 3;
+var b = function () {
+    var c = 'hello';
+};
 ~~~~
 </code></pre>
 
-<p>See <a href="http://michelf.ca/projects/php-markdown/extra/">Michel Fortin&rsquo;s blog</a> to try out more examples of this coding style. Not everything he demos is guaranteed to work though.</p>
+<h2 id="水平分隔线">水平分隔线</h2>
+
+<p>水平分隔线可以是以下几种形式。</p>
 
 <hr />
 
-<h1 id="horizontal-rules">Horizontal Rules</h1>
+<hr />
 
-<p>You can produce a horizontal line with any of the following codes:</p>
+<hr />
+
+<hr />
+
+<hr />
+
+<p>示例：</p>
 
 <pre><code>* * *
 
@@ -789,19 +798,7 @@ This is a code block, fenced-style
 -----------------------
 </code></pre>
 
-<p>The output looks like this:</p>
-
-<hr />
-
-<hr />
-
-<hr />
-
-<hr />
-
-<hr />
-
-<hr />
+<p><strong>声明</strong> 本文翻译改编自<a href="https://bitbucket.org/tutorials/markdowndemo">Bitbucket markdowndemo</a></p>
 
 </div>
 

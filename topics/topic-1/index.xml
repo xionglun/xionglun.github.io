@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Topic 1 on Allen&#39;s Blog</title>
+    <title>Topic 1 on X blog</title>
     <link>http://dmdgeeker.com/topics/topic-1/index.xml</link>
-    <description>Recent content in Topic 1 on Allen&#39;s Blog</description>
+    <description>Recent content in Topic 1 on X blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>

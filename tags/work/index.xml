@@ -1,15 +1,677 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Work on Allen&#39;s Blog</title>
+    <title>Work on X blog</title>
     <link>http://dmdgeeker.com/tags/work/index.xml</link>
-    <description>Recent content in Work on Allen&#39;s Blog</description>
+    <description>Recent content in Work on X blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <atom:link href="http://dmdgeeker.com/tags/work/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Linux定时器</title>
+      <link>http://dmdgeeker.com/2017/02/15/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</link>
+      <pubDate>Wed, 15 Feb 2017 19:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/2017/02/15/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;在linux中，定时器一般是使用&lt;code&gt;cron&lt;/code&gt;这个系统工具来实现的。
+但是，在systemd中也可以使用&lt;code&gt;Timer&lt;/code&gt;进行定时控制。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;cron&#34;&gt;Cron&lt;/h2&gt;
+
+&lt;p&gt;在linux下，可以使用&lt;code&gt;crontab -e&lt;/code&gt;来编辑修改定时任务(重点在最后一行)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).#
+# Notice that tasks will be started based on the cron&#39;s system
+# daemon&#39;s notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;每项任务前五项为时间配置，第六项为待执行的命令。&lt;/p&gt;
+
+&lt;p&gt;定时任务时间配置说明&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;符号&lt;/th&gt;
+&lt;th&gt;范围&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;0~59&lt;/td&gt;
+&lt;td&gt;minute&lt;/td&gt;
+&lt;td&gt;每小时的第几分钟执行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;h&lt;/td&gt;
+&lt;td&gt;0~23&lt;/td&gt;
+&lt;td&gt;hour&lt;/td&gt;
+&lt;td&gt;每天的第几个小时执行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;dom&lt;/td&gt;
+&lt;td&gt;1~31&lt;/td&gt;
+&lt;td&gt;day of month&lt;/td&gt;
+&lt;td&gt;每月的第几天执行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mon&lt;/td&gt;
+&lt;td&gt;1~12&lt;/td&gt;
+&lt;td&gt;month&lt;/td&gt;
+&lt;td&gt;每年的第几个月执行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;dow&lt;/td&gt;
+&lt;td&gt;0~6&lt;/td&gt;
+&lt;td&gt;day of week&lt;/td&gt;
+&lt;td&gt;每周的第几天执行, 0为星期天&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;其中月份mon也可以使用&lt;code&gt;jan~dec&lt;/code&gt;，而周dow也可以使用&lt;code&gt;sun~sat&lt;/code&gt;。即使用英文单词前三个字母，大小写无关。&lt;/p&gt;
+
+&lt;p&gt;时间配置每一项设置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;*  表示任意值，即每小时或者每天，每月
+/  表示每隔*时
+,  表示多项时间触发
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;*/2 * * * * /usr/local/bin/play    # 每隔2分钟(整点开始计算)执行play程序
+30 11 * * * /bin/echo &amp;quot;tick tock&amp;quot;  # 每天11点30分输出tick tock
+* * * * 1,3 /usr/local/bin/backup  # 每周一、周三进行备份操作
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果觉得上面有好几项配置太麻烦，可以使用下面简单时间配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@reboot            执行一次，系统重启后执行
+@yearly            每年执行一次(0 0 1 1 *)
+@annually          与@yearly相同
+@monthly           每月执行一次(0 0 1 * *)
+@weekly            每周执行一次(0 0 * * 0)
+@daily             每天执行一次(0 0 * * *)
+@midnight          与@daily相同，每晚0点执行一次
+@hourly            每小时执行一次(0 * * * *)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;示例&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;@reboot /bin/echo &amp;quot;Startup&amp;quot;        # 在重启后打印Startup
+@hourly /usr/local/bin/httpcheck   # 每小时进行httpcheck检查
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最终&lt;code&gt;crontab -e&lt;/code&gt;文件内容始下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Edit this file to introduce tasks to be run by cron.
+#
+# ...省略了中间注释内容
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+*/2 * * * * /usr/local/bin/play
+30 11 * * * /bin/echo &amp;quot;tick tock&amp;quot;
+* * * * 1,3 /usr/local/bin/backup
+@reboot /bin/echo &amp;quot;Startup&amp;quot;
+@hourly /usr/local/bin/httpcheck
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重启&lt;code&gt;cron&lt;/code&gt;服务，使定时任务生效&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Systemd
+systemctl restart cron.service
+
+# Old Debian/Ubuntu
+service cron restart
+
+# Old CentOS/RHEL
+service crond restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;timer&#34;&gt;Timer&lt;/h2&gt;
+
+&lt;p&gt;在systemd中是以定时器(timer)去控制服务(service)来实现定时功能。&lt;/p&gt;
+
+&lt;p&gt;一个典型的定时器文件以&lt;code&gt;.timer&lt;/code&gt;为后缀名。其内容大致如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=Run weekly and on boot
+
+[Timer]
+# 在启动15分钟后执行
+OnBootSec=15min
+# 下一次执行是一周后
+OnUnitActiveSec=1w
+# 此处使用foo.service作为定时器执行的服务，默认使用与timer同名的服务
+Unit=foo.service
+
+[Install]
+WantedBy=timers.target
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文件中&lt;strong&gt;Timer&lt;/strong&gt;块其它选项包括:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;选项&lt;/th&gt;
+&lt;th&gt;示例值&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;OnActiveSec&lt;/td&gt;
+&lt;td&gt;30s&lt;/td&gt;
+&lt;td&gt;相对于该单元自身被启动的时间点&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;OnBootSec&lt;/td&gt;
+&lt;td&gt;15m&lt;/td&gt;
+&lt;td&gt;相对于机器被启动的时间点&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;OnStartupSec&lt;/td&gt;
+&lt;td&gt;2h&lt;/td&gt;
+&lt;td&gt;相对于systemd被首次启动的时间点&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;OnUnitActiveSec&lt;/td&gt;
+&lt;td&gt;1w&lt;/td&gt;
+&lt;td&gt;相对于匹配单元最后一次被启动的时间点&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;OnUnitInactiveSec&lt;/td&gt;
+&lt;td&gt;2d&lt;/td&gt;
+&lt;td&gt;相对于匹配单元最后一次被停止的时间点&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;OnCalendar&lt;/td&gt;
+&lt;td&gt;Mon,Tue &lt;em&gt;-&lt;/em&gt;-01..04 12:00:00&lt;/td&gt;
+&lt;td&gt;日历定时事件表达式&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;AccuracySec&lt;/td&gt;
+&lt;td&gt;5m&lt;/td&gt;
+&lt;td&gt;设置定时器的触发精度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RandomizedDelaySec&lt;/td&gt;
+&lt;td&gt;10m&lt;/td&gt;
+&lt;td&gt;将此单元的定时器随机延迟一小段时间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Unit&lt;/td&gt;
+&lt;td&gt;foo.service&lt;/td&gt;
+&lt;td&gt;该定时器启动的单元(默认是与timer同名的service)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Persistent&lt;/td&gt;
+&lt;td&gt;yes, no&lt;/td&gt;
+&lt;td&gt;上次触发时间是否永久保存在磁盘上(仅适用于OnCalendar定义的日历定时器)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;WakeSystem&lt;/td&gt;
+&lt;td&gt;yes, no&lt;/td&gt;
+&lt;td&gt;是否唤醒正在休眠的系统并阻止系统进入休眠状态&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RemainAfterElapse&lt;/td&gt;
+&lt;td&gt;yes, no&lt;/td&gt;
+&lt;td&gt;是否保持已过期定时器单元的已加载(loaded)状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;关于systemd中service，请参见前面文章《使用Systemd管理应用》&lt;/p&gt;
+
+&lt;p&gt;Systemd Timer &lt;a href=&#34;https://gist.github.com/xionglun/8f785fd2a2c8295e996767de5daecaf8&#34;&gt;示例&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;资料引用&#34;&gt;资料引用&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://weiya.me/item/54.html&#34;&gt;Ubuntu下利用Crontab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Systemd/Timers&#34;&gt;Sytemd Timer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/CronHowto&#34;&gt;CronHowto&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wephi.jzland.com/doku.php?id=os:linux:systemd_timer&#34;&gt;使用systemd执行定时任务&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用rsyslog集中管理日志</title>
+      <link>http://dmdgeeker.com/2017/02/10/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Fri, 10 Feb 2017 17:06:40 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/2017/02/10/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/</guid>
+      <description>
+
+&lt;h3 id=&#34;关于syslog&#34;&gt;关于syslog&lt;/h3&gt;
+
+&lt;p&gt;Syslog是linux上传统的日志管理工具，而rsyslog是其改进版。很多系统都已将syslog替换为rsyslog进行日志管理了。&lt;/p&gt;
+
+&lt;h3 id=&#34;syslog相关知识&#34;&gt;Syslog相关知识&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Facility设施&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;kern&lt;/td&gt;
+&lt;td&gt;内核&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;user&lt;/td&gt;
+&lt;td&gt;用户级&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;mail&lt;/td&gt;
+&lt;td&gt;邮件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;daemon&lt;/td&gt;
+&lt;td&gt;系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;auth&lt;/td&gt;
+&lt;td&gt;安全与授权&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;syslog&lt;/td&gt;
+&lt;td&gt;守护进程&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;lpr&lt;/td&gt;
+&lt;td&gt;打印相关&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;news&lt;/td&gt;
+&lt;td&gt;网络消息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;uucp&lt;/td&gt;
+&lt;td&gt;uucp子系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;时钟&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;authpriv&lt;/td&gt;
+&lt;td&gt;安全与授权&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;ftp&lt;/td&gt;
+&lt;td&gt;FTP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;NTP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;日志审计&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;14&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;日志报警&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;cron&lt;/td&gt;
+&lt;td&gt;定时器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;local0&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;local1&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;18&lt;/td&gt;
+&lt;td&gt;local2&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;19&lt;/td&gt;
+&lt;td&gt;local3&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;local4&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;td&gt;local5&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;td&gt;local6&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;23&lt;/td&gt;
+&lt;td&gt;local7&lt;/td&gt;
+&lt;td&gt;用户自定义&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Level级别(重要性从高到低)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;级别&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Emergency&lt;/td&gt;
+&lt;td&gt;emerg&lt;/td&gt;
+&lt;td&gt;紧急&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Alert&lt;/td&gt;
+&lt;td&gt;alert&lt;/td&gt;
+&lt;td&gt;报警&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Critical&lt;/td&gt;
+&lt;td&gt;crit&lt;/td&gt;
+&lt;td&gt;关键&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Error&lt;/td&gt;
+&lt;td&gt;err&lt;/td&gt;
+&lt;td&gt;错误&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Warning&lt;/td&gt;
+&lt;td&gt;warn&lt;/td&gt;
+&lt;td&gt;警告&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;Notice&lt;/td&gt;
+&lt;td&gt;notice&lt;/td&gt;
+&lt;td&gt;通知&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;Informational&lt;/td&gt;
+&lt;td&gt;info&lt;/td&gt;
+&lt;td&gt;消息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;Debug&lt;/td&gt;
+&lt;td&gt;debug&lt;/td&gt;
+&lt;td&gt;调试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;使用rsyslog记录日志&#34;&gt;使用rsyslog记录日志&lt;/h3&gt;
+
+&lt;p&gt;当前很多应用都已支持syslog进行日志记录&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;docker&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker run --log-driver=syslog --log-opt syslog-facility=local0 --log-opt tag=logTag
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;systemd&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# example.service
+[service]
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=example
+SyslogFacility=local0
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;启动一个rsyslog服务端&#34;&gt;启动一个rsyslog服务端&lt;/h3&gt;
+
+&lt;p&gt;一般linux服务器上已包含的rsyslog包都具有服务功能，但是默认没有启用。&lt;br /&gt;
+如果要启用日志服务器功能，则需要修改&lt;code&gt;/etc/rsyslog.conf&lt;/code&gt;这个文件。&lt;/p&gt;
+
+&lt;p&gt;更改如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# provides UDP syslog reception
+#module(load=&amp;quot;imudp&amp;quot;)
+#input(type=&amp;quot;imudp&amp;quot; port=&amp;quot;514&amp;quot;)
+# 取消上面两行的注释，如下所示，即可开启UDP端口514进行日志收集
+module(load=&amp;quot;imudp&amp;quot;)
+input(type=&amp;quot;imudp&amp;quot; port=&amp;quot;514&amp;quot;)
+
+# provides TCP syslog reception
+#module(load=&amp;quot;imtcp&amp;quot;)
+#input(type=&amp;quot;imtcp&amp;quot; port=&amp;quot;514&amp;quot;)
+# 取消上面两行的注释，如下所示，即可开启TCP端口514进行日志收集
+module(load=&amp;quot;imtcp&amp;quot;)
+input(type=&amp;quot;imtcp&amp;quot; port=&amp;quot;514&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果只需要UDP或者TCP方式，只需要取消注释对应的两行即可。&lt;/p&gt;
+
+&lt;h3 id=&#34;客户端日志发送到远程服务端&#34;&gt;客户端日志发送到远程服务端&lt;/h3&gt;
+
+&lt;p&gt;假如需要将A服务器上日志发送到B服务器，需要B服务器上rsyslog接收日志功能&lt;a href=&#34;#启动一个rsyslog服务器&#34;&gt;开启&lt;/a&gt;。&lt;br /&gt;
+同时，修改A服务器上&lt;code&gt;/etc/rsyslog.conf&lt;/code&gt;文件。&lt;/p&gt;
+
+&lt;p&gt;更改示例如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 正常日志保存如下所示
+# [facility].[level] [destination]
+# 示例: mail.warn   /var/log/mail.warn
+
+# 三种发送方式
+# UDP      前缀为@             @192.168.1.2:514
+# TCP      前缀为@@            @@192.168.1.2:514
+# RELP     前缀为:omrelp:      :omrelp:192.168.1.2:514
+
+# 将local0的所有日志以UDP都发送到192.168.1.2这如机器上(默认端口号是514)
+local0.* @192.168.1.2
+# 将user类应用产生的info级别日志以TCP方式发送到192.168.1.2这台机器上，端口号是514
+user.info @@192.168.1.2:514
+
+# 通过syslog的tag进行区分，将以myapp-为前缀的日志发送到远程服务器上
+:syslogtag, startswith, &amp;quot;myapp-&amp;quot;  @@192.168.1.2
+# 通过消息内容过滤，包含sns_log的发送到远程服务器上
+:rawmsg, contains, &amp;quot;sns_log&amp;quot;    @@192.168.1.2
+# 丢弃含有sns_debug的消息
+:rawmsg, contains, &amp;quot;sns_debug&amp;quot;  ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意此文件是顺序相关的。&lt;/p&gt;
+
+&lt;p&gt;此处的&lt;code&gt;rawmsg&lt;/code&gt;是消息字段，详见&lt;a href=&#34;http://www.rsyslog.com/doc/master/configuration/properties.html&#34;&gt;rsyslog消息字段&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;除了&lt;code&gt;startswith&lt;/code&gt;与&lt;code&gt;contains&lt;/code&gt;外，还有其它比较关键词：&lt;code&gt;isequal&lt;/code&gt;, &lt;code&gt;regex&lt;/code&gt;, &lt;code&gt;contains_i&lt;/code&gt;, &lt;code&gt;ereregex&lt;/code&gt;, &lt;code&gt;isempty&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;服务端接收远程日志&#34;&gt;服务端接收远程日志&lt;/h3&gt;
+
+&lt;p&gt;服务端也需要对&lt;code&gt;/etc/rsyslog.conf&lt;/code&gt;进行相应修改，以接收远程日志。&lt;/p&gt;
+
+&lt;p&gt;更改示例:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 定义一个名为customformat模板, 为信息加上日志时间
+$template customformat, &amp;quot;%TIMESTAMP:::date-mysql% %FROMHOST-IP%%msg%n&amp;quot;
+# 定义日志文件的名称，按照年月日
+$template DynFile,   &amp;quot;/var/log/%$programname%%$year%%$month%%$day%.log&amp;quot;
+# 把rawmsg(也可以使用msg)日志中包含sns_log标志的信息写到DynFile定义的日志文件里
+:rawmsg, contains, &amp;quot;sns_log&amp;quot;    ?DynFile;customformat
+# 这个表示丢弃包含sns_debug标志的信息, 一般都加上它, 以免多个日志文件记录重复的日志
+:rawmsg, contains, &amp;quot;sns_debug&amp;quot;  ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;将非syslog日志转发到远程服务端&#34;&gt;将非syslog日志转发到远程服务端&lt;/h3&gt;
+
+&lt;p&gt;这里假设有一个&lt;code&gt;helloworld&lt;/code&gt;的应用，产生的日志记录到了&lt;code&gt;/var/log/helloworld.log&lt;/code&gt;这个文件中。&lt;/p&gt;
+
+&lt;p&gt;首先，在应用所有机器上，修改&lt;code&gt;/etc/rsyslog.conf&lt;/code&gt;配置文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 加载imfile这个模块
+module(load=&amp;quot;imfile&amp;quot; PollingInterval=&amp;quot;5&amp;quot;)
+# 指定日志文件路径以及tag, severity, facility这些参数
+input(type=&amp;quot;imfile&amp;quot; File=&amp;quot;/var/log/helloworld.log&amp;quot; Tag=&amp;quot;helloworld&amp;quot; Severity=&amp;quot;error&amp;quot; Facility=&amp;quot;local0&amp;quot;)
+# 将helloworld的应用日志发送到远程服务器
+:programname, contains, &amp;quot;helloworld&amp;quot; @192.168.1.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;nginx日志发送到rsyslog&#34;&gt;Nginx日志发送到rsyslog&lt;/h3&gt;
+
+&lt;p&gt;Nginx(1.7.1+)可以直接发送日志到rsyslog，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# nginx.conf
+# server {
+error_log syslog:server=192.168.1.1 debug;  # 将debug类型日志发送到192.168.1.1这台机器上
+access_log syslog:server=[2001:db8::1]:12345,facility=local7,tag=nginx,severity=info combined;
+# }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;相关资料&#34;&gt;相关资料&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Syslog&#34;&gt;Wiki syslog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.rsyslog.com/doc/master/configuration/properties.html&#34;&gt;rsyslog消息字段&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/admin/logging/overview/#/syslog&#34;&gt;Docker syslog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.rsyslog.com/how-to-bind-a-template/&#34;&gt;rsyslog如何绑定模板&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://indevwith.streamroot.io/centralized-logs-with-rsyslog-systemd-and-golang/&#34;&gt;Golang集中式日志管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mos.meituan.com/library/5/how-to-config-rsyslog/&#34;&gt;rsyslog配置简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/s1-basic_configuration_of_rsyslog.html&#34;&gt;Redhat rsyslog基本配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xstarcd.github.io/wiki/Linux/rsyslog_logrotate.html&#34;&gt;rsyslogd服务器及负载均衡&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>MySQL 基本操作</title>
@@ -49,10 +711,11 @@ mysql&amp;gt; SHOW TABLES;                             # 显示当前数据库�
 mysql&amp;gt; SHOW VARIABLES LIKE &#39;%char%&#39;;            # 显示数据库所用字符集
 mysql&amp;gt; SHOW FULL COLUMNS FROM database.table;   # 显示某个表的字符集
 mysql&amp;gt; DESC TABLENAME;                          # 查看某个表的结构
+
+mysql&amp;gt; SHOW GRANTS;     # 查看当前用户权限
+mysql&amp;gt; SHOW GRANTS FRO &#39;username&#39;@&#39;host&#39;;  # 查看某个用户的权限
 mysql&amp;gt; CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;  # 创建用户
 # host使用%为允许从任意地方登录，如果只允许用户本地登录，改成localhost即可
-mysql&amp;gt; DROP USER &#39;username&#39;@&#39;host&#39;;             # 删除用户
-
 mysql&amp;gt; GRANT privileges ON databasename.tablename TO &#39;username&#39;@&#39;host&#39;;  # 授权给某个用户
 # privileges 权限，可选值为：SELECT, UPDATE, INSERT, DELETE, DROP, CREATE, ALL 等。
 # databasename 数据库名，对所有数据库给予权限用 * 来表示。
@@ -62,10 +725,16 @@ mysql&amp;gt; GRANT privileges ON databasename.tablename TO &#39;username&#39;@&
 # GRANT privileges ON databasename.tablename TO &#39;username&#39;@&#39;host&#39; WITH GRANT OPTION;
 mysql&amp;gt; FLUSH PRIVILEGES;            # 应用更改的权限
 mysql&amp;gt; REVOKE privilege ON databasename.tablename FROM &#39;username&#39;@&#39;host&#39;;  # 撤消用户权限
+mysql&amp;gt; DROP USER &#39;username&#39;@&#39;host&#39;;             # 删除用户
 
 # 修改数据库或者表字符集为utf8mb4
 mysql&amp;gt; ALTER DATABASE databasename CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 mysql&amp;gt; ALTER TABLE tablename CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+# 重命名数据库
+mysql&amp;gt; CREATE DATABASE newdb;  # 首先，新创建一个数据库
+mysql&amp;gt; RENAME TABLE old_db.table TO new_db.table;  # 将旧数据库中表重命名到新库中
+mysql&amp;gt; ; # 注意调整数据库中权限
 
 $ mysql -u USERNAME -p PASSWORD -D DATABASE &amp;lt; sql_file        # 执行某个sql文件
 &lt;/code&gt;&lt;/pre&gt;
@@ -113,9 +782,19 @@ mysql&amp;gt; show processlist;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&#34;基本使用&#34;&gt;基本使用&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mysql&amp;gt; SELECT * FROM users LIMIT 5, 10; # 从users表中取出第5条开始的10条数据
+mysql&amp;gt; SELECT * FROM users LIMIT 10 OFFSET 5; # 从users表中取出第5条开始的10条数据
+mysql&amp;gt; SELECT user_id, age, name FROM my_user ORDER BY age DESC, user_id DESC # 多字段排序
+# 多字段排序先以第一个字段进行排序，若第一个字段重复，则以第二个字段进行排序
+mysql&amp;gt; SELECT * FROM users WHERE email REGEXP &#39;^.*@qq\\.com$&#39;; # 取出所有使用QQ邮箱的用户
+mysql&amp;gt; SELECT concat(first_name, last_name) AS name FROM users;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;问题与解决办法&#34;&gt;问题与解决办法&lt;/h3&gt;
+&lt;h2 id=&#34;问题与解决办法&#34;&gt;问题与解决办法&lt;/h2&gt;
 
 &lt;h4 id=&#34;1-mysql-在导入大量数据时缓慢的问题&#34;&gt;1) MySQL 在导入大量数据时缓慢的问题&lt;/h4&gt;
 
@@ -171,9 +850,12 @@ mysqldump -uroot -p -B db1 db2 db3 &amp;gt; db.sql
 
 &lt;p&gt;使用LIKE时，中文匹配的问题&lt;/p&gt;
 
+&lt;h3 id=&#34;相关资料&#34;&gt;相关资料&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://mysql.taobao.org/monthly/2015/10/01/&#34;&gt;MySQL InnoDB 全文索引&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.itdadao.com/articles/c15a643840p0.html&#34;&gt;MySQL 5.7 InnoDB全文索引&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/67093/how-do-i-quickly-rename-a-mysql-database-change-schema-name&#34;&gt;MySQL 数据库重命名数据库&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -250,6 +932,10 @@ StandardOutput=syslog
 StandardError=syslog
 # 设置syslog中log的程序名称
 SyslogIdentifier=helloexample
+# 设置syslog中log类型
+SyslogFacility=local0
+# 设置syslog中log级别，此处为info
+SyslogLevel=info
 # 程序运行时的用户
 User=root
 # 程序运行时分配的组

@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>MySQL 基本操作  &middot; Allen&#39;s Blog</title>
+  <title>MySQL 基本操作  &middot; X blog</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -17,8 +17,8 @@
 <meta name="keywords" content="mysql, SQL, ">
 
 
-<meta property="og:title" content="MySQL 基本操作  &middot; Allen&#39;s Blog ">
-<meta property="og:site_name" content="Allen&#39;s Blog"/>
+<meta property="og:title" content="MySQL 基本操作  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
 <meta property="og:url" content="http://dmdgeeker.com/2017/01/01/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" />
 <meta property="og:locale" content="zh-CN">
 
@@ -57,7 +57,7 @@
     },
     "datePublished": "2017-01-01",
     "description": "MySQL基本使用",
-    "wordCount":  319 
+    "wordCount":  412 
   }
 </script>
 
@@ -101,7 +101,7 @@
   <div class="container brand">
   <div class="container title h1-like">
   <a class="baselink" href="http://dmdgeeker.com/">
-  X&rsquo;s Blog
+  X blog
 
 </a>
 
@@ -183,7 +183,7 @@
 
   
   &middot; Read in about 2 min
-  &middot; (319 Words)
+  &middot; (412 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -229,10 +229,11 @@ mysql&gt; SHOW TABLES;                             # 显示当前数据库的所
 mysql&gt; SHOW VARIABLES LIKE '%char%';            # 显示数据库所用字符集
 mysql&gt; SHOW FULL COLUMNS FROM database.table;   # 显示某个表的字符集
 mysql&gt; DESC TABLENAME;                          # 查看某个表的结构
+
+mysql&gt; SHOW GRANTS;     # 查看当前用户权限
+mysql&gt; SHOW GRANTS FRO 'username'@'host';  # 查看某个用户的权限
 mysql&gt; CREATE USER 'username'@'host' IDENTIFIED BY 'password';  # 创建用户
 # host使用%为允许从任意地方登录，如果只允许用户本地登录，改成localhost即可
-mysql&gt; DROP USER 'username'@'host';             # 删除用户
-
 mysql&gt; GRANT privileges ON databasename.tablename TO 'username'@'host';  # 授权给某个用户
 # privileges 权限，可选值为：SELECT, UPDATE, INSERT, DELETE, DROP, CREATE, ALL 等。
 # databasename 数据库名，对所有数据库给予权限用 * 来表示。
@@ -242,10 +243,16 @@ mysql&gt; GRANT privileges ON databasename.tablename TO 'username'@'host';  # �
 # GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION;
 mysql&gt; FLUSH PRIVILEGES;            # 应用更改的权限
 mysql&gt; REVOKE privilege ON databasename.tablename FROM 'username'@'host';  # 撤消用户权限
+mysql&gt; DROP USER 'username'@'host';             # 删除用户
 
 # 修改数据库或者表字符集为utf8mb4
 mysql&gt; ALTER DATABASE databasename CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 mysql&gt; ALTER TABLE tablename CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+# 重命名数据库
+mysql&gt; CREATE DATABASE newdb;  # 首先，新创建一个数据库
+mysql&gt; RENAME TABLE old_db.table TO new_db.table;  # 将旧数据库中表重命名到新库中
+mysql&gt; ; # 注意调整数据库中权限
 
 $ mysql -u USERNAME -p PASSWORD -D DATABASE &lt; sql_file        # 执行某个sql文件
 </code></pre>
@@ -293,9 +300,19 @@ mysql&gt; show processlist;
 </code></pre></li>
 </ul>
 
+<h3 id="基本使用">基本使用</h3>
+
+<pre><code class="language-sh">mysql&gt; SELECT * FROM users LIMIT 5, 10; # 从users表中取出第5条开始的10条数据
+mysql&gt; SELECT * FROM users LIMIT 10 OFFSET 5; # 从users表中取出第5条开始的10条数据
+mysql&gt; SELECT user_id, age, name FROM my_user ORDER BY age DESC, user_id DESC # 多字段排序
+# 多字段排序先以第一个字段进行排序，若第一个字段重复，则以第二个字段进行排序
+mysql&gt; SELECT * FROM users WHERE email REGEXP '^.*@qq\\.com$'; # 取出所有使用QQ邮箱的用户
+mysql&gt; SELECT concat(first_name, last_name) AS name FROM users;
+</code></pre>
+
 <hr />
 
-<h3 id="问题与解决办法">问题与解决办法</h3>
+<h2 id="问题与解决办法">问题与解决办法</h2>
 
 <h4 id="1-mysql-在导入大量数据时缓慢的问题">1) MySQL 在导入大量数据时缓慢的问题</h4>
 
@@ -351,9 +368,12 @@ mysqldump -uroot -p -B db1 db2 db3 &gt; db.sql
 
 <p>使用LIKE时，中文匹配的问题</p>
 
+<h3 id="相关资料">相关资料</h3>
+
 <ul>
 <li><a href="http://mysql.taobao.org/monthly/2015/10/01/">MySQL InnoDB 全文索引</a></li>
 <li><a href="http://www.itdadao.com/articles/c15a643840p0.html">MySQL 5.7 InnoDB全文索引</a></li>
+<li><a href="http://stackoverflow.com/questions/67093/how-do-i-quickly-rename-a-mysql-database-change-schema-name">MySQL 数据库重命名数据库</a></li>
 </ul>
 
 </div>
@@ -371,6 +391,10 @@ mysqldump -uroot -p -B db1 db2 db3 &gt; db.sql
     </a>
     
 
+    
+    <a class="next" href="http://dmdgeeker.com/2017/02/10/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/" title="使用rsyslog集中管理日志">
+      Next
+    </a>
     
 
   

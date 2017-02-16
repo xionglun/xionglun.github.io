@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dmdgeeker.com/2017/02/16/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/2017/02/15/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</loc>
     <lastmod>2017-02-15T19:00:00+08:00</lastmod>
   </url>
@@ -71,13 +76,13 @@
   
   <url>
     <loc>http://dmdgeeker.com/tags/dev/</loc>
-    <lastmod>2017-02-15T19:00:00+08:00</lastmod>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dmdgeeker.com/topics/develop/</loc>
-    <lastmod>2017-02-15T19:00:00+08:00</lastmod>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -89,7 +94,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/post/</loc>
-    <lastmod>2017-02-15T19:00:00+08:00</lastmod>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,7 +133,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/tags/work/</loc>
-    <lastmod>2017-02-15T19:00:00+08:00</lastmod>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -140,7 +145,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/</loc>
-    <lastmod>2017-02-15T19:00:00+08:00</lastmod>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

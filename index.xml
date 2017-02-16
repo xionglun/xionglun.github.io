@@ -9,8 +9,225 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Wed, 15 Feb 2017 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Feb 2017 19:00:00 +0800</lastBuildDate>
     <atom:link href="http://dmdgeeker.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gRPC基本使用</title>
+      <link>http://dmdgeeker.com/2017/02/16/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 16 Feb 2017 19:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/2017/02/16/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
+      <description>
+
+&lt;p&gt;通过RPC，客户端的应用程序可以方便地调用另外一台机器上的服务端程序，就像调用本地函数一样。&lt;/p&gt;
+
+&lt;h3 id=&#34;安装grpc&#34;&gt;安装gRPC&lt;/h3&gt;
+
+&lt;p&gt;标准安装可参考&lt;a href=&#34;https://github.com/grpc/grpc/blob/master/INSTALL.md&#34;&gt;gRPC Install&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这里摘录不同语言安装gRPC时的操作&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C++          从源代码编译
+C#           NuGet包Grpc
+Go           go get google.golang.org/grpc
+Node         npm install grpc
+PHP          pecl install grpc
+Python       pip install grpcio
+Ruby         gem install grpc
+Java         参考 github.com/grpc/grpc-java
+Objective-C  参考 github.com/grpc/grpc/tree/master/src/objective-c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;默认gRPC使用的是&lt;a href=&#34;https://github.com/google/protobuf&#34;&gt;Protocol buffers&lt;/a&gt;，所以默认还需要安装&lt;strong&gt;protobuf&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果是Mac操作系统，可以这样同时安装gRPC系列&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew tap grpc/grpc
+brew install --with-plugins grpc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样安装的gRPC会同时安装&lt;code&gt;protoc&lt;/code&gt;，&lt;code&gt;grpc_cpp_plugin&lt;/code&gt;, &lt;code&gt;grpc_node_plugin&lt;/code&gt;, &lt;code&gt;grpc_php_plugin&lt;/code&gt;, &lt;code&gt;grpc_python_plugin&lt;/code&gt;, &lt;code&gt;grpc_csharp_plugin&lt;/code&gt;, &lt;code&gt;grpc_objective_c_plugin&lt;/code&gt;, &lt;code&gt;grpc_ruby_plugin&lt;/code&gt;这些可执行文件。&lt;/p&gt;
+
+&lt;h3 id=&#34;编写protobuf文件&#34;&gt;编写protobuf文件&lt;/h3&gt;
+
+&lt;p&gt;由于gRPC默认使用protobuf作为传输格式，所以这里需要先编写相应proto文件。示例如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-proto&#34;&gt;syntax = &amp;quot;proto3&amp;quot;;
+
+option java_multiple_files = true;
+option java_package = &amp;quot;io.grpc.examples.hello&amp;quot;;
+option java_outer_classname = &amp;quot;HelloProto&amp;quot;;
+option objc_class_prefix = &amp;quot;HL&amp;quot;;
+
+package hello;
+
+// The greeting service definition.
+service Greeter {
+    // Sends a greeting
+    rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user&#39;s name.
+message HelloRequest {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+    string message = 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用的是&lt;strong&gt;proto3&lt;/strong&gt;语法，详细规则请参看Protobuf项目。&lt;/p&gt;
+
+&lt;h3 id=&#34;编译成相应源文件&#34;&gt;编译成相应源文件&lt;/h3&gt;
+
+&lt;p&gt;不同的语言进行编译的时候，所使用的参数大同小异，但是略有差别(特别是生成的文件)，使用过程中需要留意。&lt;/p&gt;
+
+&lt;p&gt;各语言编译（注意此处的grpc_xxx_plugin是上面安装的，如果没有安装或者是其它系统，请自行先安装）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 假设上面的proto文件保存在当前目录的protos目录下，文件名为hello.proto
+
+# Python; 生成文件 ./hello/hello_pb2.py
+protoc -I protos --plugin=grpc_python_plugin --python_out=./hello ./protos/*.proto
+
+# PHP; 生成目录./hello/Hello/ 与./hello/GPBMetadata/，目录下有相关文件
+protoc -I protos --plugin=grpc_php_plugin --php_out=./hello ./protos/*.proto
+
+# Node.js; 生成文件 ./hello/hello_grpc_pb.js与./hello/hello_pb.js
+protoc -I protos --js_out=import_style=commonjs,binary:./hello/ --grpc_out=./hello --plugin=protoc-gen-grpc=$(which grpc_node_plugin) ./protos/*.proto
+
+# Java
+#protoc --plugin=protoc-gen-grpc-java=/path/to/protoc-gen-grpc-java --grpc-java_out=$DST_DIR --proto_path=$SRC_DIR $SRC_DIR/jr.proto
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编译Go代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;protoc -I protos --go_out=plugins=grpc:./hello ./protos/*.proto
+
+# -I            导入路径，默认是当前文件夹，使用-I参数可以去掉生成代码目录树继承的问题
+# --go_out      编译成go代码时输出
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt; 在gRPC的编译时，Java与Go的编译与其它语言稍有区别，Java使用可参考&lt;a href=&#34;http://blog.jrwang.me/2016/grpc-at-first-view/&#34;&gt;gRPC 初探&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;启动grpc服务端&#34;&gt;启动gRPC服务端&lt;/h3&gt;
+
+&lt;p&gt;这里以Go语言为例，上面proto文件生成的Go语言代码&lt;code&gt;hello.pb.go&lt;/code&gt;文件，
+其文件内容与&lt;a href=&#34;https://github.com/grpc/grpc-go/blob/master/examples/helloworld/helloworld/helloworld.pb.go&#34;&gt;gRPC helloworld.pb.go&lt;/a&gt;这个文件类似（唯一不同之处是包名由hello变成了helloworld）。&lt;/p&gt;
+
+&lt;p&gt;这里在项目根目录 &lt;em&gt;trpc&lt;/em&gt; 下创建一个&lt;code&gt;main.go&lt;/code&gt;文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;net&amp;quot;
+
+	pb &amp;quot;trpc/hello&amp;quot;
+
+	&amp;quot;golang.org/x/net/context&amp;quot;
+	&amp;quot;google.golang.org/grpc&amp;quot;
+)
+
+type server struct{}
+
+func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (re *pb.HelloReply, err error) {
+	fmt.Println(&amp;quot;gRPC called!&amp;quot;)
+	re = &amp;amp;pb.HelloReply{Message: &amp;quot;Hello, &amp;quot; + in.Name}
+	return
+}
+
+func main() {
+	ln, err := net.Listen(&amp;quot;tcp&amp;quot;, &amp;quot;:8081&amp;quot;)
+	if err != nil {
+		panic(err)
+	}
+	s := grpc.NewServer()
+	pb.RegisterGreeterServer(s, &amp;amp;server{})
+	s.Serve(ln)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将项目编译后运行，其监听在8081端口。&lt;/p&gt;
+
+&lt;h3 id=&#34;运行grpc客户端&#34;&gt;运行gRPC客户端&lt;/h3&gt;
+
+&lt;p&gt;这里以Node.js客户端为例，Node的客户端调用有两种方式：动态引用与静态生成。&lt;/p&gt;
+
+&lt;p&gt;首先新建一个项目，安装gRPC，然后&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mkdir noderpc
+cd noderpc
+npm init
+npm i grpc --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;动态引用（动态引用方式无须先编译proto文件）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const grpc = require(&#39;grpc&#39;);
+
+const protoPath = &#39;./protos/hello.proto&#39;;
+let loader = grpc.load(protoPath);
+let helloProto = loader.hello;
+
+function greet() {
+  let client = new helloProto.Greeter(&#39;localhost:8081&#39;, grpc.credentials.createInsecure());
+  client.sayHello({name: &#39;beijing&#39;}, (err, resp) =&amp;gt; {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(resp.message);
+    }
+  });
+}
+greet();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;静态编译方式&lt;/p&gt;
+
+&lt;p&gt;静态编译需要先将proto文件编译成javascript文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;protoc -I protos --js_out=import_style=commonjs,binary:./lib/ --grpc_out=./lib --plugin=protoc-gen-grpc=$(which grpc_node_plugin) ./protos/hello.proto
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在代码中引用这两个文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const grpc = require(&#39;grpc&#39;);
+const svc = require(&#39;./lib/hello_grpc_pb.js&#39;);
+const msg = require(&#39;./lib/hello_pb.js&#39;);
+
+function greet() {
+  let req = new msg.HelloRequest();
+  req.setName(&amp;quot;beijin&amp;quot;);
+
+  let client = new svc.GreeterClient(&#39;localhost:8041&#39;, grpc.credentials.createInsecure());
+  client.sayHello(req, (err, resp) =&amp;gt; {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(resp.getMessage());
+    }
+  });
+
+}
+greet();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;更多更详细的示例请阅读&lt;a href=&#34;https://github.com/grpc/grpc/tree/master/examples&#34;&gt;gRPC examples&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;引用资料&#34;&gt;引用资料&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jianshu.com/p/774b38306c30&#34;&gt;gRPC初体验&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/shidaping/article/details/53942476&#34;&gt;gRPC Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://yushuangqi.com/blog/2016/golang-grpcshi-jian--lian-zai-yi--grpcjie-shao-yu-an-zhuang.html&#34;&gt;gRPC介绍与安装&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Linux定时器</title>

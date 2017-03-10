@@ -224,6 +224,7 @@ greet();
 &lt;li&gt;&lt;a href=&#34;http://www.jianshu.com/p/774b38306c30&#34;&gt;gRPC初体验&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/shidaping/article/details/53942476&#34;&gt;gRPC Node.js&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://yushuangqi.com/blog/2016/golang-grpcshi-jian--lian-zai-yi--grpcjie-shao-yu-an-zhuang.html&#34;&gt;gRPC介绍与安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-auth-support.md&#34;&gt;gRPC golang Authentication&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -930,7 +931,7 @@ mysql&amp;gt; SHOW FULL COLUMNS FROM database.table;   # 显示某个表的字�
 mysql&amp;gt; DESC TABLENAME;                          # 查看某个表的结构
 
 mysql&amp;gt; SHOW GRANTS;     # 查看当前用户权限
-mysql&amp;gt; SHOW GRANTS FRO &#39;username&#39;@&#39;host&#39;;  # 查看某个用户的权限
+mysql&amp;gt; SHOW GRANTS FOR &#39;username&#39;@&#39;host&#39;;  # 查看某个用户的权限
 mysql&amp;gt; CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;  # 创建用户
 # host使用%为允许从任意地方登录，如果只允许用户本地登录，改成localhost即可
 mysql&amp;gt; GRANT privileges ON databasename.tablename TO &#39;username&#39;@&#39;host&#39;;  # 授权给某个用户
@@ -1066,6 +1067,34 @@ mysqldump -uroot -p -B db1 db2 db3 &amp;gt; db.sql
 &lt;h4 id=&#34;2-mysql-中文匹配&#34;&gt;2) MySQL 中文匹配&lt;/h4&gt;
 
 &lt;p&gt;使用LIKE时，中文匹配的问题&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TODO&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;3-字符集冲突&#34;&gt;3) 字符集冲突&lt;/h4&gt;
+
+&lt;p&gt;在MySQL中不同的字符集格式不能进行&lt;code&gt;=&lt;/code&gt;等类似操作。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ERROR 1267 (HY000): Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation &#39;=&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决办法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;更新数据库字符集&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER DATABASE mydb DEFAULT COLLATE utf8_unicode_ci;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;更新数据库表字符集&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE &amp;lt;table&amp;gt; CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;更新某一行字符集&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE &amp;lt;TABLE&amp;gt; MODIFY COLUMN &amp;lt;COL&amp;gt; VARCHAR(255) COLLATE utf8mb4_unicode_ci;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;相关资料&#34;&gt;相关资料&lt;/h3&gt;
 

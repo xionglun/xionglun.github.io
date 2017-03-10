@@ -57,7 +57,7 @@
     },
     "datePublished": "2017-01-01",
     "description": "MySQL基本使用",
-    "wordCount":  412 
+    "wordCount": 458
   }
 </script>
 
@@ -68,7 +68,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.18.1" />
+<meta name="generator" content="Hugo 0.19" />
 
   
 <!--[if lt IE 9]>
@@ -182,8 +182,8 @@
 
 
   
-  &middot; Read in about 2 min
-  &middot; (412 Words)
+  &middot; Read in about 3 min
+  &middot; (458 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -231,7 +231,7 @@ mysql&gt; SHOW FULL COLUMNS FROM database.table;   # 显示某个表的字符集
 mysql&gt; DESC TABLENAME;                          # 查看某个表的结构
 
 mysql&gt; SHOW GRANTS;     # 查看当前用户权限
-mysql&gt; SHOW GRANTS FRO 'username'@'host';  # 查看某个用户的权限
+mysql&gt; SHOW GRANTS FOR 'username'@'host';  # 查看某个用户的权限
 mysql&gt; CREATE USER 'username'@'host' IDENTIFIED BY 'password';  # 创建用户
 # host使用%为允许从任意地方登录，如果只允许用户本地登录，改成localhost即可
 mysql&gt; GRANT privileges ON databasename.tablename TO 'username'@'host';  # 授权给某个用户
@@ -367,6 +367,34 @@ mysqldump -uroot -p -B db1 db2 db3 &gt; db.sql
 <h4 id="2-mysql-中文匹配">2) MySQL 中文匹配</h4>
 
 <p>使用LIKE时，中文匹配的问题</p>
+
+<p><strong>TODO</strong></p>
+
+<h4 id="3-字符集冲突">3) 字符集冲突</h4>
+
+<p>在MySQL中不同的字符集格式不能进行<code>=</code>等类似操作。</p>
+
+<pre><code>ERROR 1267 (HY000): Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation '='
+</code></pre>
+
+<p>解决办法：</p>
+
+<ul>
+<li><p>更新数据库字符集</p>
+
+<pre><code>ALTER DATABASE mydb DEFAULT COLLATE utf8_unicode_ci;
+</code></pre></li>
+
+<li><p>更新数据库表字符集</p>
+
+<pre><code>ALTER TABLE &lt;table&gt; CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+</code></pre></li>
+
+<li><p>更新某一行字符集</p>
+
+<pre><code>ALTER TABLE &lt;TABLE&gt; MODIFY COLUMN &lt;COL&gt; VARCHAR(255) COLLATE utf8mb4_unicode_ci;
+</code></pre></li>
+</ul>
 
 <h3 id="相关资料">相关资料</h3>
 

@@ -13,11 +13,14 @@
     
     <item>
       <title>TiDB 集群安装</title>
-      <link>http://dmdgeeker.com/2016/07/28/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/</link>
+      <link>http://dmdgeeker.com/post/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/tidb-cluster-deploy</link>
       <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2016/07/28/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://dmdgeeker.com/post/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/tidb-cluster-deploy</guid>
       <description>
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;
+&amp;gt; 本文档已过时，正确部署方案请参考：&lt;a href=&#34;https://github.com/pingcap/docs-cn/blob/master/op-guide/binary-deployment.md&#34;&gt;TiDB 官方安装教程&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;安装-tidb&#34;&gt;安装 TiDB&lt;/h1&gt;
 

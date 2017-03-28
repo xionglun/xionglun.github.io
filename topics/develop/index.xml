@@ -13,10 +13,10 @@
     
     <item>
       <title>gRPC基本使用</title>
-      <link>http://dmdgeeker.com/2017/02/16/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
+      <link>http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc</link>
       <pubDate>Thu, 16 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2017/02/16/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
+      <guid>http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc</guid>
       <description>
 
 &lt;p&gt;通过RPC，客户端的应用程序可以方便地调用另外一台机器上的服务端程序，就像调用本地函数一样。&lt;/p&gt;
@@ -231,10 +231,10 @@ greet();
     
     <item>
       <title>Linux定时器</title>
-      <link>http://dmdgeeker.com/2017/02/15/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</link>
+      <link>http://dmdgeeker.com/post/linux%E5%AE%9A%E6%97%B6%E5%99%A8/cron</link>
       <pubDate>Wed, 15 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2017/02/15/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</guid>
+      <guid>http://dmdgeeker.com/post/linux%E5%AE%9A%E6%97%B6%E5%99%A8/cron</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -510,10 +510,10 @@ WantedBy=timers.target
     
     <item>
       <title>使用rsyslog集中管理日志</title>
-      <link>http://dmdgeeker.com/2017/02/10/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/</link>
+      <link>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/rsyslog</link>
       <pubDate>Fri, 10 Feb 2017 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2017/02/10/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/</guid>
+      <guid>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/rsyslog</guid>
       <description>
 
 &lt;h3 id=&#34;关于syslog&#34;&gt;关于syslog&lt;/h3&gt;
@@ -893,10 +893,10 @@ access_log syslog:server=[2001:db8::1]:12345,facility=local7,tag=nginx,severity=
     
     <item>
       <title>MySQL 基本操作</title>
-      <link>http://dmdgeeker.com/2017/01/01/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
+      <link>http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql</link>
       <pubDate>Sun, 01 Jan 2017 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2017/01/01/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql</guid>
       <description>
 
 &lt;h3 id=&#34;安装使用&#34;&gt;安装使用&lt;/h3&gt;
@@ -1008,6 +1008,8 @@ mysql&amp;gt; SELECT user_id, age, name FROM my_user ORDER BY age DESC, user_id 
 # 多字段排序先以第一个字段进行排序，若第一个字段重复，则以第二个字段进行排序
 mysql&amp;gt; SELECT * FROM users WHERE email REGEXP &#39;^.*@qq\\.com$&#39;; # 取出所有使用QQ邮箱的用户
 mysql&amp;gt; SELECT concat(first_name, last_name) AS name FROM users;
+# 从一个表中导入数据到另一个表中
+mysql&amp;gt; INSERT INTO &amp;lt;table2&amp;gt; (fields) SELECT &amp;lt;fields&amp;gt; FROM &amp;lt;table1&amp;gt; [WHERE &amp;lt;conditions&amp;gt;];
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
@@ -1082,7 +1084,7 @@ mysqldump -uroot -p -B db1 db2 db3 &amp;gt; db.sql
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;更新数据库字符集&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ALTER DATABASE mydb DEFAULT COLLATE utf8_unicode_ci;
+&lt;pre&gt;&lt;code&gt;ALTER DATABASE &amp;lt;database&amp;gt; DEFAULT COLLATE utf8mb4_unicode_ci;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;更新数据库表字符集&lt;/p&gt;
@@ -1092,7 +1094,7 @@ mysqldump -uroot -p -B db1 db2 db3 &amp;gt; db.sql
 
 &lt;li&gt;&lt;p&gt;更新某一行字符集&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ALTER TABLE &amp;lt;TABLE&amp;gt; MODIFY COLUMN &amp;lt;COL&amp;gt; VARCHAR(255) COLLATE utf8mb4_unicode_ci;
+&lt;pre&gt;&lt;code&gt;ALTER TABLE &amp;lt;table&amp;gt; MODIFY COLUMN &amp;lt;col&amp;gt; VARCHAR(255) COLLATE utf8mb4_unicode_ci;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1108,10 +1110,10 @@ mysqldump -uroot -p -B db1 db2 db3 &amp;gt; db.sql
     
     <item>
       <title>使用Systemd管理应用</title>
-      <link>http://dmdgeeker.com/2016/11/08/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/</link>
+      <link>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/systemd</link>
       <pubDate>Tue, 08 Nov 2016 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2016/11/08/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/</guid>
+      <guid>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/systemd</guid>
       <description>
 
 &lt;h3 id=&#34;关于systemd&#34;&gt;关于systemd&lt;/h3&gt;
@@ -1250,10 +1252,10 @@ systemctl enable hello.service
     
     <item>
       <title>Gitlab安装</title>
-      <link>http://dmdgeeker.com/2016/10/08/gitlab%E5%AE%89%E8%A3%85/</link>
+      <link>http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install</link>
       <pubDate>Sat, 08 Oct 2016 12:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2016/10/08/gitlab%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install</guid>
       <description>
 
 &lt;h3 id=&#34;安装环境配置&#34;&gt;安装环境配置&lt;/h3&gt;
@@ -1388,10 +1390,10 @@ EOS
     
     <item>
       <title>Markdown 语法</title>
-      <link>http://dmdgeeker.com/2016/09/24/markdown-%E8%AF%AD%E6%B3%95/</link>
+      <link>http://dmdgeeker.com/post/markdown-%E8%AF%AD%E6%B3%95/markdown</link>
       <pubDate>Sat, 24 Sep 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2016/09/24/markdown-%E8%AF%AD%E6%B3%95/</guid>
+      <guid>http://dmdgeeker.com/post/markdown-%E8%AF%AD%E6%B3%95/markdown</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/&#34;&gt;Markdown&lt;/a&gt; 在用于写简单文本非常方便。在这里将给出一些示例来示范Markdown所支持的标记语法。
@@ -2003,10 +2005,10 @@ var b = function () {
     
     <item>
       <title>两步验证(2-step verification)</title>
-      <link>http://dmdgeeker.com/2016/08/28/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/</link>
+      <link>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify</link>
       <pubDate>Sun, 28 Aug 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/2016/08/28/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/</guid>
+      <guid>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify</guid>
       <description>
 
 &lt;h3 id=&#34;关于两步验证&#34;&gt;关于两步验证&lt;/h3&gt;

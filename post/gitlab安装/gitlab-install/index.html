@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Gitlab安装  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="安装Gitlab过程" />
+
+<meta name="keywords" content="gitlab, git, github, code, ">
+
+
+<meta property="og:title" content="Gitlab安装  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="安装Gitlab过程"/>
+<meta property="og:article:published_time" content="2016-10-08T12:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2016-10-08T12:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="gitlab">
+    
+<meta property="og:article:tag" content="git">
+    
+<meta property="og:article:tag" content="github">
+    
+<meta property="og:article:tag" content="code">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Gitlab安装" />
+<meta name="twitter:description" content="安装Gitlab过程" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Gitlab安装",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-10-08",
+    "description": "安装Gitlab过程",
+    "wordCount": 257
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.19" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Gitlab安装
+</h1>
+
+  <div class="metas">
+<time datetime="2016-10-08">8 Oct, 2016</time>
+
+
+  
+  &middot; Read in about 2 min
+  &middot; (257 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="安装环境配置">安装环境配置</h3>
+
+<p>环境配置参见<a href="https://github.com/gitlabhq/gitlabhq#software-stack">Github</a></p>
+
+<ul>
+<li>Ubuntu/Debian/CentOS/RHEL</li>
+<li>Ruby (MRI) 2.3</li>
+<li>Git 2.7.4+</li>
+<li>Redis 2.8+</li>
+<li>MySQL or PostgreSQL</li>
+</ul>
+
+<h3 id="安装步骤">安装步骤</h3>
+
+<ol>
+<li><p>安装相关依赖</p>
+
+<pre><code>sudo apt-get install curl openssh-server ca-certificates
+</code></pre></li>
+
+<li><p>添加<code>gitlab-ce</code>到apt仓库中并安装</p>
+
+<pre><code>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo apt-get install gitlab-ce
+</code></pre></li>
+
+<li><p>配置并启动Gitlab，配置文件位于(<code>/etc/gitlab/gitlab.rb</code>)</p>
+
+<pre><code>sudo gitlab-ctl reconfigure
+</code></pre></li>
+</ol>
+
+<h4 id="安装详解">安装详解</h4>
+
+<p>在上面的安装步骤中，它自动化的安装了<code>PostgreSQL</code>, <code>Nginx</code>等软件。</p>
+
+<h3 id="配置相关">配置相关</h3>
+
+<p>配置文件位于<code>/etc/gitlab/gitlab.rb</code>中，所有配置都在些进行修改，然后执行<code>reconfigure</code>命名即可生效。</p>
+
+<ul>
+<li><p>邮件SMTP配置</p>
+
+<pre><code class="language-rb"># gitlab_rails['smtp_enable'] = true
+# gitlab_rails['smtp_address'] = &quot;smtp.server&quot;
+# gitlab_rails['smtp_port'] = 465
+# gitlab_rails['smtp_user_name'] = &quot;smtp user&quot;
+# gitlab_rails['smtp_password'] = &quot;smtp password&quot;
+# gitlab_rails['smtp_domain'] = &quot;example.com&quot;
+# gitlab_rails['smtp_authentication'] = &quot;login&quot;
+# gitlab_rails['smtp_enable_starttls_auto'] = true
+# gitlab_rails['smtp_tls'] = false
+# gitlab_rails['smtp_openssl_verify_mode'] = 'none' # Can be: 'none', 'peer', 'client_once', 'fail_if_no_peer_cert', see http://api.rubyonrails.org/classes/ActionMailer/Base.html
+# gitlab_rails['smtp_ca_path'] = &quot;/etc/ssl/certs&quot;
+# gitlab_rails['smtp_ca_file'] = &quot;/etc/ssl/certs/ca-certificates.crt&quot;
+</code></pre>
+
+<p>将上面的注释符号<code>#</code>去掉，并填写相应的值即可。参见<a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/smtp.md">SMTP配置</a></p></li>
+
+<li><p>认证LDAP配置</p>
+
+<pre><code class="language-rb">gitlab_rails['ldap_enabled'] = true
+gitlab_rails['ldap_servers'] = YAML.load &lt;&lt;-'EOS' # remember to close this block with 'EOS' below
+main: # 'main' is the GitLab 'provider ID' of this LDAP server
+label: 'Authenticate'
+host: 'ldap.example.com'
+port: 389
+uid: 'uid'
+method: 'plain' # &quot;tls&quot; or &quot;ssl&quot; or &quot;plain&quot;
+bind_dn: 'uid=root,dc=example,dc=com'
+password: '123456789'
+active_directory: false
+allow_username_or_email_login: false
+block_auto_created_users: false
+base: ''
+user_filter: ''
+attributes:
+  username: ['uid', 'username', 'sAMAccountName']
+  email:    ['mail', 'email', 'userPrincipalName']
+  name:       'displayName'
+  first_name: 'cn'
+  last_name:  'sn'
+EOS
+</code></pre>
+
+<p>按照上面的配置，进行相应的修改即可。</p></li>
+
+<li><p>数据库配置</p>
+
+<pre><code class="language-rb"># gitlab_rails['db_adapter'] = &quot;postgresql&quot;
+# gitlab_rails['db_encoding'] = &quot;unicode&quot;
+# gitlab_rails['db_collation'] = nil
+# gitlab_rails['db_database'] = &quot;gitlabhq_production&quot;
+# gitlab_rails['db_pool'] = 10
+# gitlab_rails['db_username'] = &quot;gitlab&quot;
+# gitlab_rails['db_password'] = nil
+# gitlab_rails['db_host'] = nil
+# gitlab_rails['db_port'] = 5432
+# gitlab_rails['db_socket'] = nil
+# gitlab_rails['db_sslmode'] = nil
+# gitlab_rails['db_sslrootcert'] = nil
+</code></pre></li>
+
+<li><p>Redis配置</p>
+
+<pre><code class="language-rb">## Redis TCP connection
+# gitlab_rails['redis_host'] = &quot;127.0.0.1&quot;
+# gitlab_rails['redis_port'] = 6379
+# gitlab_rails['redis_password'] = nil
+# gitlab_rails['redis_database'] = 0
+</code></pre></li>
+</ul>
+
+<p>更多配置请查看<code>/etc/gitlab/gitlab.rb</code>这个文件。</p>
+
+<h2 id="使用docker进行gitlab安装">使用docker进行Gitlab安装</h2>
+
+<p>待续</p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+<li><a href="https://gitlab.com/gitlab-org/omnibus-gitlab/tree/master/doc/settings">Gitlab配置</a></li>
+<li><a href="https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/">Gitlab清华大学镜像站</a></li>
+<li><a href="https://about.gitlab.com/downloads/#ubuntu1604">Gitlab下载安装</a></li>
+<li><a href="https://docs.gitlab.com/ce/administration/auth/ldap.html">Gitlab LDAP配置</a></li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/markdown-%E8%AF%AD%E6%B3%95/markdown" title="Markdown 语法">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/systemd" title="使用Systemd管理应用">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

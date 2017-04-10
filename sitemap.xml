@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dmdgeeker.com/post/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/optimize_golang_slow_request</loc>
+    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc</loc>
     <lastmod>2017-02-16T19:00:00+08:00</lastmod>
   </url>
@@ -76,13 +81,13 @@
   
   <url>
     <loc>http://dmdgeeker.com/tags/dev/</loc>
-    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
+    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dmdgeeker.com/topics/develop/</loc>
-    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
+    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -93,8 +98,14 @@
   </url>
   
   <url>
+    <loc>http://dmdgeeker.com/tags/golang/</loc>
+    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/post/</loc>
-    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
+    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -145,7 +156,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/</loc>
-    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
+    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

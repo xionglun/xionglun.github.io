@@ -9,8 +9,105 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Thu, 16 Feb 2017 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Apr 2017 22:00:00 +0800</lastBuildDate>
     <atom:link href="http://dmdgeeker.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>一次慢请求优化</title>
+      <link>http://dmdgeeker.com/post/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/optimize_golang_slow_request</link>
+      <pubDate>Sat, 01 Apr 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/optimize_golang_slow_request</guid>
+      <description>
+
+&lt;h3 id=&#34;前言&#34;&gt;前言&lt;/h3&gt;
+
+&lt;p&gt;最近的项目中，有一个用户数据导入的需求，导入的数据量大致应该是几百条左右。
+但是由于每条用户数据都包含有其它子数据，并需要对这些数据进行单一处理，所以 &lt;strong&gt;预期处理时间比较长&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;在完成接口之后，进行测试，大致在2秒左右可以完成300条左右数据导入，&lt;strong&gt;基本符合预期&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;由于最近项目上了&lt;code&gt;opentracing&lt;/code&gt;这个性能监控工具，所以想找一找倒底是哪里出现处理时间过长的问题。&lt;/p&gt;
+
+&lt;h3 id=&#34;性能预估&#34;&gt;性能预估&lt;/h3&gt;
+
+&lt;p&gt;首先预估了一下可能会出现处理慢的两处地方：数据转换、数据存储。&lt;/p&gt;
+
+&lt;p&gt;猜测理由：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;数据转换&lt;br /&gt;
+因为每一条用户数据可能需要10多次处理，每条处理规则可能不同，所以造成总数据处理时间会很长。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据存储&lt;br /&gt;
+因为数据总量比较大，所以入库时候可能会比较慢。由于在应用层进行了数据拼接，所以入库时间应该不会特别慢。但是，可能会出现SQL过长的问题。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;压力测试&#34;&gt;压力测试&lt;/h3&gt;
+
+&lt;p&gt;首先，对可能出现慢处理的地方做了压力测试。&lt;/p&gt;
+
+&lt;p&gt;用户数据转换:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;BenchmarkEntry2User   	   20000	     73788 ns/op
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到，这里的每一条用户数据转换大概需要的时间为: &lt;code&gt;73788ns = 73.788µs = 0.073ms&lt;/code&gt;，速度非常快。
+这里的结果有点出乎意外，本以为会处理比较慢的地方，其实处理非常快。&lt;/p&gt;
+
+&lt;p&gt;在相应代码处添加上opentracing的监控代码后，得到请求图如下：
+&lt;img src=&#34;http://dmdgeeker.com/images/optimize_opentracing_1.png&#34; alt=&#34;convert user&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到，请求图上效果与压力测试基本一致，用户转换花费时间并不长。而数据存储入库的时间明显不正常。&lt;/p&gt;
+
+&lt;h3 id=&#34;猜想优化&#34;&gt;猜想优化&lt;/h3&gt;
+
+&lt;p&gt;由于数据存储时间很长，所以很简单地认为是数据库出现了问题，对数据库进行一系列的优化。
+然而，优化之后几乎没有任何效果。由于原数据是拼接而成的，于是猜想可能是SQL过长过大问题导致的。
+将SQL改成事务后，依然没有任何积极的效果，反而进一步拉长了存储时间。
+&lt;img src=&#34;http://dmdgeeker.com/images/optimize_opentracing_2.png&#34; alt=&#34;事务存储&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;分析代码&#34;&gt;分析代码&lt;/h3&gt;
+
+&lt;p&gt;由于对数据库进行优化没有收到任何效果，让我把目光再一次放到了代码上面。
+经过仔细分析，发现了一条可能会比较耗时的操作：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;user.Salt = utils.GenSalt()
+pass := utils.GenPassword()
+user.Password = utils.EncryptPassword(pass, user.Salt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里会对每一个导入的用户随机生成用户密码和盐，然后还有一次加密处理。&lt;/p&gt;
+
+&lt;p&gt;对&lt;code&gt;EncryptPassword&lt;/code&gt;这个函数进行压测可得:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;BenchmarkEncryptPassword   	     500	   3514588 ns/op
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;由上可知，每一次加密动作耗时为: &lt;code&gt;3514588ns = 3514.588µs = 3.514588ms&lt;/code&gt;。
+可知每一次加密需要耗时约3ms，而300个用户耗时可能接近1s。由于测试服务器性能相对于开发机更弱，
+所以耗时轻松达到1s以上。至此，问题已然大白。&lt;/p&gt;
+
+&lt;h3 id=&#34;修正问题&#34;&gt;修正问题&lt;/h3&gt;
+
+&lt;p&gt;在正确定位问题后，即可对症下药。
+经过修改，事务型存储结果如下：
+&lt;img src=&#34;http://dmdgeeker.com/images/optimize_opentracing_3.png&#34; alt=&#34;SQL事务型&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;而通过拼接SQL存储结果如下：
+&lt;img src=&#34;http://dmdgeeker.com/images/optimize_opentracing_4.png&#34; alt=&#34;SQL拼接型&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;其它&#34;&gt;其它&lt;/h3&gt;
+
+&lt;p&gt;本次优化过程中使用到的相关东西：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://opentracing.io/&#34;&gt;Opentracing&lt;/a&gt; 与 &lt;a href=&#34;https://github.com/opentracing/opentracing-go&#34;&gt;Opentracing-Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://zipkin.io/&#34;&gt;Zipkin&lt;/a&gt; 与 &lt;a href=&#34;https://github.com/openzipkin/zipkin-go-opentracing&#34;&gt;Zipkin-Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Golang Test Benchmark&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>gRPC基本使用</title>

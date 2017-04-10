@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Docker 日志收集  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="由于Docker的容器虚拟化，导致了日志收集与传统主机日志收集有了很大不同。这里主要介绍Docker的几种日志输出及如何进行容器日志收集。" />
+
+<meta name="keywords" content="docker, log, logging, fluent, journal, ">
+
+
+<meta property="og:title" content="Docker 日志收集  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/docker-%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/docker-log" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="由于Docker的容器虚拟化，导致了日志收集与传统主机日志收集有了很大不同。这里主要介绍Docker的几种日志输出及如何进行容器日志收集。"/>
+<meta property="og:article:published_time" content="2016-11-08T17:06:40&#43;08:00" />
+<meta property="og:article:modified_time" content="2016-11-08T17:06:40&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="docker">
+    
+<meta property="og:article:tag" content="log">
+    
+<meta property="og:article:tag" content="logging">
+    
+<meta property="og:article:tag" content="fluent">
+    
+<meta property="og:article:tag" content="journal">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Docker 日志收集" />
+<meta name="twitter:description" content="由于Docker的容器虚拟化，导致了日志收集与传统主机日志收集有了很大不同。这里主要介绍Docker的几种日志输出及如何进行容器日志收集。" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/docker-%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/docker-log" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Docker 日志收集",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-11-08",
+    "description": "由于Docker的容器虚拟化，导致了日志收集与传统主机日志收集有了很大不同。这里主要介绍Docker的几种日志输出及如何进行容器日志收集。",
+    "wordCount": 122
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/docker-%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/docker-log" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.19" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>DRAFT :: Docker 日志收集
+</h1>
+
+  <div class="metas">
+<time datetime="2016-11-08">8 Nov, 2016</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (122 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="容器日志输出方式">容器日志输出方式</h3>
+
+<table>
+<thead>
+<tr>
+<th>输出方式</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>none</td>
+<td>禁止日志输出, 使用<code>docker logs</code>将不会看到日志输出。 <strong>注意</strong>, 这里并不是默认的Docker容器日志方式。</td>
+</tr>
+
+<tr>
+<td>json-file</td>
+<td>Docker默认的日志输出方式，写JSON格式的日志信息到文件中去。</td>
+</tr>
+
+<tr>
+<td>syslog</td>
+<td>使用syslog方式，输出日志信息到syslog中。</td>
+</tr>
+
+<tr>
+<td>journald</td>
+<td>使用journald方式，输出日志信息到journald中。</td>
+</tr>
+
+<tr>
+<td>gelf</td>
+<td>GELF扩展日志格式(Graylog Extended Log Format)，可以输出日志到GELF兼容终端如Graylog或Logstash中。</td>
+</tr>
+
+<tr>
+<td>fluentd</td>
+<td>使用Fluentd方式，输出日志到fluentd中。</td>
+</tr>
+
+<tr>
+<td>awslogs</td>
+<td>使用AWS CloudWatch日志方式，输出日志到Amazon CloudWatch中。</td>
+</tr>
+
+<tr>
+<td>splunk</td>
+<td>使用Splunk方式，使用HTTP事件收集器输出到splunk中。</td>
+</tr>
+
+<tr>
+<td>etwlogs</td>
+<td>使用ETW方式（Windows系统），类似于ETW事件一样写日志。</td>
+</tr>
+
+<tr>
+<td>gcplogs</td>
+<td>使用Google Cloud日志方式，输出日志到Google Cloud日志系统中。</td>
+</tr>
+</tbody>
+</table>
+
+<p>按照国内的环境来说，一般可以采用的方式有：json-file, syslog, journald, gelf, fluentd, splunk这几种方式。PS: 对Windows服务器不太了解。</p>
+
+<h3 id="日志标签">日志标签</h3>
+
+<p>你可以自定义日志输出的标签，其中Docker容器提供的变量有：</p>
+
+<table>
+<thead>
+<tr>
+<th>可选变量</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>{{.ID}}</td>
+<td>容器ID的前12个字符</td>
+</tr>
+
+<tr>
+<td>{{.FullID}}</td>
+<td>容器ID</td>
+</tr>
+
+<tr>
+<td>{{.Name}}</td>
+<td>容器名称</td>
+</tr>
+
+<tr>
+<td>{{.ImageID}}</td>
+<td>镜像ID的前12个字符</td>
+</tr>
+
+<tr>
+<td>{{.ImageFullID}}</td>
+<td>镜像ID</td>
+</tr>
+
+<tr>
+<td>{{.ImageName}}</td>
+<td>容器所使用的镜像的名称</td>
+</tr>
+
+<tr>
+<td>{{.DaemonName}}</td>
+<td>Docker程序的名称(docker)</td>
+</tr>
+</tbody>
+</table>
+
+<p>你可以这样使用：</p>
+
+<pre><code>$ docker run -dit \
+    --log-driver=fluentd \
+    --log-opt fluentd-address=localhost:24224 \
+    --log-opt tag=&quot;docker-{{.Name}}&quot; \
+    alpine sh
+</code></pre>
+
+<h3 id="在docker-compose中定义">在docker-compose中定义</h3>
+
+<p>这里主要介绍在docker-compose配置版本<strong>2</strong>中的用法，旧版本的不再介绍。<br />
+示例：</p>
+
+<pre><code class="language-sh">version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - &quot;8080:8080&quot;
+    logging:
+      driver: journald
+      options:
+        labels: &quot;docker&quot;
+        tag: &quot;{{.Name}}.{{.ID}}&quot;
+  ui:
+    image: ui:1.0
+    container_name: ui
+    volumes:
+      - /data:/var/data
+    ports:
+      - 8080:80
+    logging:
+      driver: &quot;syslog&quot;
+      options:
+        syslog-address: &quot;tcp://127.0.0.1:514&quot;
+        tag: &quot;{{.Name}}.{{.ID}}&quot;
+</code></pre>
+
+<p>上面使用了<code>journald</code>和<code>syslog</code>方式输出日志，并使用自定义tag为容器名+容器短ID的形式。</p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/admin/logging/overview/">Docker log config</a></li>
+<li><a href="https://docs.docker.com/engine/admin/logging/log_tags/">Docker log tag</a></li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/kubernetes%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/kubernetes" title="Kubernetes安装使用">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/prometheus%E5%92%8Cgrafana%E7%9A%84%E5%AE%89%E8%A3%85/prometheus-grafana" title="Prometheus和Grafana的安装">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

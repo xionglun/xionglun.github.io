@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learn on X blog</title>
+    <link>http://dmdgeeker.com/tags/learn/index.xml</link>
+    <description>Recent content in Learn on X blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
+    <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
+    <copyright>(c) 2016-2017 Allen Heavey.</copyright>
+    <atom:link href="http://dmdgeeker.com/tags/learn/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>charles抓包流程</title>
+      <link>http://dmdgeeker.com/post/charles%E6%8A%93%E5%8C%85%E6%B5%81%E7%A8%8B/charles</link>
+      <pubDate>Sat, 18 Feb 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/charles%E6%8A%93%E5%8C%85%E6%B5%81%E7%A8%8B/charles</guid>
+      <description>
+
+&lt;h3 id=&#34;关于charles&#34;&gt;关于charles&lt;/h3&gt;
+
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.devtang.com/2015/11/14/charles-introduction/&#34;&gt;Charles 从入门到精通&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>htop使用方法</title>
+      <link>http://dmdgeeker.com/post/htop%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/htop</link>
+      <pubDate>Sat, 18 Feb 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/htop%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/htop</guid>
+      <description>
+
+&lt;h3 id=&#34;关于htop&#34;&gt;关于htop&lt;/h3&gt;
+
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用dot画流程图</title>
+      <link>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8dot%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/dot</link>
+      <pubDate>Sat, 18 Feb 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8dot%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/dot</guid>
+      <description>
+
+&lt;h3 id=&#34;关于dot&#34;&gt;关于dot&lt;/h3&gt;
+
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.songzhigang.com/others/graphviz-dot.html&#34;&gt;利用Graphviz Dot绘图&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

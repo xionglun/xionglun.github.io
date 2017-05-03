@@ -2,173 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Auth on X blog</title>
-    <link>http://dmdgeeker.com/tags/auth/index.xml</link>
+    <link>http://dmdgeeker.com/tags/auth/</link>
     <description>Recent content in Auth on X blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <atom:link href="http://dmdgeeker.com/tags/auth/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2016 14:36:06 +0800</lastBuildDate>
+    
+	<atom:link href="http://dmdgeeker.com/tags/auth/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>两步验证(2-step verification)</title>
-      <link>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify</link>
+      <link>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify/</link>
       <pubDate>Sun, 28 Aug 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify</guid>
-      <description>
-
-&lt;h3 id=&#34;关于两步验证&#34;&gt;关于两步验证&lt;/h3&gt;
-
-&lt;p&gt;两步验证是一种安全措施，用于保护某些资源不被泄露，即使在泄露了密码的情况下。
-两步验证有多种方式，主要包括：短信、验证器、电话等方式。本文主要讲述验证器方式的两步验证。&lt;/p&gt;
-
-&lt;h3 id=&#34;工作原理&#34;&gt;工作原理&lt;/h3&gt;
-
-&lt;p&gt;使用基于验证器方式的两步验证通常需要另外一部设备（通常是手机，也可能是其它硬件）。
-用户在登录系统时，除了输入正常的密码外，还需要输入一个动态生成的密码。
-此动态密码由另外一部可信设备提供，具有一个较短的时效性，保证不会重回攻击。&lt;/p&gt;
-
-&lt;p&gt;动态密码生成通常有两种算法：TOTP与HOTP。&lt;/p&gt;
-
-&lt;p&gt;TOTP(Time-Based One-Time Password)是指基于时间的一次性密码。&lt;br /&gt;
-HOTP(HMAC-based One-time Password)是指基于计数的一次性密码。&lt;/p&gt;
-
-&lt;p&gt;安全令牌硬件（如某些银行的动态密保，游戏账号的密码令牌）通常是基于HOTP方式实现。
-其表现为使用专有硬件，为某一特定产品或系统服务。&lt;/p&gt;
-
-&lt;p&gt;而当前大多数两步验证使用的是TOTP方式实现，比如Google Authenticator。&lt;/p&gt;
-
-&lt;h3 id=&#34;totp流程&#34;&gt;TOTP流程&lt;/h3&gt;
-
-&lt;p&gt;基于TOTP的两步验证流程一般通过需要先绑定，然后随用随验证。&lt;/p&gt;
-
-&lt;p&gt;现假设有一系统&lt;code&gt;S&lt;/code&gt;，用户&lt;code&gt;A&lt;/code&gt;进行两步验证&lt;/p&gt;
-
-&lt;p&gt;绑定流程一般如下：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;用户&lt;code&gt;A&lt;/code&gt;注册/登录系统&lt;code&gt;S&lt;/code&gt;后，&lt;code&gt;S&lt;/code&gt;后台生成一个OTP链接，在前端生成并显示该链接的二维码&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;用户&lt;code&gt;A&lt;/code&gt;用手机通过Google Authenticator之类的验证器&lt;code&gt;G&lt;/code&gt;扫描二维码进行绑定&lt;/li&gt;
-&lt;li&gt;验证器&lt;code&gt;G&lt;/code&gt;会生成动态密码&lt;code&gt;C&lt;/code&gt;，用户&lt;code&gt;A&lt;/code&gt;将动态密码&lt;code&gt;C&lt;/code&gt;输入到系统&lt;code&gt;S&lt;/code&gt;的绑定验证框内&lt;/li&gt;
-&lt;li&gt;如果系统&lt;code&gt;S&lt;/code&gt;后台验证该动态密码&lt;code&gt;C&lt;/code&gt;成功，则系统&lt;code&gt;S&lt;/code&gt;与验证器&lt;code&gt;G&lt;/code&gt;绑定成功。否则，绑定失败。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dmdgeeker.com/images/2step-verification-bind.png&#34; alt=&#34;示意图&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;验证流程如下:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;用户&lt;code&gt;A&lt;/code&gt;通过账号密码登录系统&lt;code&gt;S&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;系统&lt;code&gt;S&lt;/code&gt;验证账号和密码匹配后，跳转到两步验证页面&lt;/li&gt;
-&lt;li&gt;用户&lt;code&gt;A&lt;/code&gt;将验证器&lt;code&gt;G&lt;/code&gt;里的动态验证码&lt;code&gt;C&lt;/code&gt;输入到两步验证页面的验证框中&lt;/li&gt;
-&lt;li&gt;系统&lt;code&gt;S&lt;/code&gt;对验证码&lt;code&gt;C&lt;/code&gt;进行验证，如果成功，如登录成功，否则失败&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;totp实现&#34;&gt;TOTP实现&lt;/h3&gt;
-
-&lt;p&gt;可以按照上面所述流程，一步步来进行实现。
-下面主要介绍几个关键部份。&lt;/p&gt;
-
-&lt;h4 id=&#34;otp链接&#34;&gt;OTP链接&lt;/h4&gt;
-
-&lt;p&gt;OTP链接格式: &lt;code&gt;otpauth://TYPE/LABEL?PARAMETERS&lt;/code&gt;。
-具体可参考&lt;a href=&#34;https://github.com/google/google-authenticator/wiki/Key-Uri-Format&#34;&gt;Google Authenticator URI&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;示例：&lt;code&gt;otpauth://totp/Google:alice@google.com?secret=JBSWY3DPEHPK3PXP&amp;amp;issuer=Google&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;其中，前面一段&lt;code&gt;otpauth://totp/Example:alice@google.com&lt;/code&gt;中各部份的意义如下：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;otpauth&lt;/code&gt;表示OTP认证协议&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;totp&lt;/code&gt;表示使用TOTP算法&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Google&lt;/code&gt;表示生成此链接的公司或软件名称&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;alice@google.com&lt;/code&gt;表示该链接所对应的用户的用户名&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;而后面一段查询参数中各部份意义如下：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;secret&lt;/code&gt;是由服务端&lt;strong&gt;Base32&lt;/strong&gt;编码生成的字符串。其内容不重要，只要保证随机性即可，应保证每个用户都拥有一个独立的&lt;code&gt;secret&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;issuer&lt;/code&gt;表示生成此链接的公司或软件名称，应与前一段中相应部份一致。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;动态验证码生成&#34;&gt;动态验证码生成&lt;/h4&gt;
-
-&lt;p&gt;动态验证码的生成算法是公开的，可以到此处进行查处：&lt;a href=&#34;https://tools.ietf.org/html/rfc6238&#34;&gt;RFC6238&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;下面给出Go语言版本示例:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// 6位数字动态验证码
-var digits = 6
-
-// secret 即为otpauth链接中的secret
-// timeValue 为当前unix时间除以验证码失效时间（通常为30s）
-func computeCode(secret string, timeValue int64) string {
-	key, err := base32.StdEncoding.DecodeString(secret)
-	if err != nil {
-		return &amp;quot;&amp;quot;
-	}
-
-	hash := hmac.New(sha1.New, key)
-	err = binary.Write(hash, binary.BigEndian, timeValue)
-	if err != nil {
-		return &amp;quot;&amp;quot;
-	}
-	h := hash.Sum(nil)
-
-	offset := h[len(h)-1] &amp;amp; 0x0f
-	val := ((int(h[offset]) &amp;amp; 0x7f) &amp;lt;&amp;lt; 24) |
-         ((int(h[offset+1] &amp;amp; 0xff)) &amp;lt;&amp;lt; 16) |
-         ((int(h[offset+2] &amp;amp; 0xff)) &amp;lt;&amp;lt; 8) |
-         (int(h[offset+3]) &amp;amp; 0xff)
-	otp := int64(val) % int64(math.Pow10(digits))
-	code := fmt.Sprintf(fmt.Sprintf(&amp;quot;%%0%dd&amp;quot;, digits), otp)
-	return code
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;两步验证的优缺点&#34;&gt;两步验证的优缺点&lt;/h3&gt;
-
-&lt;p&gt;两步验证的优点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;系统的安全性提高，即使其它网站泄露了用户的明文密码，仍可以保证用户账户不受攻击。&lt;/li&gt;
-&lt;li&gt;动态按时间生成验证码，防止重放攻击。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;两步验证的缺点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;复杂度提高。用户不仅需要输入密码，还需要输入动态验证码。&lt;/li&gt;
-&lt;li&gt;需要另一个可信设备。即默认用户在绑定时候所使用的设备是安全的。&lt;/li&gt;
-&lt;li&gt;当验证器不可用时（设备丢失或不在身边），无法登录。&lt;/li&gt;
-&lt;li&gt;适合web端登录，不适合移动应用登录&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;其它验证方式&#34;&gt;其它验证方式&lt;/h3&gt;
-
-&lt;p&gt;一、短信认证&lt;br /&gt;
-短信验证码方式可能是当前中国各大厂商用得最多的一种验证方式。
-在用户绑定某个手机号后，将用户与此手机号关联。在有需要进行二次验证的地方，
-发送二次验证码短信，用户接收短信并输入该验证码。&lt;/p&gt;
-
-&lt;p&gt;二、扫码认证&lt;br /&gt;
-这在微信登录桌面端与web端的唯一方式。
-如果你在桌面web端使用支付宝，通常也可以通过手机支付宝扫页面上二维码进行支付确认。&lt;/p&gt;
-
-&lt;p&gt;三、推送认证&lt;br /&gt;
-当微信桌面端已登录过，保存有信息时，通常会推送一条登录请求给手机微信端，需要在手机端确认。&lt;/p&gt;
-
-&lt;h3 id=&#34;引用&#34;&gt;引用&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.google.com/landing/2step/&#34;&gt;Google 两步验证&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://support.apple.com/zh-cn/HT204152&#34;&gt;Apple 两步验证&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://support.apple.com/zh-cn/HT204915&#34;&gt;Apple 双重认证&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <guid>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify/</guid>
+      <description>关于两步验证 两步验证是一种安全措施，用于保护某些资源不被泄露，即使在泄露了密码的情况下。 两步验证有多种方式，主要包括：短信、验证器、电话等方式。本文主要讲述验证器方式的两步验证。
+工作原理 使用基于验证器方式的两步验证通常需要另外一部设备（通常是手机，也可能是其它硬件）。 用户在登录系统时，除了输入正常的密码外，还需要输入一个动态生成的密码。 此动态密码由另外一部可信设备提供，具有一个较短的时效性，保证不会重回攻击。
+动态密码生成通常有两种算法：TOTP与HOTP。
+TOTP(Time-Based One-Time Password)是指基于时间的一次性密码。
+HOTP(HMAC-based One-time Password)是指基于计数的一次性密码。
+安全令牌硬件（如某些银行的动态密保，游戏账号的密码令牌）通常是基于HOTP方式实现。 其表现为使用专有硬件，为某一特定产品或系统服务。
+而当前大多数两步验证使用的是TOTP方式实现，比如Google Authenticator。
+TOTP流程 基于TOTP的两步验证流程一般通过需要先绑定，然后随用随验证。
+现假设有一系统S，用户A进行两步验证
+绑定流程一般如下：
+ 用户A注册/登录系统S后，S后台生成一个OTP链接，在前端生成并显示该链接的二维码
+ 用户A用手机通过Google Authenticator之类的验证器G扫描二维码进行绑定 验证器G会生成动态密码C，用户A将动态密码C输入到系统S的绑定验证框内 如果系统S后台验证该动态密码C成功，则系统S与验证器G绑定成功。否则，绑定失败。  验证流程如下:
+ 用户A通过账号密码登录系统S 系统S验证账号和密码匹配后，跳转到两步验证页面 用户A将验证器G里的动态验证码C输入到两步验证页面的验证框中 系统S对验证码C进行验证，如果成功，如登录成功，否则失败  TOTP实现 可以按照上面所述流程，一步步来进行实现。 下面主要介绍几个关键部份。
+OTP链接 OTP链接格式: otpauth://TYPE/LABEL?PARAMETERS。 具体可参考Google Authenticator URI
+示例：otpauth://totp/Google:alice@google.com?secret=JBSWY3DPEHPK3PXP&amp;amp;issuer=Google
+其中，前面一段otpauth://totp/Example:alice@google.com中各部份的意义如下：
+ otpauth表示OTP认证协议 totp表示使用TOTP算法 Google表示生成此链接的公司或软件名称 alice@google.com表示该链接所对应的用户的用户名  而后面一段查询参数中各部份意义如下：
+ secret是由服务端Base32编码生成的字符串。其内容不重要，只要保证随机性即可，应保证每个用户都拥有一个独立的secret。 issuer表示生成此链接的公司或软件名称，应与前一段中相应部份一致。  动态验证码生成 动态验证码的生成算法是公开的，可以到此处进行查处：RFC6238
+下面给出Go语言版本示例:
+// 6位数字动态验证码 var digits = 6 // secret 即为otpauth链接中的secret // timeValue 为当前unix时间除以验证码失效时间（通常为30s） func computeCode(secret string, timeValue int64) string { key, err := base32.</description>
     </item>
     
   </channel>

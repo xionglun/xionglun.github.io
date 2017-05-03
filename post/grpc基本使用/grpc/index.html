@@ -19,7 +19,7 @@
 
 <meta property="og:title" content="gRPC基本使用  &middot; X blog ">
 <meta property="og:site_name" content="X blog"/>
-<meta property="og:url" content="http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc" />
+<meta property="og:url" content="http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc/" />
 <meta property="og:locale" content="zh-CN">
 
 
@@ -44,7 +44,7 @@
 <meta name="twitter:creator" content="@" />
 <meta name="twitter:title" content="gRPC基本使用" />
 <meta name="twitter:description" content="RPC是服务端开发中常用的通信手段, gRPC是Google推出的RPC解决方案。" />
-<meta name="twitter:url" content="http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc/" />
 <meta name="twitter:domain" content="http://dmdgeeker.com/">
   
 
@@ -59,18 +59,18 @@
     },
     "datePublished": "2017-02-16",
     "description": "RPC是服务端开发中常用的通信手段, gRPC是Google推出的RPC解决方案。",
-    "wordCount": 374
+    "wordCount": 463
   }
 </script>
 
 
 
-<link rel="canonical" href="http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc" />
+<link rel="canonical" href="http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.19" />
+<meta name="generator" content="Hugo 0.21-DEV" />
 
   
 <!--[if lt IE 9]>
@@ -184,8 +184,8 @@
 
 
   
-  &middot; Read in about 2 min
-  &middot; (374 Words)
+  &middot; Read in about 3 min
+  &middot; (463 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -398,6 +398,37 @@ greet();
 </code></pre></li>
 </ul>
 
+<h3 id="使用ssl进行通信">使用SSL进行通信</h3>
+
+<p>这里以Go语言为例：</p>
+
+<p>服务端代码：</p>
+
+<pre><code class="language-go">var (
+    cert = &quot;certs/server.crt&quot;
+    key  = &quot;certs/server.key&quot;
+)
+creds, err := credentials.NewServerTLSFromFile(cert, key)
+if err != nil {
+    return fmt.Errorf(&quot;could not load TLS keys: %s&quot;, err)
+}
+server := grpc.NewServer(grpc.Creds(creds))
+</code></pre>
+
+<p>客户端代码：</p>
+
+<pre><code class="language-go">var cert = &quot;server.crt&quot;
+creds, err := credentials.NewClientTLSFromFile(cert, &quot;&quot;)
+if err != nil {
+    return fmt.Errorf(&quot;could not load tls cert: %s&quot;, err)
+}
+conn, err := grpc.Dial(addr, grpc.WithTransportCredentials(creds))
+if err != nil {
+    return fmt.Errorf(&quot;could not dial %s: %s&quot;, addr, err)
+}
+client := pb.NewSecureClient(conn) // 调用自定义 protobuf 函数
+</code></pre>
+
 <p>更多更详细的示例请阅读<a href="https://github.com/grpc/grpc/tree/master/examples">gRPC examples</a></p>
 
 <h3 id="引用资料">引用资料</h3>
@@ -407,6 +438,8 @@ greet();
 <li><a href="http://blog.csdn.net/shidaping/article/details/53942476">gRPC Node.js</a></li>
 <li><a href="https://yushuangqi.com/blog/2016/golang-grpcshi-jian--lian-zai-yi--grpcjie-shao-yu-an-zhuang.html">gRPC介绍与安装</a></li>
 <li><a href="https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-auth-support.md">gRPC golang Authentication</a></li>
+<li><a href="http://krishicks.com/post/grpc-mutual-tls-golang/">self-signed SSL gRPC</a></li>
+<li><a href="http://bbengfort.github.io/programmer/2017/03/03/secure-grpc.html">secure gRPC</a></li>
 </ol>
 
 </div>
@@ -419,13 +452,13 @@ greet();
   
 
     
-    <a class="prev" href="http://dmdgeeker.com/post/linux%E5%AE%9A%E6%97%B6%E5%99%A8/cron" title="Linux定时器">
+    <a class="prev" href="http://dmdgeeker.com/post/linux%E5%AE%9A%E6%97%B6%E5%99%A8/cron/" title="Linux定时器">
       Previous
     </a>
     
 
     
-    <a class="next" href="http://dmdgeeker.com/post/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/optimize_golang_slow_request" title="一次慢请求优化">
+    <a class="next" href="http://dmdgeeker.com/post/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/optimize_golang_slow_request/" title="一次慢请求优化">
       Next
     </a>
     

@@ -2,14 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Topic 1 on X blog</title>
-    <link>http://dmdgeeker.com/topics/topic-1/index.xml</link>
+    <link>http://dmdgeeker.com/topics/topic-1/</link>
     <description>Recent content in Topic 1 on X blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <atom:link href="http://dmdgeeker.com/topics/topic-1/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://dmdgeeker.com/topics/topic-1/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>关于我</title>
@@ -17,17 +19,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
       <guid>http://dmdgeeker.com/about/</guid>
-      <description>
-
-&lt;h3 id=&#34;开源项目&#34;&gt;开源项目&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/xionglun/rando&#34;&gt;rando&lt;/a&gt; 随机数生成器&lt;br /&gt;
-&lt;a href=&#34;https://github.com/xionglun/samljs&#34;&gt;samljs&lt;/a&gt; SAML 2.0客户端&lt;/p&gt;
-
-&lt;h3 id=&#34;书籍&#34;&gt;书籍&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;dmdgeeker.com/goBook&#34;&gt;Go Book&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>开源项目 rando 随机数生成器
+samljs SAML 2.0客户端
+书籍 Go Book</description>
     </item>
     
   </channel>

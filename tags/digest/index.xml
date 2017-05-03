@@ -2,48 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Digest on X blog</title>
-    <link>http://dmdgeeker.com/tags/digest/index.xml</link>
+    <link>http://dmdgeeker.com/tags/digest/</link>
     <description>Recent content in Digest on X blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <atom:link href="http://dmdgeeker.com/tags/digest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Aug 2016 00:37:55 +0800</lastBuildDate>
+    
+	<atom:link href="http://dmdgeeker.com/tags/digest/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Authority &amp; Merit</title>
-      <link>http://dmdgeeker.com/post/authority--merit/authority-merit</link>
+      <link>http://dmdgeeker.com/post/authority--merit/authority-merit/</link>
       <pubDate>Wed, 24 Aug 2016 00:37:55 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/authority--merit/authority-merit</guid>
-      <description>&lt;p&gt;@reference: &lt;a href=&#34;https://medium.com/@jack/authority-merit-80ad140f990b#.bzbk58i5n&#34;&gt;Medium&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;An email to the team at Square.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Subject: Authority &amp;amp; Merit&lt;br /&gt;
-From: Jack Dorsey&lt;br /&gt;
-X-Mailer: iPhone Mail (9B206)&lt;br /&gt;
-Date: Wed, 5 Sep 2012 15:08:02 -0700&lt;br /&gt;
-To: Square&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Squares,&lt;/p&gt;
-
-&lt;p&gt;I’ve noticed a funny thing in the company. There’s been a high occurrence of folks using names, mine for instance, to push through an idea. “Jack really wants this to happen, Jack thinks this is an amazing idea, Jack said, etc.” This is obviously counter to the meritocracy/marketplace of ideas we want to build. Using someone else’s name to sell an idea does two things:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;It diminishes your authority.&lt;/li&gt;
-&lt;li&gt;It diminishes the idea’s merit.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Simply: if you have to use someone else’s name or authority to get a point across, there is little merit to the point (you might not believe it yourself). If you believe in something to be correct, focus on showing your work to prove it. Authority derives naturally from merit, not the other way around.&lt;/p&gt;
-
-&lt;p&gt;We want more passionate debates about bold and crazy ideas rethinking what we’ve taken for granted rather than discussions that end in “John wants this, this is how we’re supposed to do it.” The former will keep us agile and innovative, the latter will make us irrelevant.&lt;/p&gt;
-
-&lt;p&gt;Jack&lt;/p&gt;
-</description>
+      <guid>http://dmdgeeker.com/post/authority--merit/authority-merit/</guid>
+      <description>@reference: Medium
+An email to the team at Square.
+ Subject: Authority &amp;amp; Merit
+From: Jack Dorsey
+X-Mailer: iPhone Mail (9B206)
+Date: Wed, 5 Sep 2012 15:08:02 -0700
+To: Square
+ Squares,
+I’ve noticed a funny thing in the company. There’s been a high occurrence of folks using names, mine for instance, to push through an idea. “Jack really wants this to happen, Jack thinks this is an amazing idea, Jack said, etc.</description>
     </item>
     
   </channel>

@@ -19,7 +19,7 @@
 
 <meta property="og:title" content="tcpdump 基本使用方法  &middot; X blog ">
 <meta property="og:site_name" content="X blog"/>
-<meta property="og:url" content="http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump" />
+<meta property="og:url" content="http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/" />
 <meta property="og:locale" content="zh-CN">
 
 
@@ -44,7 +44,7 @@
 <meta name="twitter:creator" content="@" />
 <meta name="twitter:title" content="tcpdump 基本使用方法" />
 <meta name="twitter:description" content="tcpdump是linux命令行下常用的的一个抓包工具。" />
-<meta name="twitter:url" content="http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/" />
 <meta name="twitter:domain" content="http://dmdgeeker.com/">
   
 
@@ -59,18 +59,18 @@
     },
     "datePublished": "2017-02-10",
     "description": "tcpdump是linux命令行下常用的的一个抓包工具。",
-    "wordCount": 214
+    "wordCount": 252
   }
 </script>
 
 
 
-<link rel="canonical" href="http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump" />
+<link rel="canonical" href="http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.19" />
+<meta name="generator" content="Hugo 0.21-DEV" />
 
   
 <!--[if lt IE 9]>
@@ -176,7 +176,7 @@
 
 <article id="main-content" class="container main_content single">
   <header class="container hat">
-  <h1>DRAFT :: tcpdump 基本使用方法
+  <h1>tcpdump 基本使用方法
 </h1>
 
   <div class="metas">
@@ -185,7 +185,7 @@
 
   
   &middot; Read in about 2 min
-  &middot; (214 Words)
+  &middot; (252 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -249,7 +249,16 @@ tcpdump icmp   # 过滤icmp协议流量
 <h3 id="增强用法">增强用法</h3>
 
 <ul>
-<li><p>包头过滤</p></li>
+<li><p>包头过滤</p>
+
+<pre><code class="language-sh"># 从包头过滤信息如下所示
+proto[x:y]          : 过滤从x字节开始的y字节数。比如ip[2:2]过滤出3、4字节（第一字节从0开始排）
+proto[x:y] &amp; z = 0  : proto[x:y]和z的与操作为0
+proto[x:y] &amp; z !=0  : proto[x:y]和z的与操作不为0
+proto[x:y] &amp; z = z  : proto[x:y]和z的与操作为z
+proto[x:y] = z      : proto[x:y]等于z
+# 操作符可以有: &gt;, &lt;, &gt;=, &lt;=, =, !=
+</code></pre></li>
 
 <li><p>抓取HTTP包</p>
 
@@ -282,8 +291,10 @@ tcpdump -s 0 -A 'tcp dst port 80 and (tcp[((tcp[12:1] &amp; 0xf0) &gt;&gt; 2):4]
 
 <h3 id="引用">引用</h3>
 
-<p><a href="http://linuxwiki.github.io/NetTools/tcpdump.html">tcpdump使用技巧</a>
-<a href="http://jpuyy.com/2013/11/tcpdump-usage.html">tcpdump使用方法</a></p>
+<ul>
+<li><a href="http://linuxwiki.github.io/NetTools/tcpdump.html">tcpdump使用技巧</a></li>
+<li><a href="http://jpuyy.com/2013/11/tcpdump-usage.html">tcpdump使用方法</a></li>
+</ul>
 
 </div>
 
@@ -295,13 +306,13 @@ tcpdump -s 0 -A 'tcp dst port 80 and (tcp[((tcp[12:1] &amp; 0xf0) &gt;&gt; 2):4]
   
 
     
-    <a class="prev" href="http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql" title="MySQL 基本操作">
+    <a class="prev" href="http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql/" title="MySQL 基本操作">
       Previous
     </a>
     
 
     
-    <a class="next" href="http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/rsyslog" title="使用rsyslog集中管理日志">
+    <a class="next" href="http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/rsyslog/" title="使用rsyslog集中管理日志">
       Next
     </a>
     

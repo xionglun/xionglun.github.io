@@ -52,6 +52,18 @@ Syslog相关知识  Facility设施     代码 名称 描述     0 kern 内核   
     </item>
     
     <item>
+      <title>tcpdump 基本使用方法</title>
+      <link>http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/</link>
+      <pubDate>Fri, 10 Feb 2017 10:00:40 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/</guid>
+      <description>基本使用  将捕获到的流量写入到某个文件
+# -s 0 表示将完整数据包抓取下来，默认只抓取68字节 # -c 1000 表示抓1000个包, 避免抓取过多的包 # -w 表示写入 tcpdump -s 0 -c 1000 -w filename # 将监听到的输出写入到filename这个文件中  根据网卡来过滤流量
+tcpdump -i eth1 # 监听eth1网卡的流量 tcpdump -i docker0 # 监听docker0网卡的流量  根据端口号来过滤
+tcpdump tcp port 8080 # 监听本机8080端口TCP通讯 tcpdump udp port 567 # 查看本机某UDP端口567流量 tcpdump src port 25 # 来源端口为25的流量 tcpdump dst port 25 # 目的端口为25的流量 tcpdump -i eth1 src port 25 # 通过网卡eth1且来源端口为25的流量 tcpdump -i eth1 dst port 25 # 通过网卡eth1且目的端口为25的流量  根据源与目的地址过滤</description>
+    </item>
+    
+    <item>
       <title>MySQL 基本操作</title>
       <link>http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql/</link>
       <pubDate>Sun, 01 Jan 2017 17:06:40 +0800</pubDate>

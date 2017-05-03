@@ -16,10 +16,10 @@
     
     <item>
       <title>Markdown 语法</title>
-      <link>http://dmdgeeker.com/post/markdown-%E8%AF%AD%E6%B3%95/markdown/</link>
+      <link>http://dmdgeeker.com/post/markdown/markdown-%E8%AF%AD%E6%B3%95/</link>
       <pubDate>Sat, 24 Sep 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/markdown-%E8%AF%AD%E6%B3%95/markdown/</guid>
+      <guid>http://dmdgeeker.com/post/markdown/markdown-%E8%AF%AD%E6%B3%95/</guid>
       <description>Markdown 在用于写简单文本非常方便。在这里将给出一些示例来示范Markdown所支持的标记语法。 这里并没有介绍所有Markdown文档，如果你需要完整版来进行深入了解，请查看Markdown这个网站。
  强调 删除 代码 链接 图像 标题 段落 引用 列表 表格 代码高亮 水平分隔线  强调 Markdown 通过 * (星号) 和 _ (下划线) 来作为着重表示的标记。 如下所示：
 单个星号

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>使用Systemd管理应用  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Systemd是一系列Linux系统工具的集合，它可以用来启动守护进程，本文简单介绍一下如何使用systemd管理应用。" />
+
+<meta name="keywords" content="systemd, journal, ">
+
+
+<meta property="og:title" content="使用Systemd管理应用  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/systemd/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Systemd是一系列Linux系统工具的集合，它可以用来启动守护进程，本文简单介绍一下如何使用systemd管理应用。"/>
+<meta property="og:article:published_time" content="2016-11-08T17:06:40&#43;08:00" />
+<meta property="og:article:modified_time" content="2016-11-08T17:06:40&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="systemd">
+    
+<meta property="og:article:tag" content="journal">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="使用Systemd管理应用" />
+<meta name="twitter:description" content="Systemd是一系列Linux系统工具的集合，它可以用来启动守护进程，本文简单介绍一下如何使用systemd管理应用。" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/systemd/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "使用Systemd管理应用",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-11-08",
+    "description": "Systemd是一系列Linux系统工具的集合，它可以用来启动守护进程，本文简单介绍一下如何使用systemd管理应用。",
+    "wordCount": 308
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/systemd/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.21-DEV" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>使用Systemd管理应用
+</h1>
+
+  <div class="metas">
+<time datetime="2016-11-08">8 Nov, 2016</time>
+
+
+  
+  &middot; Read in about 2 min
+  &middot; (308 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="关于systemd">关于systemd</h3>
+
+<p>Systemd在新版Linux操作系统(Ubuntu 15.04+, RHEL 7+, Debian 8+)里基本都已成为内置软件</p>
+
+<pre><code class="language-sh">systemctl --version   # 查看systemd版本号
+</code></pre>
+
+<h3 id="unit">Unit</h3>
+
+<p>Systemd以<code>Unit</code>作为基本管理单元，一般存放于<code>/usr/lib/systemd/system/</code>或<code>/lib/systemd/system</code>和<code>/etc/systemd/system/</code>目录(后者优先级更高)。</p>
+
+<p>其支持类型有：SERVICE.service, SOCKET.socket, DEVICE.device, MOUNT.mount, AUTOMOUNT.automount, SWAP.swap, TARGET.target, PATH.path, TIMER.timer, SLICE.slice, SCOPE.scope</p>
+
+<pre><code class="language-sh">systemctl list-unit-files            # 查看所有已安装服务
+systemctl list-units --type=service  # 列出所有正在运行的、类型为 service 的 Unit
+</code></pre>
+
+<p>管理自定义的应用一般只需要用到<strong>SERVICE.service</strong>配置文件。</p>
+
+<h3 id="服务配置文件">服务配置文件</h3>
+
+<blockquote>
+<p>此处使用了一个简单的shell脚本，位于/usr/local/bin/hello
+其内容为：</p>
+
+<p>#!/bin/sh<br />
+  echo &ldquo;This is hello program!&rdquo;</p>
+</blockquote>
+
+<p>服务的配置文件一般格式如下：</p>
+
+<pre><code>[Unit]
+# 应用描述
+Description=A test program
+# 应用文档地址
+Documentation=https://docs.example.com
+# 必须在某一个或多个单元之后启动
+After=network.target ssh.service
+# 依赖于某一个或多个单元
+Requires=ssh.service
+
+[Service]
+# 进程启动方式，有：simple(默认), forking, oneshot, notify, dbus, idle这几种方式
+Type=simple
+# 启动服务之前执行的命令
+ExecStartPre=/usr/bin/which hello
+# 启动程序
+ExecStart=/user/local/bin/hello
+# 启动服务之后执行的命令
+ExecStartPost=/bin/echo &quot;start hello success.&quot;
+# 停止服务时执行的命令
+ExecStop=/bin/echo &quot;stop hello&quot;
+# 重启服务时执行的命令
+ExecReload=/bin/kill -s HUP $MAINPID
+# 进程结束后重启方式，可选值有：always, on-success, on-failure, on-abnormal, on-abort, on-watchdog
+Restart=on-failure
+# 重启间隔秒数
+RestartSec=30
+# 标准输出到
+StandardOutput=syslog
+# 标准错误输出到
+StandardError=syslog
+# 设置syslog中log的程序名称
+SyslogIdentifier=helloexample
+# 设置syslog中log类型
+SyslogFacility=local0
+# 设置syslog中log级别，此处为info
+SyslogLevel=info
+# 程序运行时的用户
+User=root
+# 程序运行时分配的组
+Group=root
+# 程序的环境变量
+Environment=NODE_ENV=production
+
+# 依赖于
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>将上面配置写入到<code>/etc/systemd/system/hello.service</code>中，然后执行命令</p>
+
+<pre><code class="language-sh">systemctl daemon-reload
+systemctl enable hello.service
+</code></pre>
+
+<p>这样即可加载服务到systemd中。</p>
+
+<p>检查服务是否已加入到systemd管理</p>
+
+<pre><code class="language-sh">systemctl status hello.service
+#● hello.service - A test program
+#   Loaded: loaded (/lib/systemd/system/hello.service; enabled; vendor preset: enabled)
+#   Active: inactive (dead)
+#     Docs: https://docs.example.com
+</code></pre>
+
+<p>启动服务</p>
+
+<pre><code class="language-sh">systemctl start hello.service
+</code></pre>
+
+<p>查看hello服务输出</p>
+
+<pre><code class="language-sh">journalctl -u hello.service
+# 1) 没有使用SyslogIdentifier时的输出
+#Feb 07 14:19:40 i-rcaex55q systemd[1]: Starting A test program...
+#Feb 07 14:19:40 i-rcaex55q which[27364]: /usr/local/bin/hello
+#Feb 07 14:19:40 i-rcaex55q echo[27369]: start hello success.
+#Feb 07 14:19:40 i-rcaex55q systemd[1]: Started A test program.
+#Feb 07 14:19:40 i-rcaex55q hello[27368]: This is hello program!
+#Feb 07 14:19:40 i-rcaex55q echo[27372]: stop hello
+#Feb 07 14:22:30 i-rcaex55q systemd[1]: Stopped A test program.
+# 2) 使用了SyslogIdentifier=helloexample时的输出
+#Feb 07 14:22:39 i-rcaex55q systemd[1]: Starting A test program...
+#Feb 07 14:22:39 i-rcaex55q helloexample[27419]: /usr/local/bin/hello
+#Feb 07 14:22:39 i-rcaex55q helloexample[27423]: start hello success.
+#Feb 07 14:22:39 i-rcaex55q helloexample[27422]: This is hello program!
+#Feb 07 14:22:39 i-rcaex55q helloexample[27425]: stop hello
+#Feb 07 14:22:39 i-rcaex55q systemd[1]: Started A test program.
+#Feb 07 14:30:16 i-rcaex55q systemd[1]: Stopped A test program.
+</code></pre>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+<li><a href="https://blog.codeship.com/running-node-js-linux-systemd/">Running node.js with systemd</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx">Node.js systemd &amp; nginx</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html">Systemd 入门</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Systemd">Archlinux Systemd介绍</a></li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/gitlab-install/gitlab%E5%AE%89%E8%A3%85/" title="Gitlab安装">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/mysql/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="MySQL 基本操作">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

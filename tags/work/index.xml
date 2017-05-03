@@ -16,10 +16,10 @@
     
     <item>
       <title>gRPC基本使用</title>
-      <link>http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc/</link>
+      <link>http://dmdgeeker.com/post/grpc/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Thu, 16 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/grpc/</guid>
+      <guid>http://dmdgeeker.com/post/grpc/grpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
       <description>通过RPC，客户端的应用程序可以方便地调用另外一台机器上的服务端程序，就像调用本地函数一样。
 安装gRPC 标准安装可参考gRPC Install
 这里摘录不同语言安装gRPC时的操作
@@ -32,10 +32,10 @@ syntax = &amp;quot;proto3&amp;quot;; option java_multiple_files = true; option j
     
     <item>
       <title>Linux定时器</title>
-      <link>http://dmdgeeker.com/post/linux%E5%AE%9A%E6%97%B6%E5%99%A8/cron/</link>
+      <link>http://dmdgeeker.com/post/cron/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</link>
       <pubDate>Wed, 15 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/linux%E5%AE%9A%E6%97%B6%E5%99%A8/cron/</guid>
+      <guid>http://dmdgeeker.com/post/cron/linux%E5%AE%9A%E6%97%B6%E5%99%A8/</guid>
       <description>在linux中，定时器一般是使用cron这个系统工具来实现的。 但是，在systemd中也可以使用Timer进行定时控制。
  Cron 在linux下，可以使用crontab -e来编辑修改定时任务(重点在最后一行)
 # Edit this file to introduce tasks to be run by cron. # # Each task to run has to be defined through a single line # indicating with different fields when the task will be run # and what command to run for the task # # To define the time you can provide concrete values for # minute (m), hour (h), day of month (dom), month (mon), # and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).</description>
@@ -43,20 +43,20 @@ syntax = &amp;quot;proto3&amp;quot;; option java_multiple_files = true; option j
     
     <item>
       <title>使用rsyslog集中管理日志</title>
-      <link>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/rsyslog/</link>
+      <link>http://dmdgeeker.com/post/rsyslog/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/</link>
       <pubDate>Fri, 10 Feb 2017 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/rsyslog/</guid>
+      <guid>http://dmdgeeker.com/post/rsyslog/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/</guid>
       <description>关于syslog Syslog是linux上传统的日志管理工具，而rsyslog是其改进版。很多系统都已将syslog替换为rsyslog进行日志管理了。
 Syslog相关知识  Facility设施     代码 名称 描述     0 kern 内核   1 user 用户级   2 mail 邮件   3 daemon 系统   4 auth 安全与授权   5 syslog 守护进程   6 lpr 打印相关   7 news 网络消息   8 uucp uucp子系统   9  时钟   10 authpriv 安全与授权   11 ftp FTP   12 - NTP   13 - 日志审计   14 - 日志报警   15 cron 定时器   16 local0 用户自定义   17 local1 用户自定义   18 local2 用户自定义   19 local3 用户自定义   20 local4 用户自定义   21 local5 用户自定义   22 local6 用户自定义   23 local7 用户自定义     Level级别(重要性从高到低)     代码 级别 名称 描述     0 Emergency emerg 紧急   1 Alert alert 报警   2 Critical crit 关键   3 Error err 错误   4 Warning warn 警告   5 Notice notice 通知   6 Informational info 消息   7 Debug debug 调试    使用rsyslog记录日志 当前很多应用都已支持syslog进行日志记录</description>
     </item>
     
     <item>
       <title>tcpdump 基本使用方法</title>
-      <link>http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/</link>
+      <link>http://dmdgeeker.com/post/tcpdump/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Fri, 10 Feb 2017 10:00:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/tcpdump/</guid>
+      <guid>http://dmdgeeker.com/post/tcpdump/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>基本使用  将捕获到的流量写入到某个文件
 # -s 0 表示将完整数据包抓取下来，默认只抓取68字节 # -c 1000 表示抓1000个包, 避免抓取过多的包 # -w 表示写入 tcpdump -s 0 -c 1000 -w filename # 将监听到的输出写入到filename这个文件中  根据网卡来过滤流量
 tcpdump -i eth1 # 监听eth1网卡的流量 tcpdump -i docker0 # 监听docker0网卡的流量  根据端口号来过滤
@@ -65,10 +65,10 @@ tcpdump tcp port 8080 # 监听本机8080端口TCP通讯 tcpdump udp port 567 # �
     
     <item>
       <title>MySQL 基本操作</title>
-      <link>http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql/</link>
+      <link>http://dmdgeeker.com/post/mysql/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sun, 01 Jan 2017 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/mysql/</guid>
+      <guid>http://dmdgeeker.com/post/mysql/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
       <description>安装使用 安装 Ubuntu 16.04
 sudo apt-get install mysql-server sudo mysql_secure_installation # 生产环境必备，安装一些安全策略  访问mysql mysql -u root -p  其它参数：
  -u username 登陆数据库所使用的数据库用户 -p password 使用密码登陆，如果没指定，则会在下面提示输入 -D database 此次登陆默认使用的数据库  基本操作 mysql&amp;gt; SHOW DATABASES; # 显示所有数据库 mysql&amp;gt; USE DATABASE; # 选择某个数据库 mysql&amp;gt; SHOW TABLES; # 显示当前数据库的所有表 mysql&amp;gt; SHOW VARIABLES LIKE &#39;%char%&#39;; # 显示数据库所用字符集 mysql&amp;gt; SHOW FULL COLUMNS FROM database.table; # 显示某个表的字符集 mysql&amp;gt; DESC TABLENAME; # 查看某个表的结构 mysql&amp;gt; SHOW GRANTS; # 查看当前用户权限 mysql&amp;gt; SHOW GRANTS FOR &#39;username&#39;@&#39;host&#39;; # 查看某个用户的权限 mysql&amp;gt; CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;; # 创建用户 # host使用%为允许从任意地方登录，如果只允许用户本地登录，改成localhost即可 mysql&amp;gt; GRANT privileges ON databasename.</description>
@@ -76,10 +76,10 @@ sudo apt-get install mysql-server sudo mysql_secure_installation # 生产环境�
     
     <item>
       <title>使用Systemd管理应用</title>
-      <link>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/systemd/</link>
+      <link>http://dmdgeeker.com/post/systemd/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/</link>
       <pubDate>Tue, 08 Nov 2016 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/systemd/</guid>
+      <guid>http://dmdgeeker.com/post/systemd/%E4%BD%BF%E7%94%A8systemd%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8/</guid>
       <description>关于systemd Systemd在新版Linux操作系统(Ubuntu 15.04+, RHEL 7+, Debian 8+)里基本都已成为内置软件
 systemctl --version # 查看systemd版本号  Unit Systemd以Unit作为基本管理单元，一般存放于/usr/lib/systemd/system/或/lib/systemd/system和/etc/systemd/system/目录(后者优先级更高)。
 其支持类型有：SERVICE.service, SOCKET.socket, DEVICE.device, MOUNT.mount, AUTOMOUNT.automount, SWAP.swap, TARGET.target, PATH.path, TIMER.timer, SLICE.slice, SCOPE.scope
@@ -93,10 +93,10 @@ echo &amp;ldquo;This is hello program!&amp;rdquo;
     
     <item>
       <title>Gitlab安装</title>
-      <link>http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install/</link>
+      <link>http://dmdgeeker.com/post/gitlab-install/gitlab%E5%AE%89%E8%A3%85/</link>
       <pubDate>Sat, 08 Oct 2016 12:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/gitlab%E5%AE%89%E8%A3%85/gitlab-install/</guid>
+      <guid>http://dmdgeeker.com/post/gitlab-install/gitlab%E5%AE%89%E8%A3%85/</guid>
       <description>安装环境配置 环境配置参见Github
  Ubuntu/Debian/CentOS/RHEL Ruby (MRI) 2.3 Git 2.7.4+ Redis 2.8+ MySQL or PostgreSQL  安装步骤  安装相关依赖
 sudo apt-get install curl openssh-server ca-certificates  添加gitlab-ce到apt仓库中并安装
@@ -109,10 +109,10 @@ sudo gitlab-ctl reconfigure   安装详解 在上面的安装步骤中，它自�
     
     <item>
       <title>两步验证(2-step verification)</title>
-      <link>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify/</link>
+      <link>http://dmdgeeker.com/post/two-factor-verify/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/</link>
       <pubDate>Sun, 28 Aug 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/two-factor-verify/</guid>
+      <guid>http://dmdgeeker.com/post/two-factor-verify/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%812-step-verification/</guid>
       <description>关于两步验证 两步验证是一种安全措施，用于保护某些资源不被泄露，即使在泄露了密码的情况下。 两步验证有多种方式，主要包括：短信、验证器、电话等方式。本文主要讲述验证器方式的两步验证。
 工作原理 使用基于验证器方式的两步验证通常需要另外一部设备（通常是手机，也可能是其它硬件）。 用户在登录系统时，除了输入正常的密码外，还需要输入一个动态生成的密码。 此动态密码由另外一部可信设备提供，具有一个较短的时效性，保证不会重回攻击。
 动态密码生成通常有两种算法：TOTP与HOTP。
@@ -137,10 +137,10 @@ OTP链接 OTP链接格式: otpauth://TYPE/LABEL?PARAMETERS。 具体可参考Goo
     
     <item>
       <title>Authority &amp; Merit</title>
-      <link>http://dmdgeeker.com/post/authority--merit/authority-merit/</link>
+      <link>http://dmdgeeker.com/post/authority-merit/authority--merit/</link>
       <pubDate>Wed, 24 Aug 2016 00:37:55 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/authority--merit/authority-merit/</guid>
+      <guid>http://dmdgeeker.com/post/authority-merit/authority--merit/</guid>
       <description>@reference: Medium
 An email to the team at Square.
  Subject: Authority &amp;amp; Merit
@@ -154,10 +154,10 @@ I’ve noticed a funny thing in the company. There’s been a high occurrence of
     
     <item>
       <title>Good Product Manager/Bad Product Manager</title>
-      <link>http://dmdgeeker.com/post/good-product-manager/bad-product-manager/product-manager/</link>
+      <link>http://dmdgeeker.com/post/product-manager/good-product-manager/bad-product-manager/</link>
       <pubDate>Wed, 24 Aug 2016 00:34:11 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/good-product-manager/bad-product-manager/product-manager/</guid>
+      <guid>http://dmdgeeker.com/post/product-manager/good-product-manager/bad-product-manager/</guid>
       <description>@reference: a16z
 Warning: This document was written 15 years ago and is probably not relevant for today’s product managers. I present it here merely as an example of a useful training document.
 Good product managers know the market, the product, the product line and the competition extremely well and operate from a strong basis of knowledge and confidence. A good product manager is the CEO of the product. A good product manager takes full responsibility and measures themselves in terms of the success of the product.</description>

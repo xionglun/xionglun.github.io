@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>使用rsyslog集中管理日志  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Syslog(rsyslog)是linux一直以来默认的日志管理工具" />
+
+<meta name="keywords" content="syslog, rsyslog, ">
+
+
+<meta property="og:title" content="使用rsyslog集中管理日志  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/rsyslog/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Syslog(rsyslog)是linux一直以来默认的日志管理工具"/>
+<meta property="og:article:published_time" content="2017-02-10T17:06:40&#43;08:00" />
+<meta property="og:article:modified_time" content="2017-02-10T17:06:40&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="syslog">
+    
+<meta property="og:article:tag" content="rsyslog">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="使用rsyslog集中管理日志" />
+<meta name="twitter:description" content="Syslog(rsyslog)是linux一直以来默认的日志管理工具" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/rsyslog/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "使用rsyslog集中管理日志",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-02-10",
+    "description": "Syslog(rsyslog)是linux一直以来默认的日志管理工具",
+    "wordCount": 304
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/rsyslog/%E4%BD%BF%E7%94%A8rsyslog%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86%E6%97%A5%E5%BF%97/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.21-DEV" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>使用rsyslog集中管理日志
+</h1>
+
+  <div class="metas">
+<time datetime="2017-02-10">10 Feb, 2017</time>
+
+
+  
+  &middot; Read in about 2 min
+  &middot; (304 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="关于syslog">关于syslog</h3>
+
+<p>Syslog是linux上传统的日志管理工具，而rsyslog是其改进版。很多系统都已将syslog替换为rsyslog进行日志管理了。</p>
+
+<h3 id="syslog相关知识">Syslog相关知识</h3>
+
+<ul>
+<li>Facility设施</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>kern</td>
+<td>内核</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>user</td>
+<td>用户级</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>mail</td>
+<td>邮件</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>daemon</td>
+<td>系统</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>auth</td>
+<td>安全与授权</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>syslog</td>
+<td>守护进程</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>lpr</td>
+<td>打印相关</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>news</td>
+<td>网络消息</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>uucp</td>
+<td>uucp子系统</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td></td>
+<td>时钟</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>authpriv</td>
+<td>安全与授权</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>ftp</td>
+<td>FTP</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>-</td>
+<td>NTP</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>-</td>
+<td>日志审计</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>-</td>
+<td>日志报警</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>cron</td>
+<td>定时器</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>local0</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>local1</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>local2</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>local3</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>local4</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>local5</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td>local6</td>
+<td>用户自定义</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td>local7</td>
+<td>用户自定义</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Level级别(重要性从高到低)</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>级别</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>Emergency</td>
+<td>emerg</td>
+<td>紧急</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Alert</td>
+<td>alert</td>
+<td>报警</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Critical</td>
+<td>crit</td>
+<td>关键</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Error</td>
+<td>err</td>
+<td>错误</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Warning</td>
+<td>warn</td>
+<td>警告</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Notice</td>
+<td>notice</td>
+<td>通知</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Informational</td>
+<td>info</td>
+<td>消息</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Debug</td>
+<td>debug</td>
+<td>调试</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="使用rsyslog记录日志">使用rsyslog记录日志</h3>
+
+<p>当前很多应用都已支持syslog进行日志记录</p>
+
+<ul>
+<li><p>docker</p>
+
+<pre><code class="language-sh">docker run --log-driver=syslog --log-opt syslog-facility=local0 --log-opt tag=logTag
+</code></pre></li>
+
+<li><p>systemd</p>
+
+<pre><code class="language-sh"># example.service
+[service]
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=example
+SyslogFacility=local0
+</code></pre></li>
+</ul>
+
+<h3 id="启动一个rsyslog服务端">启动一个rsyslog服务端</h3>
+
+<p>一般linux服务器上已包含的rsyslog包都具有服务功能，但是默认没有启用。<br />
+如果要启用日志服务器功能，则需要修改<code>/etc/rsyslog.conf</code>这个文件。</p>
+
+<p>更改如下:</p>
+
+<pre><code class="language-sh"># provides UDP syslog reception
+#module(load=&quot;imudp&quot;)
+#input(type=&quot;imudp&quot; port=&quot;514&quot;)
+# 取消上面两行的注释，如下所示，即可开启UDP端口514进行日志收集
+module(load=&quot;imudp&quot;)
+input(type=&quot;imudp&quot; port=&quot;514&quot;)
+
+# provides TCP syslog reception
+#module(load=&quot;imtcp&quot;)
+#input(type=&quot;imtcp&quot; port=&quot;514&quot;)
+# 取消上面两行的注释，如下所示，即可开启TCP端口514进行日志收集
+module(load=&quot;imtcp&quot;)
+input(type=&quot;imtcp&quot; port=&quot;514&quot;)
+</code></pre>
+
+<p>如果只需要UDP或者TCP方式，只需要取消注释对应的两行即可。</p>
+
+<h3 id="客户端日志发送到远程服务端">客户端日志发送到远程服务端</h3>
+
+<p>假如需要将A服务器上日志发送到B服务器，需要B服务器上rsyslog接收日志功能<a href="#启动一个rsyslog服务器">开启</a>。<br />
+同时，修改A服务器上<code>/etc/rsyslog.conf</code>文件。</p>
+
+<p>更改示例如下：</p>
+
+<pre><code class="language-sh"># 正常日志保存如下所示
+# [facility].[level] [destination]
+# 示例: mail.warn   /var/log/mail.warn
+
+# 三种发送方式
+# UDP      前缀为@             @192.168.1.2:514
+# TCP      前缀为@@            @@192.168.1.2:514
+# RELP     前缀为:omrelp:      :omrelp:192.168.1.2:514
+
+# 将local0的所有日志以UDP都发送到192.168.1.2这如机器上(默认端口号是514)
+local0.* @192.168.1.2
+# 将user类应用产生的info级别日志以TCP方式发送到192.168.1.2这台机器上，端口号是514
+user.info @@192.168.1.2:514
+
+# 通过syslog的tag进行区分，将以myapp-为前缀的日志发送到远程服务器上
+:syslogtag, startswith, &quot;myapp-&quot;  @@192.168.1.2
+# 通过消息内容过滤，包含sns_log的发送到远程服务器上
+:rawmsg, contains, &quot;sns_log&quot;    @@192.168.1.2
+# 丢弃含有sns_debug的消息
+:rawmsg, contains, &quot;sns_debug&quot;  ~
+</code></pre>
+
+<p>注意此文件是顺序相关的。</p>
+
+<p>此处的<code>rawmsg</code>是消息字段，详见<a href="http://www.rsyslog.com/doc/master/configuration/properties.html">rsyslog消息字段</a></p>
+
+<p>除了<code>startswith</code>与<code>contains</code>外，还有其它比较关键词：<code>isequal</code>, <code>regex</code>, <code>contains_i</code>, <code>ereregex</code>, <code>isempty</code></p>
+
+<h3 id="服务端接收远程日志">服务端接收远程日志</h3>
+
+<p>服务端也需要对<code>/etc/rsyslog.conf</code>进行相应修改，以接收远程日志。</p>
+
+<p>更改示例:</p>
+
+<pre><code class="language-sh"># 定义一个名为customformat模板, 为信息加上日志时间
+$template customformat, &quot;%TIMESTAMP:::date-mysql% %FROMHOST-IP%%msg%n&quot;
+# 定义日志文件的名称，按照年月日
+$template DynFile,   &quot;/var/log/%$programname%%$year%%$month%%$day%.log&quot;
+# 把rawmsg(也可以使用msg)日志中包含sns_log标志的信息写到DynFile定义的日志文件里
+:rawmsg, contains, &quot;sns_log&quot;    ?DynFile;customformat
+# 这个表示丢弃包含sns_debug标志的信息, 一般都加上它, 以免多个日志文件记录重复的日志
+:rawmsg, contains, &quot;sns_debug&quot;  ~
+</code></pre>
+
+<h3 id="将非syslog日志转发到远程服务端">将非syslog日志转发到远程服务端</h3>
+
+<p>这里假设有一个<code>helloworld</code>的应用，产生的日志记录到了<code>/var/log/helloworld.log</code>这个文件中。</p>
+
+<p>首先，在应用所有机器上，修改<code>/etc/rsyslog.conf</code>配置文件。</p>
+
+<pre><code class="language-sh"># 加载imfile这个模块
+module(load=&quot;imfile&quot; PollingInterval=&quot;5&quot;)
+# 指定日志文件路径以及tag, severity, facility这些参数
+input(type=&quot;imfile&quot; File=&quot;/var/log/helloworld.log&quot; Tag=&quot;helloworld&quot; Severity=&quot;error&quot; Facility=&quot;local0&quot;)
+# 将helloworld的应用日志发送到远程服务器
+:programname, contains, &quot;helloworld&quot; @192.168.1.2
+</code></pre>
+
+<h3 id="nginx日志发送到rsyslog">Nginx日志发送到rsyslog</h3>
+
+<p>Nginx(1.7.1+)可以直接发送日志到rsyslog，如下所示：</p>
+
+<pre><code class="language-sh"># nginx.conf
+# server {
+error_log syslog:server=192.168.1.1 debug;  # 将debug类型日志发送到192.168.1.1这台机器上
+access_log syslog:server=[2001:db8::1]:12345,facility=local7,tag=nginx,severity=info combined;
+# }
+</code></pre>
+
+<h3 id="相关资料">相关资料</h3>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Syslog">Wiki syslog</a></li>
+<li><a href="http://www.rsyslog.com/doc/master/configuration/properties.html">rsyslog消息字段</a></li>
+<li><a href="https://docs.docker.com/engine/admin/logging/overview/#/syslog">Docker syslog</a></li>
+<li><a href="http://www.rsyslog.com/how-to-bind-a-template/">rsyslog如何绑定模板</a></li>
+<li><a href="https://indevwith.streamroot.io/centralized-logs-with-rsyslog-systemd-and-golang/">Golang集中式日志管理</a></li>
+<li><a href="https://mos.meituan.com/library/5/how-to-config-rsyslog/">rsyslog配置简介</a></li>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/s1-basic_configuration_of_rsyslog.html">Redhat rsyslog基本配置</a></li>
+<li><a href="http://xstarcd.github.io/wiki/Linux/rsyslog_logrotate.html">rsyslogd服务器及负载均衡</a></li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/tcpdump/tcpdump-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="tcpdump 基本使用方法">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/cron/linux%E5%AE%9A%E6%97%B6%E5%99%A8/" title="Linux定时器">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

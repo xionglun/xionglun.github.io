@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Linux定时器  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Linux中的定时器使用方法" />
+
+<meta name="keywords" content="cron, crontab, timer, ">
+
+
+<meta property="og:title" content="Linux定时器  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/linux-cron/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Linux中的定时器使用方法"/>
+<meta property="og:article:published_time" content="2017-02-15T19:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2017-02-15T19:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="cron">
+    
+<meta property="og:article:tag" content="crontab">
+    
+<meta property="og:article:tag" content="timer">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Linux定时器" />
+<meta name="twitter:description" content="Linux中的定时器使用方法" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/linux-cron/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Linux定时器",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-02-15",
+    "description": "Linux中的定时器使用方法",
+    "wordCount": 454
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/linux-cron/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.21-DEV" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Linux定时器
+</h1>
+
+  <div class="metas">
+<time datetime="2017-02-15">15 Feb, 2017</time>
+
+
+  
+  &middot; Read in about 3 min
+  &middot; (454 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<blockquote>
+<p>在linux中，定时器一般是使用<code>cron</code>这个系统工具来实现的。
+但是，在systemd中也可以使用<code>Timer</code>进行定时控制。</p>
+</blockquote>
+
+<h2 id="cron">Cron</h2>
+
+<p>在linux下，可以使用<code>crontab -e</code>来编辑修改定时任务(重点在最后一行)</p>
+
+<pre><code># Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+</code></pre>
+
+<p>每项任务前五项为时间配置，第六项为待执行的命令。</p>
+
+<p>定时任务时间配置说明</p>
+
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>范围</th>
+<th>含义</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>m</td>
+<td>0~59</td>
+<td>minute</td>
+<td>每小时的第几分钟执行</td>
+</tr>
+
+<tr>
+<td>h</td>
+<td>0~23</td>
+<td>hour</td>
+<td>每天的第几个小时执行</td>
+</tr>
+
+<tr>
+<td>dom</td>
+<td>1~31</td>
+<td>day of month</td>
+<td>每月的第几天执行</td>
+</tr>
+
+<tr>
+<td>mon</td>
+<td>1~12</td>
+<td>month</td>
+<td>每年的第几个月执行</td>
+</tr>
+
+<tr>
+<td>dow</td>
+<td>0~6</td>
+<td>day of week</td>
+<td>每周的第几天执行, 0为星期天</td>
+</tr>
+</tbody>
+</table>
+
+<p>其中月份mon也可以使用<code>jan~dec</code>，而周dow也可以使用<code>sun~sat</code>。即使用英文单词前三个字母，大小写无关。</p>
+
+<p>时间配置每一项设置</p>
+
+<pre><code class="language-sh">*  表示任意值，即每小时或者每天，每月
+/  表示每隔*时
+,  表示多项时间触发
+</code></pre>
+
+<p>示例：</p>
+
+<pre><code class="language-sh">*/2 * * * * /usr/local/bin/play    # 每隔2分钟(整点开始计算)执行play程序
+30 11 * * * /bin/echo &quot;tick tock&quot;  # 每天11点30分输出tick tock
+* * * * 1,3 /usr/local/bin/backup  # 每周一、周三进行备份操作
+</code></pre>
+
+<p>如果觉得上面有好几项配置太麻烦，可以使用下面简单时间配置</p>
+
+<pre><code>@reboot            执行一次，系统重启后执行
+@yearly            每年执行一次(0 0 1 1 *)
+@annually          与@yearly相同
+@monthly           每月执行一次(0 0 1 * *)
+@weekly            每周执行一次(0 0 * * 0)
+@daily             每天执行一次(0 0 * * *)
+@midnight          与@daily相同，每晚0点执行一次
+@hourly            每小时执行一次(0 * * * *)
+</code></pre>
+
+<p>示例</p>
+
+<pre><code class="language-sh">@reboot /bin/echo &quot;Startup&quot;        # 在重启后打印Startup
+@hourly /usr/local/bin/httpcheck   # 每小时进行httpcheck检查
+</code></pre>
+
+<p>最终<code>crontab -e</code>文件内容始下：</p>
+
+<pre><code># Edit this file to introduce tasks to be run by cron.
+#
+# ...省略了中间注释内容
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+*/2 * * * * /usr/local/bin/play
+30 11 * * * /bin/echo &quot;tick tock&quot;
+* * * * 1,3 /usr/local/bin/backup
+@reboot /bin/echo &quot;Startup&quot;
+@hourly /usr/local/bin/httpcheck
+</code></pre>
+
+<p>重启<code>cron</code>服务，使定时任务生效</p>
+
+<pre><code class="language-sh"># Systemd
+systemctl restart cron.service
+
+# Old Debian/Ubuntu
+service cron restart
+
+# Old CentOS/RHEL
+service crond restart
+</code></pre>
+
+<hr />
+
+<h2 id="timer">Timer</h2>
+
+<p>在systemd中是以定时器(timer)去控制服务(service)来实现定时功能。</p>
+
+<p>一个典型的定时器文件以<code>.timer</code>为后缀名。其内容大致如下：</p>
+
+<pre><code>[Unit]
+Description=Run weekly and on boot
+
+[Timer]
+# 在启动15分钟后执行
+OnBootSec=15min
+# 下一次执行是一周后
+OnUnitActiveSec=1w
+# 此处使用foo.service作为定时器执行的服务，默认使用与timer同名的服务
+Unit=foo.service
+
+[Install]
+WantedBy=timers.target
+</code></pre>
+
+<p>文件中<strong>Timer</strong>块其它选项包括:</p>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OnActiveSec</td>
+<td>30s</td>
+<td>相对于该单元自身被启动的时间点</td>
+</tr>
+
+<tr>
+<td>OnBootSec</td>
+<td>15m</td>
+<td>相对于机器被启动的时间点</td>
+</tr>
+
+<tr>
+<td>OnStartupSec</td>
+<td>2h</td>
+<td>相对于systemd被首次启动的时间点</td>
+</tr>
+
+<tr>
+<td>OnUnitActiveSec</td>
+<td>1w</td>
+<td>相对于匹配单元最后一次被启动的时间点</td>
+</tr>
+
+<tr>
+<td>OnUnitInactiveSec</td>
+<td>2d</td>
+<td>相对于匹配单元最后一次被停止的时间点</td>
+</tr>
+
+<tr>
+<td>OnCalendar</td>
+<td>Mon,Tue <em>-</em>-01..04 12:00:00</td>
+<td>日历定时事件表达式</td>
+</tr>
+
+<tr>
+<td>AccuracySec</td>
+<td>5m</td>
+<td>设置定时器的触发精度</td>
+</tr>
+
+<tr>
+<td>RandomizedDelaySec</td>
+<td>10m</td>
+<td>将此单元的定时器随机延迟一小段时间</td>
+</tr>
+
+<tr>
+<td>Unit</td>
+<td>foo.service</td>
+<td>该定时器启动的单元(默认是与timer同名的service)</td>
+</tr>
+
+<tr>
+<td>Persistent</td>
+<td>yes, no</td>
+<td>上次触发时间是否永久保存在磁盘上(仅适用于OnCalendar定义的日历定时器)</td>
+</tr>
+
+<tr>
+<td>WakeSystem</td>
+<td>yes, no</td>
+<td>是否唤醒正在休眠的系统并阻止系统进入休眠状态</td>
+</tr>
+
+<tr>
+<td>RemainAfterElapse</td>
+<td>yes, no</td>
+<td>是否保持已过期定时器单元的已加载(loaded)状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>关于systemd中service，请参见前面文章《使用Systemd管理应用》</p>
+
+<p>Systemd Timer <a href="https://gist.github.com/xionglun/8f785fd2a2c8295e996767de5daecaf8">示例</a></p>
+
+<h3 id="资料引用">资料引用</h3>
+
+<ol>
+<li><a href="http://weiya.me/item/54.html">Ubuntu下利用Crontab</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Systemd/Timers">Sytemd Timer</a></li>
+<li><a href="https://help.ubuntu.com/community/CronHowto">CronHowto</a></li>
+<li><a href="http://wephi.jzland.com/doku.php?id=os:linux:systemd_timer">使用systemd执行定时任务</a></li>
+</ol>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/rsyslog-collect-logs/" title="使用rsyslog集中管理日志">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/grpc-usage/" title="gRPC基本使用">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

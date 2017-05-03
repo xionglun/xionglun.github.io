@@ -16,10 +16,10 @@
     
     <item>
       <title>TiDB 集群安装</title>
-      <link>http://dmdgeeker.com/post/tidb-cluster-deploy/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/</link>
+      <link>http://dmdgeeker.com/post/deploy-tidb-cluster/</link>
       <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/tidb-cluster-deploy/tidb-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://dmdgeeker.com/post/deploy-tidb-cluster/</guid>
       <description>注意 &amp;gt; 本文档已过时，正确部署方案请参考：TiDB 官方安装教程
 安装 TiDB TiDB 需要安装 TiKV，RocksDB, PD等软件。
 环境 Ubuntu 14.04.4 (64bit)

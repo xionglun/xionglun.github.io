@@ -16,10 +16,10 @@
     
     <item>
       <title>一次慢请求优化</title>
-      <link>http://dmdgeeker.com/post/optimize_golang_slow_request/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/</link>
+      <link>http://dmdgeeker.com/post/optimize-slow-request/</link>
       <pubDate>Sat, 01 Apr 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/optimize_golang_slow_request/%E4%B8%80%E6%AC%A1%E6%85%A2%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96/</guid>
+      <guid>http://dmdgeeker.com/post/optimize-slow-request/</guid>
       <description>前言 最近的项目中，有一个用户数据导入的需求，导入的数据量大致应该是几百条左右。 但是由于每条用户数据都包含有其它子数据，并需要对这些数据进行单一处理，所以 预期处理时间比较长。
 在完成接口之后，进行测试，大致在2秒左右可以完成300条左右数据导入，基本符合预期。
 由于最近项目上了opentracing这个性能监控工具，所以想找一找倒底是哪里出现处理时间过长的问题。

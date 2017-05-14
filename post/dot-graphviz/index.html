@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>使用dot画流程图  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="dot是一个描绘流程图的语言，本文简单介绍使用dot画图的基本要点。" />
+
+<meta name="keywords" content="dot, viz, ">
+
+
+<meta property="og:title" content="使用dot画流程图  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/dot-graphviz/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="dot是一个描绘流程图的语言，本文简单介绍使用dot画图的基本要点。"/>
+<meta property="og:article:published_time" content="2017-02-18T22:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2017-02-18T22:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="dot">
+    
+<meta property="og:article:tag" content="viz">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="使用dot画流程图" />
+<meta name="twitter:description" content="dot是一个描绘流程图的语言，本文简单介绍使用dot画图的基本要点。" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/dot-graphviz/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "使用dot画流程图",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-02-18",
+    "description": "dot是一个描绘流程图的语言，本文简单介绍使用dot画图的基本要点。",
+    "wordCount": 269
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/dot-graphviz/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.20.7" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>使用dot画流程图
+</h1>
+
+  <div class="metas">
+<time datetime="2017-02-18">18 Feb, 2017</time>
+
+
+  
+  &middot; Read in about 2 min
+  &middot; (269 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/learn">learn</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="关于dot">关于dot</h3>
+
+<p>dot是一门用文字表达图形的语言，而<strong>graphviz</strong>是一个将dot语言文本转化为图片(png, svg &hellip;)的工具。</p>
+
+<p>这里先看一个dot语言示例：</p>
+
+<pre><code>digraph example {
+    a [label=&quot;Hi, One&quot; shape=box]
+    b [label=&quot;This two&quot; shape=diamond]
+    c [label=&quot;And three&quot; shape=oval]
+    d [label=&quot;Now, four&quot; shape=triangle]
+
+    a -&gt; b [label=&quot;a-&gt;b&quot; color=&quot;red&quot;];
+    b -&gt; c [label=&quot;b&lt;-&gt;c&quot; color=&quot;green&quot; penwidth=2.5];
+    c -&gt; d [label=&quot;c-d&quot;];
+    d -&gt; a;
+}
+</code></pre>
+
+<p>其使用<strong>graphviz</strong>转化(<code>dot -Tpng example.dot -o example.png</code>)后结果如下图所示:</p>
+
+<p><img src="/images/dot-example.png" alt="Example" /></p>
+
+<h3 id="dot语法">dot语法</h3>
+
+<p>使用dot画图时，就像使用一门编程语言一样。</p>
+
+<p>首先，声明需要画的图形</p>
+
+<pre><code>digraph example {
+}
+</code></pre>
+
+<p>这里声明，需要画一个<code>digraph</code>类型的图，其名称为<strong>example</strong>。<br />
+基本画图类型有：<code>digraph</code>有向图，<code>graph</code>无向图，以及<code>subgraph</code>子图。</p>
+
+<p>图基本上都由<strong>节点</strong>和<strong>连接线</strong>组成，所以一般只需要这两者即可。
+其中有向图的结点之间使用<code>-&gt;</code>连接线，而无向图结点之间使用<code>--</code>连接线，连接线两端为节点。
+节点可以预先定义一些属性，如上面例子所示，也可以不定义属性，直接使用。</p>
+
+<h3 id="节点">节点</h3>
+
+<p>节点有许多自身的属性，如形状、颜色、值、边框等。本文简单介绍几个基本属性，其它属性可以上官网查询使用。</p>
+
+<p>结点常用属性：</p>
+
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>值类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>\N</td>
+<td>节点标题</td>
+</tr>
+
+<tr>
+<td>shape</td>
+<td><a href="http://www.graphviz.org/content/node-shapes">shape</a></td>
+<td>ellipse</td>
+<td>形状</td>
+</tr>
+
+<tr>
+<td>color</td>
+<td><a href="http://www.graphviz.org/content/color-names">color</a></td>
+<td>black</td>
+<td>节点边框颜色</td>
+</tr>
+
+<tr>
+<td>style</td>
+<td><a href="http://www.graphviz.org/content/attrs#kstyle">style</a></td>
+<td></td>
+<td>节点边框样式</td>
+</tr>
+
+<tr>
+<td>sides</td>
+<td>int</td>
+<td>4</td>
+<td>当形状(shape)为多边形时的边数</td>
+</tr>
+
+<tr>
+<td>height</td>
+<td>double</td>
+<td>0.5</td>
+<td>节点高度</td>
+</tr>
+
+<tr>
+<td>width</td>
+<td>double</td>
+<td>0.75</td>
+<td>节点宽度</td>
+</tr>
+
+<tr>
+<td>comment</td>
+<td>string</td>
+<td></td>
+<td>节点注释</td>
+</tr>
+
+<tr>
+<td>image</td>
+<td>string</td>
+<td></td>
+<td>节点图片</td>
+</tr>
+
+<tr>
+<td>margin</td>
+<td>double</td>
+<td></td>
+<td>外边距</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li><p>形状(shape)<br />
+节点有多种形状，如下图是多边形节点的部份示例，更多可以参考<a href="http://www.graphviz.org/content/node-shapes">节点形状</a>：<br />
+<img src="/images/dot-polygon-nodes.png" alt="多边形节点" /></p></li>
+
+<li><p>颜色<br />
+Graphviz支持多种颜色模式，具体可以参考<a href="http://www.graphviz.org/content/color-names">颜色名称</a></p></li>
+</ol>
+
+<h3 id="连接线">连接线</h3>
+
+<p>连接线是用来连接两个结点的线段。</p>
+
+<p>连接线常用属性：</p>
+
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>值类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>\N</td>
+<td>连接线标题</td>
+</tr>
+
+<tr>
+<td>dir</td>
+<td><a href="http://www.graphviz.org/content/attrs#kdirType">dirType</a></td>
+<td>forward/none</td>
+<td>箭头方向</td>
+</tr>
+
+<tr>
+<td>color</td>
+<td><a href="http://www.graphviz.org/content/color-names">color</a></td>
+<td>black</td>
+<td>连接线颜色</td>
+</tr>
+
+<tr>
+<td>style</td>
+<td><a href="http://www.graphviz.org/content/attrs#kstyle">style</a></td>
+<td></td>
+<td>连接线样式</td>
+</tr>
+
+<tr>
+<td>penwidth</td>
+<td>double</td>
+<td>1.0</td>
+<td>线条宽度</td>
+</tr>
+
+<tr>
+<td>arrowsize</td>
+<td>double</td>
+<td>1.0</td>
+<td>箭头大小</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="示例">示例</h3>
+
+<p>使用dot画Android Activity生命周期图：</p>
+
+<pre><code class="language-dot">digraph G {
+  pad=1;
+  //dpi=400;
+
+  launch [label=&quot;Activity\nLaunched&quot; color=blue];
+  onCreate [label=&quot;onCreate()&quot; shape=box];
+  onStart [label=&quot;onStart()&quot; shape=box];
+  onRestart [label=&quot;onRestart()&quot; shape=box];
+  onResume [label=&quot;onResume()&quot; shape=box];
+  killed [label=&quot;App process killed&quot; color=orange];
+  running [label=&quot;Activity\nRunning&quot; color=green fillcolor=green];
+  onPause [label=&quot;onPause()&quot; shape=box];
+  onStop [label=&quot;onStop()&quot; shape=box];
+  onDestroy [label=&quot;onDestroy()&quot; shape=box];
+  shutdown [label=&quot;App shutdown&quot; color=orange];
+
+  launch -&gt; onCreate;
+  onCreate:s -&gt; onStart:n [weight=3];
+  onStart -&gt; onResume [weight=9];
+  onRestart:w -&gt; onStart:e;
+  onResume -&gt; running [weight=7];
+  running -&gt; onPause [label=&quot;Another activity\ncomes foreground&quot; weight=7];
+  onPause -&gt; onStop [weight=3];
+  onStop:e -&gt; onRestart:s [label=&quot;User navigates to the activity&quot;];
+  onPause -&gt; onResume:e [label=&quot;User returns to activity&quot;];
+  onPause:w -&gt; killed:s [label=&quot;App with high priority need memory&quot; constraint=false];
+  killed:n -&gt; onCreate:w [label=&quot;User navigates to the activity&quot; rankdir=RL];
+  onStop -&gt; onDestroy;
+  onDestroy -&gt; shutdown;
+
+  {rank=same; killed running; rankdir=RL};
+  {rank=same; onStart onRestart; rankdir=LR};
+}
+</code></pre>
+
+<p>画出来的图形如下:
+<img src="/images/dot-example-android.png" alt="Android lifecycle" /></p>
+
+<p>由于对dot以及graphviz不是太熟悉，导致图形画出来有些凌乱，左右关系没有处理好。（如有哪位大神知道如何调整节点左右关系，敬请告知，谢谢）。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ol>
+<li><a href="http://blog.songzhigang.com/others/graphviz-dot.html">利用Graphviz Dot绘图</a></li>
+<li><a href="http://www.jianshu.com/p/5b02445eca1d">使用dot来绘图</a></li>
+<li><a href="https://casatwy.com/shi-yong-dotyu-yan-he-graphvizhui-tu-fan-yi.html">使用DOT语言和Graphviz绘图</a></li>
+<li><a href="http://www.graphviz.org/content/node-shapes">节点形状</a></li>
+<li><a href="http://icodeit.org/2015/11/using-graphviz-drawing/">使用graphviz绘制流程图</a></li>
+</ol>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/grpc-usage/" title="gRPC基本使用">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/optimize-slow-request/" title="一次慢请求优化">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

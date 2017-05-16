@@ -57,7 +57,7 @@
     },
     "datePublished": "2017-01-01",
     "description": "MySQL基本使用",
-    "wordCount": 471
+    "wordCount": 503
   }
 </script>
 
@@ -183,7 +183,7 @@
 
   
   &middot; Read in about 3 min
-  &middot; (471 Words)
+  &middot; (503 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -310,6 +310,15 @@ mysql&gt; SELECT * FROM users WHERE email REGEXP '^.*@qq\\.com$'; # 取出所有
 mysql&gt; SELECT concat(first_name, last_name) AS name FROM users;
 # 从一个表中导入数据到另一个表中
 mysql&gt; INSERT INTO &lt;table2&gt; (fields) SELECT &lt;fields&gt; FROM &lt;table1&gt; [WHERE &lt;conditions&gt;];
+</code></pre>
+
+<p>查看SQL语句执行时间</p>
+
+<pre><code class="language-sql">mysql&gt; select @@profiling;   -- 查看分析开关是否打开
+mysql&gt; set profiling = 1;    -- 打开分析开关
+mysql&gt; select count(*) ...   -- 执行待测试的SQL语句
+mysql&gt; show profiles;        -- 查看测试结果
+mysql&gt; show profile for query 1;   -- 查看第一条执行语句执行具体时间花费
 </code></pre>
 
 <hr />

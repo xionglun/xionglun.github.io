@@ -9,10 +9,33 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Sat, 01 Apr 2017 22:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 May 2017 22:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://dmdgeeker.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spacemacs入门与基本用法</title>
+      <link>http://dmdgeeker.com/post/spacemacs_usage/</link>
+      <pubDate>Wed, 10 May 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/spacemacs_usage/</guid>
+      <description>关于Spacemacs 总体来说，Spacemacs其实就是一个Emacs的壳，在原来Emacs上加入了许多插件及配置，所以对Spacemacs的配置也很像Emacs。但在文本编辑的时候，可以使用几乎完全VIM特性（个人暂时没发现有什么不兼容的地方）。
+安装Spacemacs Spacemacs的Github地址为：https://github.com/syl20bnr/spacemacs
+如果你的系统已装有Emacs，请先备份Emacs配置文件。因为Spacemacs的配置会覆盖掉原Emacs的配置文件。
+cd ~ mv .emacs.d .emacs.d.bak mv .emacs .emacs.bak  如果你的系统没有安装Emacs，需要先安装Emacs，请注意Emacs版本至少为24.4
+brew install emacs # macOS 平台，并使用 Homebrew emacs --version # 查看Emacs版本  或者按照Spacemacs教程进行安装Emacs。
+安装Spacemacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d  启动Spacemacs
+emacs # 安装完成后，直接使用emacs命令即可启动Spacemacs  初次启动Spacemacs会进行初始化配置（启动时会询问使用简、全哪套配置方案），安装依赖有可能需要一段时间。
+在通过命令行启动Spacemacs后，可能会发现状态栏乱码了。这是因为字体不支持的原因，需要安装Source Code Pro字体。 同时，还可能需要安装Powerline字体补丁。
+基本概念 在Spacemacs配置或者快捷键操作命令中，经常可以看到SPC这个词，它其实是一个Leader键，类似于tmux中的ctrl + b键。在Spacemacs中，其默认为space也就是空格键。
+在Mac键盘上，各符号对应键位:
+SPC 空格键 C Ctrl M Meta (alt/option)  PS: 本文是基于VIM模式（即evil）的，所以可能会与使用原Emacs模式的使用方式上有不同！
+配置Spacemacs Spacemacs的主要配置位于~/.spacemacs文件中。可以单独使用编辑器对此文件进行编辑，也可以在Spacemacs中对其进行编辑。
+在Spacemacs状态下进行编辑SPC f e d，刷新配置SPC f e R。
+常用快捷键  书签</description>
+    </item>
     
     <item>
       <title>一次慢请求优化</title>

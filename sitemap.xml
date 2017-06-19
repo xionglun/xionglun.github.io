@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://dmdgeeker.com/post/spacemacs_usage/</loc>
+    <lastmod>2017-05-10T22:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/post/optimize-slow-request/</loc>
     <lastmod>2017-04-01T22:00:00+08:00</lastmod>
   </url>
@@ -97,7 +102,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/tags/dev/</loc>
-    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
+    <lastmod>2017-05-10T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -121,13 +126,13 @@
   
   <url>
     <loc>http://dmdgeeker.com/tags/learn/</loc>
-    <lastmod>2017-02-18T22:00:00+08:00</lastmod>
+    <lastmod>2017-05-10T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dmdgeeker.com/post/</loc>
-    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
+    <lastmod>2017-05-10T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -138,13 +143,13 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/tidb/</loc>
+    <loc>http://dmdgeeker.com/tags/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/tidb/</loc>
+    <loc>http://dmdgeeker.com/topics/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -152,6 +157,12 @@
   <url>
     <loc>http://dmdgeeker.com/tags/tool/</loc>
     <lastmod>2016-09-24T14:36:06+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://dmdgeeker.com/topics/tool/</loc>
+    <lastmod>2017-05-10T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -167,20 +178,20 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/work/</loc>
-    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://dmdgeeker.com/tags/work/</loc>
     <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://dmdgeeker.com/topics/work/</loc>
+    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/</loc>
-    <lastmod>2017-04-01T22:00:00+08:00</lastmod>
+    <lastmod>2017-05-10T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

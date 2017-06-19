@@ -92,6 +92,21 @@ echo &amp;ldquo;This is hello program!&amp;rdquo;
     </item>
     
     <item>
+      <title>部署EBK进行日志收集与性能监控</title>
+      <link>http://dmdgeeker.com/post/ebk-usage/</link>
+      <pubDate>Tue, 08 Nov 2016 17:06:40 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/ebk-usage/</guid>
+      <description>关于EBK EBK 指的是elastic公司开发的一系列软件的简称，其分别代表：Elasticsearch, Beats与Kibana这三种软件。
+其中:
+ Elasticsearch 主要是用来存储数据，并根据索引进行检索数据。 Beats 其实是几个软件的组合(Filebeat, Metricbeat, Packetbeat, Winlogbeat)，是用于收集数据并输出到某一个地方。 Kibana 是用来展示数据的一个UI界面。  如何使用 关于EBK如何使用可以参考下图：
+部署 环境：Ubuntu 16.04 64bit
+ Elasticsearch(5.2)
+Elasticsearch安装需要先安装Java
+# 1. install java sudo add-apt-repository -y ppa:webupd8team/java sudo apt-get update sudo apt-get -y install oracle-java8-installer # 2. install elasticsearch wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - echo &amp;quot;deb https://artifacts.elastic.co/packages/5.x/apt stable main&amp;quot; | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install elasticsearch  Kibana</description>
+    </item>
+    
+    <item>
       <title>Gitlab安装</title>
       <link>http://dmdgeeker.com/post/install-gitlab/</link>
       <pubDate>Sat, 08 Oct 2016 12:00:00 +0800</pubDate>

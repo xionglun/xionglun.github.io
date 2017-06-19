@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://dmdgeeker.com/post/optimize-slow-request/</loc>
@@ -38,6 +39,11 @@
   
   <url>
     <loc>http://dmdgeeker.com/post/systemd-usage/</loc>
+    <lastmod>2016-11-08T17:06:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dmdgeeker.com/post/ebk-usage/</loc>
     <lastmod>2016-11-08T17:06:40+08:00</lastmod>
   </url>
   
@@ -132,13 +138,13 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/tidb/</loc>
+    <loc>http://dmdgeeker.com/topics/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/tidb/</loc>
+    <loc>http://dmdgeeker.com/tags/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -161,14 +167,14 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/work/</loc>
-    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
+    <loc>http://dmdgeeker.com/topics/work/</loc>
+    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/work/</loc>
-    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
+    <loc>http://dmdgeeker.com/tags/work/</loc>
+    <lastmod>2017-02-16T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

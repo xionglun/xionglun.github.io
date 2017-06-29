@@ -65,7 +65,7 @@
     },
     "datePublished": "2016-11-08",
     "description": "使用EBK可以进行日志、性能及流量的收集与实时分析。",
-    "wordCount": 235
+    "wordCount": 241
   }
 </script>
 
@@ -76,7 +76,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.23" />
+<meta name="generator" content="Hugo 0.24.1" />
 
   
 <!--[if lt IE 9]>
@@ -191,7 +191,7 @@
 
   
   &middot; Read in about 2 min
-  &middot; (235 Words)
+  &middot; (241 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -326,7 +326,9 @@ sudo systemctl start kibana.service
 <p>当数据采集后，需要通过kibana进行展示，kibana主要组件有：Discover, Visualize, Dashboard。
 其中，Discover是Visualize和Dashboard的基础。</p>
 
-<p>Discover 组件有一个搜索框，你可以在里面进行搜索过滤数据。其语法类似于下面这条：</p>
+<p>Discover 组件有一个搜索框，你可以在里面进行搜索过滤数据。在进行搜索时，可以使用<a href="lucene syntax">Lucene</a>或者<a href="es syntax">Elasticsearch</a>的语法。</p>
+
+<p>其中<strong>Lucene</strong>语法类似于下面这条：</p>
 
 <pre><code class="language-sh">name: hello AND type: log AND beat.hostname: api-host
 </code></pre>
@@ -340,7 +342,11 @@ sudo systemctl start kibana.service
 <ol>
 <li><a href="https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html">Elastic getting-started</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-16-04">Install ELK on Ubuntu 16.04</a></li>
+<li><a href="https://kibana.logstash.es/content/">ELK中文文档</a></li>
 </ol>
+
+<p><a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">lucene syntax</a>
+<a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.4/query-dsl.html">es syntax</a></p>
 
 </div>
 

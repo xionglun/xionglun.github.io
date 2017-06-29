@@ -9,10 +9,34 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Wed, 10 May 2017 22:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Jun 2017 20:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://dmdgeeker.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Uber Jaeger安装与使用</title>
+      <link>http://dmdgeeker.com/post/uber_jaeger/</link>
+      <pubDate>Fri, 30 Jun 2017 20:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/uber_jaeger/</guid>
+      <description>关于Jaeger Jaeger是Uber推出的一款调用链追踪系统，类似于Zipkin和Dapper，为微服务调用追踪而生。 其主要用于多个服务调用过程追踪分析，图形化服务调用轨迹，便于快速准确定位问题。
+组件分析 Jaeger主要组件有：
+ 数据存储Cassandra 数据收集处理Collector 客户端代理Agent 数据查询Query 前端界面展示UI 客户端库jaeger-client-*  相互之间关系如下图所示: 数据存储 目前Jaeger收集到的数据都是持久化到Cassandra里面。
+数据收集处理 数据收集处理即从客户端代理处获取到最新的数据，进行处理后存入到存储里面
+客户端代理 一般来说，应用的trace数据并不是直接从应用发到收集处理的服务端（虽然也可以直接发过去）， 而是通过一个靠近客户端的代理，由代理转发到服务端。这样方便应用的快速处理，同时也可以减缓对服务端的直接压力。
+客户端代理还有一个特性，就是可以进行控制应用追踪数据采样控制。这样就不必把所有的配置都固化写到应用配置文件里， 可以通过代理动态调整频率。
+数据查询 前端界面进行展示时，通常需要根据不同条件到数据库里进行搜索。所以这里需要一个拼接搜索条件、读取数据库的程序。 因而Jaeger提供了这样一个组件来供前端来使用。
+前端界面 这是一个React的前端应用，当前界面上功能相对还是比较简单的。
+客户端库 目前，Jaeger提供了四种语言的官方客户端库，分别为Go, Node, Java, Python这四种语言。
+安装部署 请注意，Jaeger依赖于Cassandra，所以请先安装Cassandra后再进行安装使用。
+目前（2017/06/30），由于Jaeger还是处于Beta状态，所以需要自行下载编译。 看官方的动向，是想要容器化使用docker镜像的方式来安装，所以这里介绍一下手工安装过程。
+编译二进制文件 到Jaeger的Github仓库下载源码到GOPATH下。 可以通过下面的命令进行下载：
+go get github.com/uber/jaeger  然后需要安装依赖(请注意，这里可能需要梯子！):
+glide install  完成以上两个步骤后，进行编译(这一步会同时编译多个二进制文件)：
+make build-crossdock-bin # 编译Linux可执行程序 make build-ui # 编译UI界面  编译完成后主要的三个可执行文件(Linux程序)分别位于：
+cmd/collector/collector-linux # Collector cmd/agent/agent-linux # Agent cmd/query/query-linux # Query  前端编译成静态文件位于jaeger-ui-build/build/目录下，前端界面可以直接使用Nginx处理，也可以参照说明使用serve应用进行处理。</description>
+    </item>
     
     <item>
       <title>Spacemacs入门与基本用法</title>

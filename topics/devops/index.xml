@@ -26,16 +26,15 @@
 首先，我们需要进行性能数据采集。只有收集到足够的数据后，才能进行相应的分析。 性能采集工具不同操作系统各有不同，在Linux操作系统中常用的有Perf和Systemtap这两种工具。
 在采集到数据后，需要对数据进行处理，以获得相应格式化的数据。 使用FlameGraph可以对这两种工具采集来的数据进行处理，生成可以渲染的数据。 同时，FlameGraph也可以将处理完成的数据生成SVG图片，以供仔细分析。
 Openresty应用作者在使用火焰图过程中，总结出了一套相应的性能采集工具集Openresty systemtap toolkit，来采集各种不同类型的性能数据。
-使用Perf采集数据 perf是Linux系统下的一个性能采集工具，只能用于Linux系统。
+采集性能数据的类型有几种，主要是下面几种：
+ On CPU 当CPU占用率比较高时使用 Off CPU 当CPU占用率并不高，性能瓶颈位于IO或者锁等地方时使用 Memory 当可能出现内存泄露时使用 Hot/Cold 试验性质，联合CPU的两种类型，相当于On CPU + Off CPU  使用Perf采集数据 perf是Linux系统下的一个性能采集工具，只能用于Linux系统。
  安装perf工具
  Ubuntu 16.04
 sudo apt install -y linux-tools-`uname -r`  CentOS 7
 sudo yum install perf    安装完成后，就可以对相应的程序进行性能采集了。在进行采集时候，为了更显著地看到效果（特别是在测试时候，程序调用量很小，很难看出效果），可以对程序进行压力测试来配合性能采集。
  获取目标程序的pid。通过ps即可查看到（将XXX替换为相应程序名称）：
 sudo ps aux | grep XXX  通过perf工具进行采集（将下面命令中的PID替换成真实的PID，各参数的含义请参考文档 ）：
-# 采集 On-CPU 性能数据 perf record -F 99 -p PID -g -- sleep 60  通过上面的命令，会在当前目录下生成一个名为perf.data的文件。
- 处理采集来的数据（在perf.data所在目录下执行）：
-perf script &amp;gt; out.</description>
+# 采集 On-CPU 性能数据 perf record -F 99 -p PID -g -- sleep 60  通过上面的命令，会在当前目录下生成一个名为perf.</description>
     </item>
     
   </channel>

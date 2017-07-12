@@ -63,7 +63,7 @@
     },
     "datePublished": "2017-07-09",
     "description": "在开发程序过程中，我们会使用各种方式来测试程序性能。而火焰图类似于白盒分析工具，可以相对更详细地分析一个程序的某个地方出现了具体的某种性能问题。",
-    "wordCount": 158
+    "wordCount": 189
   }
 </script>
 
@@ -189,7 +189,7 @@
 
   
   &middot; Read in about 1 min
-  &middot; (158 Words)
+  &middot; (189 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -227,6 +227,15 @@
 同时，FlameGraph也可以将处理完成的数据生成SVG图片，以供仔细分析。</p>
 
 <p>Openresty应用作者在使用火焰图过程中，总结出了一套相应的性能采集工具集<a href="https://github.com/openresty/openresty-systemtap-toolkit">Openresty systemtap toolkit</a>，来采集各种不同类型的性能数据。</p>
+
+<p>采集性能数据的类型有几种，主要是下面几种：</p>
+
+<ul>
+<li><a href="http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html">On CPU</a> 当CPU占用率比较高时使用</li>
+<li><a href="http://www.brendangregg.com/FlameGraphs/offcpuflamegraphs.html">Off CPU</a> 当CPU占用率并不高，性能瓶颈位于IO或者锁等地方时使用</li>
+<li><a href="http://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html">Memory</a> 当可能出现内存泄露时使用</li>
+<li><a href="http://www.brendangregg.com/FlameGraphs/hotcoldflamegraphs.html">Hot/Cold</a> 试验性质，联合CPU的两种类型，相当于<code>On CPU</code> + <code>Off CPU</code></li>
+</ul>
 
 <h3 id="使用-perf-采集数据">使用<code>Perf</code>采集数据</h3>
 
@@ -267,12 +276,7 @@ perf record -F 99 -p PID -g -- sleep 60
 <li><p>处理采集来的数据（在<code>perf.data</code>所在目录下执行）：</p>
 
 <pre><code class="language-sh">perf script &gt; out.perf
-</code></pre></li>
-
-<li><p>转化为火焰图数据</p>
-
-<pre><code class="language-sh">cd FlameGraph/     # 进入到已下载的 FlameGraph 目录下
-./stackcollapse-perf.pl out.perf &gt; out.folded
+#perf script -i perf.data &gt; out.perf
 </code></pre></li>
 </ol>
 
@@ -316,19 +320,37 @@ yum install systemtap
 # 采集 Off-CPU 性能数据
 ./sample-bt-off-cpu -u -p PID -t 5 -df &gt; sample.bt
 </code></pre></li>
-
-<li><p>转化为火焰图数据</p>
-
-<pre><code class="language-sh">./stackcollapse-stap.pl sample.bt &gt; out.foled
-</code></pre></li>
 </ol>
 
 <h3 id="生成火焰图">生成火焰图</h3>
 
-<p>使用<code>flamegraph.pl</code>可以将火焰图数据生成SVG图片，如下：</p>
+<p>需要先把采集来的数据转化为对应的格式，然后再将其生成火焰图。
+转化格式与生成火焰图的脚本都是由<a href="https://github.com/brendangregg/FlameGraph">FlameGraph</a>这个项目提供的。</p>
+
+<ul>
+<li><p>转化<code>perf</code>采集来的数据</p>
+
+<pre><code class="language-sh">./stackcollapse-perf.pl out.perf &gt; out.folded
+</code></pre></li>
+
+<li><p>转化<code>systemtap</code>采集来的数据</p>
+
+<pre><code class="language-sh">./stackcollapse-stap.pl sample.bt &gt; out.foled
+</code></pre></li>
+</ul>
+
+<p>使用<code>flamegraph.pl</code>可以将转化后的数据生成SVG图片，如下：</p>
 
 <pre><code class="language-sh">./flamegraph.pl out.folded &gt; result.svg
 </code></pre>
+
+<p>对于两次采集目标程序而得到的不同数据，还可以使用<code>difffolded.pl</code>进行对比生成差异火焰图</p>
+
+<pre><code class="language-sh"># 注意，前后次序不同会生成不同的差异图。其实也可以利用这个特性来进行改进分析。
+./difffolded.pl out1.folded out2.folded | ./flamegraph.pl &gt; diff.svg
+</code></pre>
+
+<p>在差异火焰图中，<strong>红色代表增长，蓝色代表减少</strong></p>
 
 <p>PS: 本文只是简单梳理了下火焰图生成流程，对于详细的使用步骤及参数说明并没有过多的深入。
 如果有需要，可以通过参考资料进一步地了解和使用。</p>
@@ -339,6 +361,8 @@ yum install systemtap
 <li><a href="https://openresty.org/posts/dynamic-tracing/">动态追踪技术漫谈</a></li>
 <li><a href="http://www.jianshu.com/p/3cdc0f05ac5d">TiKV 性能优化</a></li>
 <li><a href="http://lihaoquan.me/2017/1/1/Profiling-and-Optimizing-Go-using-go-torch.html">Go代码调优利器-火焰图</a></li>
+<li><a href="https://huoding.com/2016/08/18/531">白话火焰图</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27147421">Node.js 性能调优之CPU篇</a></li>
 </ul>
 
 </div>

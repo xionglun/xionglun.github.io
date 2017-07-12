@@ -72,7 +72,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.24.1" />
+<meta name="generator" content="Hugo 0.25.1" />
 
   
 <!--[if lt IE 9]>
@@ -405,7 +405,7 @@ agent -collector.host-port 192.168.2.5:14267
   sampler:                   // 采样配置
     type: &quot;const&quot;            // 采样类型为固定间隔时间采样
     //type: &quot;probabilistic&quot;  // 采样类型为随机间隔时间采样
-    //type: &quot;rateLimiting&quot;   // 采样类型为每秒最多几次采样
+    //type: &quot;ratelimiting&quot;   // 采样类型为每秒最多几次采样
     //type: &quot;remote&quot;         // 采样频率由远程服务提供，其额外配置如下所示
     param: 1                 // 采样参数，与上面的采样类型相关，数值类型
     hostPort: &quot;server:port&quot;  // 远程采样控制服务的域名或IP地址和端口号
@@ -461,6 +461,10 @@ const tracer = opentracing.globalTracer();
     </a>
     
 
+    
+    <a class="next" href="http://dmdgeeker.com/post/flamegraph/" title="火焰图性能分析">
+      Next
+    </a>
     
 
   

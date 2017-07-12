@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tool on X blog</title>
-    <link>http://dmdgeeker.com/tags/tool/</link>
-    <description>Recent content in Tool on X blog</description>
+    <title>Devops on X blog</title>
+    <link>http://dmdgeeker.com/topics/devops/</link>
+    <description>Recent content in Devops on X blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,7 +11,7 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Sun, 09 Jul 2017 20:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://dmdgeeker.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dmdgeeker.com/topics/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -36,32 +36,6 @@ sudo ps aux | grep XXX  通过perf工具进行采集（将下面命令中的PID�
 # 采集 On-CPU 性能数据 perf record -F 99 -p PID -g -- sleep 60  通过上面的命令，会在当前目录下生成一个名为perf.data的文件。
  处理采集来的数据（在perf.data所在目录下执行）：
 perf script &amp;gt; out.</description>
-    </item>
-    
-    <item>
-      <title>Markdown 语法</title>
-      <link>http://dmdgeeker.com/post/markdown-syntax/</link>
-      <pubDate>Sat, 24 Sep 2016 14:36:06 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/markdown-syntax/</guid>
-      <description>Markdown 在用于写简单文本非常方便。在这里将给出一些示例来示范Markdown所支持的标记语法。 这里并没有介绍所有Markdown文档，如果你需要完整版来进行深入了解，请查看Markdown这个网站。
- 强调 删除 代码 链接 图像 标题 段落 引用 列表 表格 代码高亮 水平分隔线  强调 Markdown 通过 * (星号) 和 _ (下划线) 来作为着重表示的标记。 如下所示：
-单个星号
-单个下划线
-两个星号
-两个下划线
-示例代码:
-*单个星号* _单个下划线_ **两个星号** __两个下划线__  你必须使用相同的标记来开关标记块。
-某些情况下，强调可以只是放置于词中间(如he*ll*o), 如Github等。但也有一些不会渲染出效果，如本博客所示。 但是如果在 * 和 _ 两边加上空格，那它会以普通文本形式进行渲染。 如果有需要, 你也可以在星号和下划线前加入反斜线进行转译。
-\*这段文本在普通星号之间\*  删除 删除标记使用的是~~:
-这是待删除的文本
-示例代码:
-~~这是待删除的文本~~  代码 使用`(反引号)来表示行内代码，与格式化代码块不同，行内代码表示其在一行中，如：
-使用printf()函数。
-示例代码:
-使用 `printf()` 函数。  如果你想在代码中使用反引号，可以使用多个反引号作为开闭标记。 这是一个普通的(`)反引号.
-示例代码：
-``这是一个普通的(`)反引号.``  链接 Markdown支持内联和引用链接，这两种方式的链接名都放在方括号([])中。</description>
     </item>
     
   </channel>

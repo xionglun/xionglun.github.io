@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>IPFS 上手试玩  &middot; X blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="IPFS 是一个面向全球的、点对点的分布式版本文件系统。" />
+
+<meta name="keywords" content="ipfs, p2p, ">
+
+
+<meta property="og:title" content="IPFS 上手试玩  &middot; X blog ">
+<meta property="og:site_name" content="X blog"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/ipfs-try/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="IPFS 是一个面向全球的、点对点的分布式版本文件系统。"/>
+<meta property="og:article:published_time" content="2017-07-14T20:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2017-07-14T20:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="ipfs">
+    
+<meta property="og:article:tag" content="p2p">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="IPFS 上手试玩" />
+<meta name="twitter:description" content="IPFS 是一个面向全球的、点对点的分布式版本文件系统。" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/ipfs-try/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "IPFS 上手试玩",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-07-14",
+    "description": "IPFS 是一个面向全球的、点对点的分布式版本文件系统。",
+    "wordCount": 102
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/ipfs-try/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.26" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>IPFS 上手试玩
+</h1>
+
+  <div class="metas">
+<time datetime="2017-07-14">14 Jul, 2017</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (102 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/tool">tool</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/ipfs">ipfs</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="关于ipfs">关于IPFS</h3>
+
+<p>IPFS 是一个很宏大的理念，而不简单地是一个应用或一个文件系统。
+它希望建立一个点对点的分布式文件系统，使用内容Hash地址代替原Web网络中的域名，来获取得相应的资源。</p>
+
+<p>IPFS 说明文档对IPFS的介绍如下：</p>
+
+<ul>
+<li>IPFS is a protocol</li>
+<li>IPFS is a filesystem</li>
+<li>IPFS is a web</li>
+<li>IPFS is modular</li>
+<li>IPFS uses crypto</li>
+<li>IPFS is p2p</li>
+<li>IPFS is a cdn</li>
+<li>IPFS has a name service</li>
+</ul>
+
+<p>当前IPFS虽经历了几年的开发，但仍处于很早期的阶段（go-ipfs/0.4.10 ipfs/0.1.0），所以未来可能会有比较大变化（也可能失败&hellip;）。</p>
+
+<h3 id="下载安装">下载安装</h3>
+
+<p>IPFS 可以从<a href="https://dist.ipfs.io/#go-ipfs">官网</a>下载，也可以从<a href="https://github.com/ipfs/go-ipfs">Github</a>下载源代码进行编译安装。</p>
+
+<p>如Linux进行安装IPFS的<strong>0.4.10</strong>版本，不同版本请自行修改下面的版本号</p>
+
+<pre><code>wget https://dist.ipfs.io/go-ipfs/v0.4.10/go-ipfs_v0.4.10_linux-amd64.tar.gz
+tar xzvf go-ipfs_v0.4.10_linux-amd64.tar.gz
+mv go-ipfs/ipfs /usr/local/bin/
+</code></pre>
+
+<h3 id="基本使用">基本使用</h3>
+
+<p>使用IPFS需要先进行初始化<code>ipfs init</code>，初始化目录一般为<code>~/.ipfs</code>目录，即当前用户HOME目录下的<code>.ipfs</code>目录。</p>
+
+<ul>
+<li><p>显示当前节点信息</p>
+
+<pre><code class="language-sh">ipfs id
+</code></pre>
+
+<p>如果守护进程启动后，会显示网络地址信息，否则只显示节点参数信息。</p></li>
+
+<li><p>添加文件(这里假设要添加文件<code>readme.txt</code>，其内容为<code>readme</code>)</p>
+
+<pre><code class="language-sh">ipfs add readme.txt
+#added Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof readme.txt
+</code></pre>
+
+<p>当执行添加文件后，会给出添加文件的唯一Hash值。这个Hash值很重要，后面获取文件时就是依赖于这个值。</p></li>
+
+<li><p>查看文件(根据Hash值)</p>
+
+<pre><code class="language-sh">ipfs cat /ipfs/Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof
+# readme
+</code></pre>
+
+<p>这里不仅仅是可以查看本地添加的文件内容，还可以查看其它IPFS使用者添加的文件（在联入IPFS网络后）。</p></li>
+
+<li><p>下载文件</p>
+
+<pre><code class="language-sh">ipfs get /ipfs/Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof
+# 下载文件到当前目录，文件名为Hash值
+</code></pre></li>
+
+<li><p>列出文件(注意，这里只能对文件夹或者shard使用，和普通shell命令有区别)</p>
+
+<pre><code class="language-sh">ipfs ls /ipfs/Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof
+</code></pre></li>
+
+<li><p>获取对象</p>
+
+<pre><code class="language-sh">ipfs object get Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof
+# 打印出文本内容
+</code></pre></li>
+</ul>
+
+<h3 id="守护进程">守护进程</h3>
+
+<p>运行<code>ipfs daemon</code>会运行起IPFS后台守护进程服务，这样可以与其它运行IPFS的节点连接，并将当前节点的数据发送到其它节点上。</p>
+
+<p>运行服务后，会有一个Web服务，可以使用浏览器访问<code>http://localhost:5001/webui</code>这个网址看到。
+这个网站会显示当前节点的基本信息，以及与当前节点连接的节点，简单的文件处理UI界面等。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+<li><a href="https://ipfs.io">IPFS</a></li>
+<li><a href="http://www.infoq.com/cn/articles/ipfs">IPFS：替代HTTP的分布式网络协议</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%98%9F%E9%99%85%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">Wikipedia 星际文件系统</a></li>
+<li><a href="https://steemit.com/ipfs/@dashuo/ipfs">关于 IPFS 星际文件系统</a></li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/flamegraph/" title="火焰图性能分析">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://dmdgeeker.com/post/minikube-usage/" title="K8S系列-Minikube使用简介">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  live with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

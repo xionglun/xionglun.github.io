@@ -57,7 +57,7 @@
     },
     "datePublished": "2016-11-08",
     "description": "Systemd是一系列Linux系统工具的集合，它可以用来启动守护进程，本文简单介绍一下如何使用systemd管理应用。",
-    "wordCount": 308
+    "wordCount": 310
   }
 </script>
 
@@ -68,7 +68,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.26" />
 
   
 <!--[if lt IE 9]>
@@ -183,7 +183,7 @@
 
   
   &middot; Read in about 2 min
-  &middot; (308 Words)
+  &middot; (310 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -208,7 +208,7 @@
 
 <h3 id="unit">Unit</h3>
 
-<p>Systemd以<code>Unit</code>作为基本管理单元，一般存放于<code>/usr/lib/systemd/system/</code>或<code>/lib/systemd/system</code>和<code>/etc/systemd/system/</code>目录(后者优先级更高)。</p>
+<p>Systemd以<code>Unit</code>作为基本管理单元，用户级的 <strong>SERVICE.service</strong> 文件一般可存放于<code>/etc/systemd/system/</code>目录。</p>
 
 <p>其支持类型有：SERVICE.service, SOCKET.socket, DEVICE.device, MOUNT.mount, AUTOMOUNT.automount, SWAP.swap, TARGET.target, PATH.path, TIMER.timer, SLICE.slice, SCOPE.scope</p>
 

@@ -9,10 +9,27 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Sun, 09 Jul 2017 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Aug 2017 22:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://dmdgeeker.com/topics/devops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8S系列-Minikube使用简介</title>
+      <link>http://dmdgeeker.com/post/minikube-usage/</link>
+      <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/minikube-usage/</guid>
+      <description>关于 Minikube Minikube 相当于一个运行在你开发电脑上的微型 Kubernetes， 它拥有大部份的标准 Kubernetes 特性，但是运行在你个人电脑上，而不是在一个几十几百台机器的集群中。
+Minikube 安装流程 Minikube 在个人电脑上运行时，需要一个虚拟驱动层如 VirtualBox、xhyve、VMWARE、KVM、Hyper-V 等（只需要一种即可）。 本人在 macOS 上，选用的是 VirtualBox 虚拟机。
+ 安装 VirtualBox 虚拟机 安装 Minikube
+brew cask install minikube  安装 Kubectl
+brew install kubernetes-cli   配置与启动 Minikube 由于 Kubernetes 是 Google 公司员工开源维护的，所以其所依赖的一些镜像位于 Google 的公有仓库中。 由于一些众所周知的原因，在国内访问基本不可用，所以需要自备梯子（代理服务器）。
+如果你没有梯子以及类似东西的话，基本无法进一步使用下去，可以弃坑了。
+如果你使用了一个本地代理，其提供了HTTP代理服务，监听地址如：0.0.0.0:7087。你可以这样启动 Minikube :
+ 查看 VirtualBox 的网关IP地址
+ifconfig -a # 输出中会有一块包含着 VirtualBox 网关地址，如下所示 # # vboxnet2: flags=8943&amp;lt;UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST&amp;gt; mtu 1500 # ether 0a:00:27:00:00:02 # inet 192.</description>
+    </item>
     
     <item>
       <title>火焰图性能分析</title>
@@ -27,14 +44,12 @@
 在采集到数据后，需要对数据进行处理，以获得相应格式化的数据。 使用FlameGraph可以对这两种工具采集来的数据进行处理，生成可以渲染的数据。 同时，FlameGraph也可以将处理完成的数据生成SVG图片，以供仔细分析。
 Openresty应用作者在使用火焰图过程中，总结出了一套相应的性能采集工具集Openresty systemtap toolkit，来采集各种不同类型的性能数据。
 采集性能数据的类型有几种，主要是下面几种：
- On CPU 当CPU占用率比较高时使用 Off CPU 当CPU占用率并不高，性能瓶颈位于IO或者锁等地方时使用 Memory 当可能出现内存泄露时使用 Hot/Cold 试验性质，联合CPU的两种类型，相当于On CPU + Off CPU  使用Perf采集数据 perf是Linux系统下的一个性能采集工具，只能用于Linux系统。
+ On CPU 当CPU占用率比较高时使用 Off CPU 当CPU占用率并不高，性能瓶颈位于IO或者锁等地方时使用 Memory 当可能出现内存泄露时使用 Hot/Cold 试验性质，联合CPU的两种类型，相当于On CPU + Off CPU  使用Perf采集数据 perf是Linux系统下的一个性能采集工具，只能用于Linux系统。更详细的perf使用方法，请参考 perf Examples。
  安装perf工具
  Ubuntu 16.04
 sudo apt install -y linux-tools-`uname -r`  CentOS 7
-sudo yum install perf    安装完成后，就可以对相应的程序进行性能采集了。在进行采集时候，为了更显著地看到效果（特别是在测试时候，程序调用量很小，很难看出效果），可以对程序进行压力测试来配合性能采集。
- 获取目标程序的pid。通过ps即可查看到（将XXX替换为相应程序名称）：
-sudo ps aux | grep XXX  通过perf工具进行采集（将下面命令中的PID替换成真实的PID，各参数的含义请参考文档 ）：
-# 采集 On-CPU 性能数据 perf record -F 99 -p PID -g -- sleep 60  通过上面的命令，会在当前目录下生成一个名为perf.</description>
+sudo yum install perf    运行perf --help命令，如果出现类似下面的提示
+WARNING: perf not found for kernel 4.4.0-81 You may need to install the following packages for this specific kernel: linux-tools-4.</description>
     </item>
     
   </channel>

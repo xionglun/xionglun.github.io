@@ -57,7 +57,7 @@
     },
     "datePublished": "2017-01-01",
     "description": "MySQL基本使用",
-    "wordCount": 503
+    "wordCount": 572
   }
 </script>
 
@@ -68,7 +68,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.26" />
 
   
 <!--[if lt IE 9]>
@@ -183,7 +183,7 @@
 
   
   &middot; Read in about 3 min
-  &middot; (503 Words)
+  &middot; (572 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -249,8 +249,17 @@ mysql&gt; DROP USER 'username'@'host';             # 删除用户
 mysql&gt; ALTER DATABASE databasename CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 mysql&gt; ALTER TABLE tablename CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+# 索引操作
+mysql&gt; ALTER TABLE table_name ADD PRIMARY KEY (column_list);       # 添加主键
+mysql&gt; ALTER TABLE table_name ADD UNIQUE index_name (column_list); # 添加唯一索引
+mysql&gt; ALTER TABLE table_name ADD INDEX index_name (column_list);  # 添加普通索引
+mysql&gt; CREATE INDEX index_name ON table_name (column_list);        # 添加普通索引
+mysql&gt; ALTER TABLE table_name RENAME INDEX index_name TO new_name  # (MySQL 5.7+)更改索引名称
+mysql&gt; DROP INDEX index_name ON table_name;                        # 删除索引
+mysql&gt; SHOW INDEX FROM table_name;                                 # 显示所有索引
+
 # 重命名数据库
-mysql&gt; CREATE DATABASE newdb;  # 首先，新创建一个数据库
+mysql&gt; CREATE DATABASE new_db;  # 首先，新创建一个数据库
 mysql&gt; RENAME TABLE old_db.table TO new_db.table;  # 将旧数据库中表重命名到新库中
 mysql&gt; ; # 注意调整数据库中权限
 
@@ -413,6 +422,7 @@ mysqldump -uroot -p -B db1 db2 db3 &gt; db.sql
 <li><a href="http://mysql.taobao.org/monthly/2015/10/01/">MySQL InnoDB 全文索引</a></li>
 <li><a href="http://www.itdadao.com/articles/c15a643840p0.html">MySQL 5.7 InnoDB全文索引</a></li>
 <li><a href="http://stackoverflow.com/questions/67093/how-do-i-quickly-rename-a-mysql-database-change-schema-name">MySQL 数据库重命名数据库</a></li>
+<li><a href="http://coolshell.cn/articles/1846.html">MYSQL性能优化的最佳20+条经验</a></li>
 </ul>
 
 </div>

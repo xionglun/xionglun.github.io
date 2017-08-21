@@ -63,7 +63,7 @@
     },
     "datePublished": "2017-07-09",
     "description": "在开发程序过程中，我们会使用各种方式来测试程序性能。而火焰图类似于白盒分析工具，可以相对更详细地分析一个程序的某个地方出现了具体的某种性能问题。",
-    "wordCount": 189
+    "wordCount": 270
   }
 </script>
 
@@ -74,7 +74,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.26" />
 
   
 <!--[if lt IE 9]>
@@ -188,8 +188,8 @@
 
 
   
-  &middot; Read in about 1 min
-  &middot; (189 Words)
+  &middot; Read in about 2 min
+  &middot; (270 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -239,7 +239,7 @@
 
 <h3 id="使用-perf-采集数据">使用<code>Perf</code>采集数据</h3>
 
-<p><code>perf</code>是Linux系统下的一个性能采集工具，只能用于Linux系统。</p>
+<p><code>perf</code>是Linux系统下的一个性能采集工具，只能用于Linux系统。更详细的<code>perf</code>使用方法，请参考 <a href="http://www.brendangregg.com/perf.html">perf Examples</a>。</p>
 
 <ul>
 <li><p>安装<code>perf</code>工具</p>
@@ -257,7 +257,22 @@
 </ul></li>
 </ul>
 
-<p>安装完成后，就可以对相应的程序进行性能采集了。在进行采集时候，为了更显著地看到效果（特别是在测试时候，程序调用量很小，很难看出效果），可以对程序进行压力测试来配合性能采集。</p>
+<p>运行<code>perf --help</code>命令，如果出现类似下面的提示</p>
+
+<pre><code class="language-sh">WARNING: perf not found for kernel 4.4.0-81
+
+  You may need to install the following packages for this specific kernel:
+    linux-tools-4.4.0-81-generic
+    linux-cloud-tools-4.4.0-81-generic
+
+  You may also want to install one of the following packages to keep up to date:
+    linux-tools-generic
+    linux-cloud-tools-generic
+</code></pre>
+
+<p>按照相应提示，进行安装即可，如：<code>sudo apt install -y linux-tools-4.4.0-81-generic</code></p>
+
+<p>安装完成后，就可以对相应的程序进行性能采集了。在进行采集时候，为了更显著地看到效果（特别是在测试时候，程序调用量很小，很难看出效果），可以对程序进行<strong>压力测试</strong>来配合性能采集。</p>
 
 <ol>
 <li><p>获取目标程序的<code>pid</code>。通过<code>ps</code>即可查看到（将XXX替换为相应程序名称）：</p>
@@ -269,9 +284,12 @@
 
 <pre><code class="language-sh"># 采集 On-CPU 性能数据
 perf record -F 99 -p PID -g -- sleep 60
+
+# 采集 Memory 分配释放
+perf record -e kmem:* -p PID
 </code></pre>
 
-<p>通过上面的命令，会在当前目录下生成一个名为<code>perf.data</code>的文件。</p></li>
+<p>通过上面的<code>perf record</code>命令，会在当前目录下生成一个名为<code>perf.data</code>的文件。</p></li>
 
 <li><p>处理采集来的数据（在<code>perf.data</code>所在目录下执行）：</p>
 
@@ -330,7 +348,10 @@ yum install systemtap
 <ul>
 <li><p>转化<code>perf</code>采集来的数据</p>
 
-<pre><code class="language-sh">./stackcollapse-perf.pl out.perf &gt; out.folded
+<pre><code class="language-sh"># On-CPU 数据
+./stackcollapse-perf.pl out.perf &gt; out.folded
+# Off-CPU 数据
+./stackcollapse.pl out.perf &gt; out.folded
 </code></pre></li>
 
 <li><p>转化<code>systemtap</code>采集来的数据</p>
@@ -363,6 +384,8 @@ yum install systemtap
 <li><a href="http://lihaoquan.me/2017/1/1/Profiling-and-Optimizing-Go-using-go-torch.html">Go代码调优利器-火焰图</a></li>
 <li><a href="https://huoding.com/2016/08/18/531">白话火焰图</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/27147421">Node.js 性能调优之CPU篇</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-perf1/index.html">Perf - Linux下的系统性能调优工具 第 1 部分</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-perf2/index.html">Perf - Linux下的系统性能调优工具 第 2 部分</a></li>
 </ul>
 
 </div>
@@ -380,6 +403,10 @@ yum install systemtap
     </a>
     
 
+    
+    <a class="next" href="http://dmdgeeker.com/post/minikube-usage/" title="K8S系列-Minikube使用简介">
+      Next
+    </a>
     
 
   

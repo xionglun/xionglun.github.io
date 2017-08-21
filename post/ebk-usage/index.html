@@ -65,7 +65,7 @@
     },
     "datePublished": "2016-11-08",
     "description": "使用EBK可以进行日志、性能及流量的收集与实时分析。",
-    "wordCount": 241
+    "wordCount": 245
   }
 </script>
 
@@ -76,7 +76,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.26" />
 
   
 <!--[if lt IE 9]>
@@ -191,7 +191,7 @@
 
   
   &middot; Read in about 2 min
-  &middot; (241 Words)
+  &middot; (245 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -250,16 +250,16 @@ sudo apt-get update &amp;&amp; sudo apt-get install kibana
 </code></pre></li>
 
 <li><p>Beats<br />
-注意，这里使用的是<code>5.4.1</code>版本的beats，如果版本号有变，请自行替换。</p>
+注意，这里使用的是<code>5.5.1</code>版本的beats，如果版本号有变，请自行替换。</p>
 
 <ul>
 <li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html" title="Filebeat 安装">Filebeat</a>
-<pre><code>curl -L -O <a href="https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.4.1-amd64.deb">https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.4.1-amd64.deb</a>
-sudo dpkg -i filebeat-5.4.1-amd64.deb
+<pre><code>curl -L -O <a href="https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.1-amd64.deb">https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.1-amd64.deb</a>
+sudo dpkg -i filebeat-5.5.1-amd64.deb
 </code></pre></li>
 <li><a href="https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation.html" title="Metricbeat安装">Metricbeat</a>
-<pre><code>curl -L -O <a href="https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-5.4.1-amd64.deb">https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-5.4.1-amd64.deb</a>
-sudo dpkg -i metricbeat-5.4.1-amd64.deb</code></pre></li>
+<pre><code>curl -L -O <a href="https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-5.5.1-amd64.deb">https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-5.5.1-amd64.deb</a>
+sudo dpkg -i metricbeat-5.5.1-amd64.deb</code></pre></li>
 </ul></li>
 </ol>
 
@@ -292,7 +292,9 @@ server.host: &quot;192.168.10.2&quot;   # 将绑定host修改成本机IP地址�
 output.elasticsearch:
 # Array of hosts to connect to.
   hosts: [&quot;192.168.10.3:9200&quot;]    # 更改连接的ES主机端口
-</code></pre></li>
+</code></pre>
+
+<p>测试配置文件：<code>filebeat -c filebeat.yml -configtest</code></p></li>
 
 <li><p>Metricbeat</p>
 

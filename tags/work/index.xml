@@ -105,7 +105,7 @@ sudo apt-get install mysql-server sudo mysql_secure_installation # 生产环境�
       <author>xheavey@gmail.com (Allen Heavey)</author>
       <guid>http://dmdgeeker.com/post/systemd-usage/</guid>
       <description>关于systemd Systemd在新版Linux操作系统(Ubuntu 15.04+, RHEL 7+, Debian 8+)里基本都已成为内置软件
-systemctl --version # 查看systemd版本号  Unit Systemd以Unit作为基本管理单元，一般存放于/usr/lib/systemd/system/或/lib/systemd/system和/etc/systemd/system/目录(后者优先级更高)。
+systemctl --version # 查看systemd版本号  Unit Systemd以Unit作为基本管理单元，用户级的 SERVICE.service 文件一般可存放于/etc/systemd/system/目录。
 其支持类型有：SERVICE.service, SOCKET.socket, DEVICE.device, MOUNT.mount, AUTOMOUNT.automount, SWAP.swap, TARGET.target, PATH.path, TIMER.timer, SLICE.slice, SCOPE.scope
 systemctl list-unit-files # 查看所有已安装服务 systemctl list-units --type=service # 列出所有正在运行的、类型为 service 的 Unit  管理自定义的应用一般只需要用到SERVICE.service配置文件。
 服务配置文件  此处使用了一个简单的shell脚本，位于/usr/local/bin/hello 其内容为：

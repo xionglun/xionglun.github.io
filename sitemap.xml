@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://dmdgeeker.com/post/minikube-usage/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/post/flamegraph/</loc>
     <lastmod>2017-07-09T20:00:00+08:00</lastmod>
   </url>
@@ -112,19 +117,19 @@
   
   <url>
     <loc>http://dmdgeeker.com/tags/dev/</loc>
-    <lastmod>2017-07-09T20:00:00+08:00</lastmod>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dmdgeeker.com/topics/develop/</loc>
-    <lastmod>2017-06-30T20:00:00+08:00</lastmod>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dmdgeeker.com/topics/devops/</loc>
-    <lastmod>2017-07-09T20:00:00+08:00</lastmod>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -141,14 +146,32 @@
   </url>
   
   <url>
+    <loc>http://dmdgeeker.com/tags/kubernetes/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://dmdgeeker.com/topics/kubernetes/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/tags/learn/</loc>
     <lastmod>2017-05-10T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://dmdgeeker.com/tags/minikube/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://dmdgeeker.com/post/</loc>
-    <lastmod>2017-07-09T20:00:00+08:00</lastmod>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -189,7 +212,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/topics/</loc>
-    <lastmod>2017-06-30T20:00:00+08:00</lastmod>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -207,7 +230,7 @@
   
   <url>
     <loc>http://dmdgeeker.com/</loc>
-    <lastmod>2017-07-09T20:00:00+08:00</lastmod>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

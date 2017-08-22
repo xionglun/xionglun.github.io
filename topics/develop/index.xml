@@ -9,10 +9,24 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Sun, 20 Aug 2017 22:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Aug 2017 22:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://dmdgeeker.com/topics/develop/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CoreDNS 上手</title>
+      <link>http://dmdgeeker.com/post/coredns-try/</link>
+      <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/post/coredns-try/</guid>
+      <description>关于 CoreDNS CoreDNS 是一个从 Caddy 中Fork出来的项目（同时继承了它的链式中间件风格），作为CNCF项目中的一员，它的目标是提供一个快速且灵活的DNS服务。
+部署 CoreDNS 当前（2017/08/22）CoreDNS 还处于早期阶段，直接在Github上下载对应执行文件压缩包。
+Linux上下载安装（这里以 v010 版本为例）：
+wget https://github.com/coredns/coredns/releases/download/v010/coredns_010_linux_x86_64.tgz tar xzf coredns_010_linux_x86_64.tgz mv coredns /usr/local/bin  配置示例 参考 QuickStart 中的配置。
+配置文件Corefile示例如下：
+. { proxy . 223.5.5.5:53 { except example.org protocol dns } prometheus # enable metrics errors stdout # show errors log stdout # show query logs } example.org { file /etc/coredns/zones/example.org prometheus # enable metrics errors stdout # show errors log stdout # show query logs }  具体Corefile配置说明请参考文档</description>
+    </item>
     
     <item>
       <title>K8S系列-Minikube使用简介</title>

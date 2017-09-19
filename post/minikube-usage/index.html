@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>K8S系列-Minikube使用简介  &middot; X blog</title>
+  <title>K8S系列-Minikube使用简介  &middot; 随笔小记</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -17,8 +17,8 @@
 <meta name="keywords" content="charles, wireshark, ">
 
 
-<meta property="og:title" content="K8S系列-Minikube使用简介  &middot; X blog ">
-<meta property="og:site_name" content="X blog"/>
+<meta property="og:title" content="K8S系列-Minikube使用简介  &middot; 随笔小记 ">
+<meta property="og:site_name" content="随笔小记"/>
 <meta property="og:url" content="http://dmdgeeker.com/post/minikube-usage/" />
 <meta property="og:locale" content="zh-CN">
 
@@ -57,7 +57,7 @@
     },
     "datePublished": "2017-08-20",
     "description": "Minikube 是 Kubernetes 社区为了方便开发者在本地开发而提供的一个微型Kubernetes，保障开发与线上运行环境一致。",
-    "wordCount": 158
+    "wordCount": 208
   }
 </script>
 
@@ -68,7 +68,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
 <link href="http://dmdgeeker.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.26" />
+<meta name="generator" content="Hugo 0.27.1" />
 
   
 <!--[if lt IE 9]>
@@ -101,7 +101,7 @@
   <div class="container brand">
   <div class="container title h1-like">
   <a class="baselink" href="http://dmdgeeker.com/">
-  X blog
+  X Blog
 
 </a>
 
@@ -138,9 +138,6 @@
   <span class="fa fa-envelope-square"></span><span>email</span></a>
 
 
-
-<a id="contact-link-github" class="contact_link" href="https://github.com/xionglun">
-  <span class="fa fa-github-square"></span><span>github</span></a>
 
 
 
@@ -183,7 +180,7 @@
 
   
   &middot; Read in about 1 min
-  &middot; (158 Words)
+  &middot; (208 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -216,7 +213,10 @@
 
 <li><p>安装 Minikube</p>
 
-<pre><code>brew cask install minikube
+<pre><code class="language-sh">brew cask install minikube
+
+# 或者直接下载安装 (Mac)
+# curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.22.2/minikube-darwin-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
 </code></pre></li>
 
 <li><p>安装 Kubectl</p>
@@ -249,10 +249,11 @@
 
 <li><p>启动 Minikube (使用代理<a href="https://github.com/kubernetes/minikube/blob/master/docs/http_proxy.md">文档</a>)</p>
 
-<pre><code>minikube start --docker-env HTTP_PROXY=http://192.168.99.1:7087 --docker-env HTTPS_PROXY=https://192.168.99.1:7087 --docker-env NO_PROXY=192.168.99.0/24,hub.yourdomain.com
+<pre><code>minikube start --docker-env HTTP_PROXY=http://192.168.99.1:7087 --docker-env HTTPS_PROXY=http://192.168.99.1:7087 --docker-env NO_PROXY=192.168.99.0/24,hub.yourdomain.com
 </code></pre>
 
-<p>这里还添加了一项<code>NO_PROXY</code>是因为 VirtualBox 网络中及你的Docker镜像仓库一般不需要代理。其它不需要代理的地址也可以添加在后面。</p></li>
+<p>这里还添加了一项<code>NO_PROXY</code>是因为 VirtualBox 网络中及你的Docker镜像仓库一般不需要代理。其它不需要代理的地址也可以添加在后面。<br />
+这里代理是本地代理，如果你使用的是一个独立的代理服务（如：10.25.117.45:8080），则将代理中IP与端口替换即可。</p></li>
 
 <li><p>查看运行状态<br />
 如果一切顺利，应该就可以运行成功了。</p>
@@ -269,6 +270,13 @@ minikube docker-env       # 查看 Minikube 的 Docker 相关信息
 这里列出一些简单的操作，具体详细的使用，请参看官网。</p>
 
 <ul>
+<li><p>配置Minikube的Docker环境变量</p>
+
+<p>如果不进行配置的话，直接使用<code>docker</code>命令无法访问到 Minikube 的Docker镜像等。配置方法如下：</p>
+
+<pre><code>eval $(minikube docker-env)
+</code></pre></li>
+
 <li><p>查看节点数</p>
 
 <pre><code>kubectl get nodes       # 显示本地节点
@@ -280,7 +288,23 @@ minikube docker-env       # 查看 Minikube 的 Docker 相关信息
 
 kubectl get all -o wide       # 展示更多的信息，包括镜像地址等
 </code></pre></li>
+
+<li><p>运行Nginx</p>
+
+<pre><code class="language-sh"># 运行一个nginx的pod，然后
+# 导出运行的nginx服务
+
+kubectl run hello --image=nginx --port=80
+kubectl expose deployment hello --type=NodePort
+</code></pre></li>
 </ul>
+
+<h3 id="升级">升级</h3>
+
+<p>如果在使用了一段时间后，想将电脑上的 minikube 进行升级，需要特别注意；<br />
+当前(2017-09-20)升级minikube并不是很方便，参考<a href="https://github.com/kubernetes/minikube/issues/1634#issuecomment-310421286">Issue 1634</a>以及<a href="https://github.com/kubernetes/minikube/issues/1171">Issue 1171</a>。</p>
+
+<p>如果你确实想升级，需要将原有minikube实例删除后，再安装新版本。</p>
 
 <h3 id="其它">其它</h3>
 
@@ -301,6 +325,7 @@ kubectl get all -o wide       # 展示更多的信息，包括镜像地址等
 <ol>
 <li><a href="https://github.com/kubernetes/minikube/tree/master/docs">Minikube 官方文档</a></li>
 <li><a href="http://blog.devtang.com/2015/11/14/charles-introduction/">使用 minikube 搭建本地 kubernetes 开发集群</a></li>
+<li><a href="https://medium.com/@Oskarr3/setting-up-ingress-on-minikube-6ae825e98f82">Minikube 使用Ingress</a></li>
 </ol>
 
 </div>

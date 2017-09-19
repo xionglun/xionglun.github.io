@@ -161,13 +161,13 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/golang/</loc>
+    <loc>http://dmdgeeker.com/topics/golang/</loc>
     <lastmod>2017-05-28T11:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/golang/</loc>
+    <loc>http://dmdgeeker.com/tags/golang/</loc>
     <lastmod>2017-05-28T11:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -179,13 +179,13 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/kubernetes/</loc>
+    <loc>http://dmdgeeker.com/topics/kubernetes/</loc>
     <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/kubernetes/</loc>
+    <loc>http://dmdgeeker.com/tags/kubernetes/</loc>
     <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -221,20 +221,14 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/tidb/</loc>
-    <lastmod>2016-07-28T10:20:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://dmdgeeker.com/topics/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/tool/</loc>
-    <lastmod>2017-07-14T20:00:00+08:00</lastmod>
+    <loc>http://dmdgeeker.com/tags/tidb/</loc>
+    <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -245,7 +239,8 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/topics/topic-1/</loc>
+    <loc>http://dmdgeeker.com/tags/tool/</loc>
+    <lastmod>2017-07-14T20:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -256,25 +251,25 @@
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/tags/work/</loc>
-    <lastmod>2017-06-30T20:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://dmdgeeker.com/topics/work/</loc>
     <lastmod>2016-08-24T00:37:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dmdgeeker.com/</loc>
-    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
+    <loc>http://dmdgeeker.com/tags/work/</loc>
+    <lastmod>2017-06-30T20:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dmdgeeker.com/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://dmdgeeker.com/</loc>
+    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

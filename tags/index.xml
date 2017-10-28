@@ -53,9 +53,18 @@
     <item>
       <title>Dev</title>
       <link>http://dmdgeeker.com/tags/dev/</link>
-      <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
+      <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
       <guid>http://dmdgeeker.com/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops</title>
+      <link>http://dmdgeeker.com/tags/devops/</link>
+      <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://dmdgeeker.com/tags/devops/</guid>
       <description></description>
     </item>
     

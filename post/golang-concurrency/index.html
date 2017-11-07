@@ -61,7 +61,7 @@
     },
     "datePublished": "2017-11-06",
     "description": "Go 语言是一门很适合并发编程的语言。它从语言层面就支持高并发，同时是提供了强大的工具来支持并发编程调试。",
-    "wordCount": 1092
+    "wordCount": 1109
   }
 </script>
 
@@ -184,7 +184,7 @@
 
   
   &middot; Read in about 6 min
-  &middot; (1092 Words)
+  &middot; (1109 Words)
   <br>
   
 <a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
@@ -285,13 +285,7 @@ sys	0m0.037s
 
 <p>首先，使用Go标准库中<code>pprof</code>来对代码运行过程进行分析：</p>
 
-<pre><code class="language-go">import (
-
-	&quot;runtime/pprof&quot;
-
-)
-
-func main() {
+<pre><code class="language-go">func main() {
 	pprof.StartCPUProfile(os.Stdout)
 	defer pprof.StopCPUProfile()
 
@@ -299,6 +293,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// 使用WriteHeapProfile可以统计内存使用量
+	//pprof.WriteHeapProfile(os.Stdout)
 }
 </code></pre>
 
@@ -364,6 +360,10 @@ ROUTINE ======================== main.create in /Users/allen/playground/golang/s
 
 <p>这里通过<code>top -cum</code>以及<code>list main.main</code>和<code>list main.create</code>可以看到，主要时间都是用于<code>m.Set</code>这个方法。
 主要原因是因为双重循环即<code>O(n^2)</code>级别时间都是调用了这个方法。</p>
+
+<blockquote>
+<p>通过pprof统计内存使用可知，当前使用了 4MB 的内存空间</p>
+</blockquote>
 
 <h3 id="使用trace来查看执行过程">使用trace来查看执行过程</h3>
 
@@ -437,6 +437,10 @@ sys	0m2.314s
 
 <p>由上图可知，虽然我们创建了大量的<code>Goroutine</code>。但由于CPU物理限制，每时刻能运行的goroutine是有限的，大量的goroutine处于等待状态。而大量的goroutine对于Go运行时调度压力很大，而且GC压力也很大，大量时间花费于调度上。</p>
 
+<blockquote>
+<p>通过pprof统计内存使用可知，当前使用了 400.65MB 的内存空间</p>
+</blockquote>
+
 <h4 id="使用race来查看并发竞争">使用race来查看并发竞争</h4>
 
 <p>在生成二进制执行文件时，可以使用<code>-race</code>选项来查看程序运行时竞争情况：</p>
@@ -489,6 +493,10 @@ sys	0m0.029s
 <img src="/images/mandelbrot-trace-4.png" alt="Trace" /></p>
 
 <p>从上图可以看到，goroutine数量渐进降低。放大图可以看到，每个处理器都很连续地执行，没有了原来的调度压力。</p>
+
+<blockquote>
+<p>通过pprof统计内存使用可知，当前使用了 4MB 的内存空间</p>
+</blockquote>
 
 <h3 id="改造代码-三">改造代码（三）</h3>
 
@@ -546,6 +554,10 @@ sys	0m2.011s
 <p>由上图可知，大量时间用于<code>chansend</code>和<code>chanrecv</code>，即用于发送和接收channel数据。
 为什么会造成这样的情况呢？是由于上面代码中使用了阻塞channel（即channel中只能容纳一条数据）。</p>
 
+<blockquote>
+<p>通过pprof统计内存使用可知，当前使用了 4MB 的内存空间</p>
+</blockquote>
+
 <h3 id="改造代码-四">改造代码（四）</h3>
 
 <p>将上面的channel改造成为非阻塞channel来进行优化：</p>
@@ -592,6 +604,10 @@ sys	0m0.680s
 </code></pre>
 
 <p>接近于每列一个goroutine形式的性能。</p>
+
+<blockquote>
+<p>通过pprof统计内存使用可知，当前使用了 68.01MB 的内存空间</p>
+</blockquote>
 
 <h3 id="改造代码-五">改造代码（五）</h3>
 
@@ -646,6 +662,10 @@ sys	0m0.037s
 </code></pre>
 
 <p>可以看到优化后会有一点改进，但是效果不明显。</p>
+
+<blockquote>
+<p>通过pprof统计内存使用可知，当前使用了 4MB 的内存空间</p>
+</blockquote>
 
 <h3 id="总结">总结</h3>
 

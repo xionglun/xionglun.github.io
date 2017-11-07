@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Go 并发与调试  &middot; 随笔小记</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Go 语言是一门很适合并发编程的语言。它从语言层面就支持高并发，同时是提供了强大的工具来支持并发编程调试。" />
+
+<meta name="keywords" content="golang, concurrency, trace, pprof, ">
+
+
+<meta property="og:title" content="Go 并发与调试  &middot; 随笔小记 ">
+<meta property="og:site_name" content="随笔小记"/>
+<meta property="og:url" content="http://dmdgeeker.com/post/golang-concurrency/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Go 语言是一门很适合并发编程的语言。它从语言层面就支持高并发，同时是提供了强大的工具来支持并发编程调试。"/>
+<meta property="og:article:published_time" content="2017-11-06T20:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2017-11-06T20:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="golang">
+    
+<meta property="og:article:tag" content="concurrency">
+    
+<meta property="og:article:tag" content="trace">
+    
+<meta property="og:article:tag" content="pprof">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Go 并发与调试" />
+<meta name="twitter:description" content="Go 语言是一门很适合并发编程的语言。它从语言层面就支持高并发，同时是提供了强大的工具来支持并发编程调试。" />
+<meta name="twitter:url" content="http://dmdgeeker.com/post/golang-concurrency/" />
+<meta name="twitter:domain" content="http://dmdgeeker.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Go 并发与调试",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-11-06",
+    "description": "Go 语言是一门很适合并发编程的语言。它从语言层面就支持高并发，同时是提供了强大的工具来支持并发编程调试。",
+    "wordCount": 1092
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://dmdgeeker.com/post/golang-concurrency/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dmdgeeker.com/touch-icon-144-precomposed.png">
+<link href="http://dmdgeeker.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://dmdgeeker.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/style.css">
+<link rel="stylesheet" href="http://dmdgeeker.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://dmdgeeker.com/">
+  X Blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://dmdgeeker.com/">主页</a>
+
+
+  
+<a href="http://dmdgeeker.com/post" title="所有文章">文章</a>
+
+<a href="http://dmdgeeker.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Go 并发与调试
+</h1>
+
+  <div class="metas">
+<time datetime="2017-11-06">6 Nov, 2017</time>
+
+
+  
+  &middot; Read in about 6 min
+  &middot; (1092 Words)
+  <br>
+  
+<a class="label" href="http://dmdgeeker.com/tags/dev">dev</a>
+
+<a class="label" href="http://dmdgeeker.com/tags/golang">golang</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<blockquote>
+<p>本文是对<a href="https://medium.com/@francesc/using-the-go-execution-tracer-to-speed-up-fractal-rendering-c06bb3760507">Using the Go execution tracer to speed up fractal rendering</a>这篇文章的翻译和整理。<br />
+作者源代码参见：<a href="https://github.com/campoy/justforfunc/blob/master/22-perf/main.go">Github</a></p>
+</blockquote>
+
+<h3 id="前言">前言</h3>
+
+<p>本文中使用Go语言的版本为：<strong>1.9.2</strong></p>
+
+<p>本文使用代码来生成一张如下所示的图片：</p>
+
+<p><img src="/images/mandelbrot.png" alt="图片" /></p>
+
+<h3 id="初始代码">初始代码</h3>
+
+<p>代码通过算法渲染图片上每一像素生成一张 2048x2048 大小的图片，代码如下：</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;image&quot;
+	&quot;image/color&quot;
+	&quot;image/png&quot;
+	&quot;os&quot;
+)
+
+const (
+	output = &quot;output.png&quot;
+	width  = 2048
+	height = 2048
+)
+
+func norm(x, total int, min, max float64) float64 {
+	return (max-min)*float64(x)/float64(total) - max
+}
+
+func pixel(i, j, width, height int) color.Color {
+	// Play with this constant to increase the complexity of the fractal.
+	// In the justforfunc.com video this was set to 4.
+	const complexity = 1024
+	xi := norm(i, width, -1.0, 2)
+	yi := norm(j, height, -1, 1)
+	const maxI = 1000
+	x, y := 0., 0.
+	for i := 0; (x*x+y*y &lt; complexity) &amp;&amp; i &lt; maxI; i++ {
+		x, y = x*x-y*y+xi, 2*x*y+yi
+	}
+	return color.Gray{uint8(x)}
+}
+
+func create(width, height int) image.Image {
+	m := image.NewGray(image.Rect(0, 0, width, height))
+	for i := 0; i &lt; width; i++ {
+		for j := 0; j &lt; height; j++ {
+			m.Set(i, j, pixel(i, j, width, height))
+		}
+	}
+	return m
+}
+
+func main() {
+	f, err := os.Create(output)
+	if err != nil {
+		panic(err)
+	}
+	img := create(width, height)
+	if err = png.Encode(f, img); err != nil {
+		panic(err)
+	}
+}
+</code></pre>
+
+<p>在未进行任何优化情况下，这里通过<code>create</code>函数中双重循环来对每一像素进行计算它的颜色。</p>
+
+<p>在本人电脑(Macbook Pro 2013)上运行时间为：</p>
+
+<pre><code>real	0m5.637s
+user	0m5.575s
+sys	0m0.037s
+</code></pre>
+
+<h3 id="使用pprof进行分析">使用pprof进行分析</h3>
+
+<p>首先，使用Go标准库中<code>pprof</code>来对代码运行过程进行分析：</p>
+
+<pre><code class="language-go">import (
+
+	&quot;runtime/pprof&quot;
+
+)
+
+func main() {
+	pprof.StartCPUProfile(os.Stdout)
+	defer pprof.StopCPUProfile()
+
+	f, err := os.Create(output)
+	if err != nil {
+		panic(err)
+	}
+}
+</code></pre>
+
+<p>首先，需要先引入<code>runtime/pprof</code>这个包，然后在<code>main</code>函数中引入两行即可。这里为了方便，直接将profile数据写入了标准输出中。<br />
+使用时候可以<code>go run main.go &gt; cpu.prof</code>来定向写入到<code>cpu.prof</code>文件中。</p>
+
+<p>再使用<code>go tool pprof</code>命令来对<code>cpu.prof</code>文件进行分析：</p>
+
+<pre><code>go tool pprof cpu.prof
+</code></pre>
+
+<p>这样就进入pprof交互式分析:</p>
+
+<pre><code>Type: cpu
+Time: Nov 6, 2017 at 20:20pm (CST)
+Duration: 5.83s, Total samples = 4.98s (85.39%)
+Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)
+(pprof) top -cum
+Showing nodes accounting for 4.25s, 85.34% of 4.98s total
+Dropped 28 nodes (cum &lt;= 0.02s)
+Showing top 10 nodes out of 46
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      4.80s 96.39%  main.main /Users/allen/playground/golang/src/mandelbrot/main.go
+         0     0%     0%      4.80s 96.39%  runtime.main /usr/local/opt/go/libexec/src/runtime/proc.go
+         0     0%     0%      4.37s 87.75%  main.create /Users/allen/playground/golang/src/mandelbrot/main.go
+     3.23s 64.86% 64.86%      4.36s 87.55%  main.pixel /Users/allen/playground/golang/src/mandelbrot/main.go
+     0.01s   0.2% 65.06%      1.12s 22.49%  runtime.convT2Inoptr /usr/local/opt/go/libexec/src/runtime/iface.go
+     1.01s 20.28% 85.34%      1.11s 22.29%  runtime.mallocgc /usr/local/opt/go/libexec/src/runtime/malloc.go
+         0     0% 85.34%      0.43s  8.63%  image/png.(*Encoder).Encode /usr/local/opt/go/libexec/src/image/png/writer.go
+         0     0% 85.34%      0.43s  8.63%  image/png.(*encoder).writeIDATs /usr/local/opt/go/libexec/src/image/png/writer.go
+         0     0% 85.34%      0.43s  8.63%  image/png.(*encoder).writeImage /usr/local/opt/go/libexec/src/image/png/writer.go
+         0     0% 85.34%      0.43s  8.63%  image/png.Encode /usr/local/opt/go/libexec/src/image/png/writer.go
+(pprof) list main.main
+Total: 4.98s
+ROUTINE ======================== main.main in /Users/allen/playground/golang/src/mandelbrot/main.go
+         0      4.80s (flat, cum) 96.39% of Total
+         .          .     49:
+         .          .     50:	f, err := os.Create(output)
+         .          .     51:	if err != nil {
+         .          .     52:		panic(err)
+         .          .     53:	}
+         .      4.37s     54:	img := create(width, height)
+         .      430ms     55:	if err = png.Encode(f, img); err != nil {
+         .          .     56:		panic(err)
+         .          .     57:	}
+         .          .     58:}
+(pprof) list main.create
+Total: 4.98s
+ROUTINE ======================== main.create in /Users/allen/playground/golang/src/mandelbrot/main.go
+         0      4.37s (flat, cum) 87.75% of Total
+         .          .     34:
+         .          .     35:func create(width, height int) image.Image {
+         .          .     36:	m := image.NewGray(image.Rect(0, 0, width, height))
+         .          .     37:	for i := 0; i &lt; width; i++ {
+         .          .     38:		for j := 0; j &lt; height; j++ {
+         .      4.37s     39:			m.Set(i, j, pixel(i, j, width, height))
+         .          .     40:		}
+         .          .     41:	}
+         .          .     42:	return m
+         .          .     43:}
+         .          .     44:
+</code></pre>
+
+<p>这里通过<code>top -cum</code>以及<code>list main.main</code>和<code>list main.create</code>可以看到，主要时间都是用于<code>m.Set</code>这个方法。
+主要原因是因为双重循环即<code>O(n^2)</code>级别时间都是调用了这个方法。</p>
+
+<h3 id="使用trace来查看执行过程">使用trace来查看执行过程</h3>
+
+<p>我们可以使用<code>runtime/trace</code>来查看程序运行过程。</p>
+
+<pre><code class="language-go">import (
+
+	&quot;runtime/trace&quot;
+
+)
+
+func main() {
+	trace.Start(os.Stdout)
+	defer trace.Stop()
+
+	f, err := os.Create(output)
+	if err != nil {
+		panic(err)
+	}
+}
+</code></pre>
+
+<p>将原来的<code>pprof</code>更改为<code>trace</code>即可。</p>
+
+<p>重新运行程序：<code>go run main.go &gt; run.trace</code>，这样会生成一个<code>run.trace</code>文件。<br />
+使用<code>go tool trace run.trace</code>即可运行一个查看运行过程的页面，它会自动在默认浏览器中打开。效果如下：
+<img src="/images/mandelbrot-trace.png" alt="Trace" /></p>
+
+<p>点击<code>View trace</code>即可看到运行追踪图：
+<img src="/images/mandelbrot-trace-1.png" alt="Trace" /></p>
+
+<p>通过上图，可以看到，只有一个处理核心处于工作状态，其它处理核心处于空闲状态。这样并没有利用多核心处理器的优势，
+也就是没有并行地执行程序。我们需要改造代码，使之能有效地利用多个核心来工作。</p>
+
+<h3 id="改造代码-一">改造代码（一）</h3>
+
+<p>这里我们首先利用Go语言特性<code>goroutine</code>来进行并发处理。这里我们来改造一下<code>create</code>函数，如下所示：</p>
+
+<pre><code class="language-go">func create(width, height int) image.Image {
+	m := image.NewGray(image.Rect(0, 0, width, height))
+	var wg sync.WaitGroup
+	wg.Add(width * height)
+	for i := 0; i &lt; width; i++ {
+		for j := 0; j &lt; height; j++ {
+			go func(i, j int) {
+				m.Set(i, j, pixel(i, j, width, height))
+				wg.Done()
+			}(i, j)
+		}
+	}
+	wg.Wait()
+	return m
+}
+</code></pre>
+
+<p>再次执行，得到运行时间（这里运行前需要先注释掉trace代码，因为它会影响运行时间）：</p>
+
+<pre><code>real	0m7.217s
+user	0m18.043s
+sys	0m2.314s
+</code></pre>
+
+<p>我们可以看到，执行时间甚至超过了不使用<code>Goroutine</code>的情况（当然，这里的时间在不同机器上会有不同，在某些核心数比较多的机器上会出现优于不使用<code>Goroutine</code>的情况）。</p>
+
+<p>同样，我们使用<code>go tool trace</code>再来看一下具体运行情况。如下所示：
+<img src="/images/mandelbrot-trace-2.png" alt="Trace" /></p>
+
+<p>可以看到，出现了大量<code>View trace</code>的行。这是因为追踪数据量过大，为了便于使用，将其分割成很多块。
+随便点击一行查看（载入数据可能需要一段时间&hellip;）：
+<img src="/images/mandelbrot-trace-3.png" alt="Trace" /></p>
+
+<p>由上图可知，虽然我们创建了大量的<code>Goroutine</code>。但由于CPU物理限制，每时刻能运行的goroutine是有限的，大量的goroutine处于等待状态。而大量的goroutine对于Go运行时调度压力很大，而且GC压力也很大，大量时间花费于调度上。</p>
+
+<h4 id="使用race来查看并发竞争">使用race来查看并发竞争</h4>
+
+<p>在生成二进制执行文件时，可以使用<code>-race</code>选项来查看程序运行时竞争情况：</p>
+
+<pre><code>$ go build -o brot -race
+
+$ time ./brot
+race: limit on 8192 simultaneously alive goroutines is exceeded, dying
+
+real	2m1.727s
+user	2m14.872s
+sys	0m41.609s
+</code></pre>
+
+<p>忽略掉上面的执行时间。可以看到，Go运行时最多支持8192个goroutine同时运行。而我们生成了四百多万（2048x2048）个goroutine。<br />
+同时，我们也可以使用<code>benchmark</code>来进行压测（具体细节请参考原文）。</p>
+
+<p>综上可知，即使我们可以很轻易地创建上百万的goroutine，但最好不要这么做，有时候效果反而会适得其反。</p>
+
+<h3 id="改造代码-二">改造代码（二）</h3>
+
+<p>由上可知，由于创建了大量的goroutine，所以反而得到不良的效果。这里我们可以尝试降低goroutine规模：</p>
+
+<pre><code class="language-go">func create(width, height int) image.Image {
+	m := image.NewGray(image.Rect(0, 0, width, height))
+	var wg sync.WaitGroup
+	wg.Add(width)
+	for i := 0; i &lt; width; i++ {
+		go func(i int) {
+			for j := 0; j &lt; height; j++ {
+				m.Set(i, j, pixel(i, j, width, height))
+			}
+			wg.Done()
+		}(i)
+	}
+	wg.Wait()
+	return m
+}
+</code></pre>
+
+<p>将原来每一像素一goroutine的方式改变为一列一个goroutine，减少goroutine数量到2048个。<br />
+可以得到运行时间为：</p>
+
+<pre><code>real	0m2.002s
+user	0m6.212s
+sys	0m0.029s
+</code></pre>
+
+<p>可以看到，程序运行时间从最初的5.6秒减少到了2秒。再次通过<code>go tool trace</code>来查看：
+<img src="/images/mandelbrot-trace-4.png" alt="Trace" /></p>
+
+<p>从上图可以看到，goroutine数量渐进降低。放大图可以看到，每个处理器都很连续地执行，没有了原来的调度压力。</p>
+
+<h3 id="改造代码-三">改造代码（三）</h3>
+
+<p>上面代码直接采用goroutine来进行并发执行。在Go语言项目中，有很多使用 worker 模式来进行多任务执行。
+即首先创建一定数量的worker，然后将任务分配给worker来执行。</p>
+
+<pre><code class="language-go">func create(width, height int) image.Image {
+	m := image.NewGray(image.Rect(0, 0, width, height))
+
+	// 将worker数量设置为处理器核心数量
+	numWorkers := 4
+
+	// 创建一个新的包含每一像素点的结构体
+	type px struct{ x, y int }
+
+	// 创建一个分发channel
+	c := make(chan px)
+
+	var wg sync.WaitGroup
+	wg.Add(numWorkers)
+	for i := 0; i &lt; numWorkers; i++ {
+		go func() {
+			for px := range c {
+				m.Set(px.x, px.y, pixel(px.x, px.y, width, height))
+			}
+			wg.Done()
+		}()
+	}
+
+	for i := 0; i &lt; width; i++ {
+		for j := 0; j &lt; height; j++ {
+			c &lt;- px{i, j}
+		}
+	}
+	close(c)
+	wg.Wait()
+	return m
+}
+</code></pre>
+
+<p>我们可以得到运行时间（<code>time go run main.go</code>）为：</p>
+
+<pre><code>real	0m4.766s
+user	0m9.420s
+sys	0m2.011s
+</code></pre>
+
+<p>虽然时间比最初的时间要短，但是要比按列的Goroutine方式要慢许多。
+同样，我们使用<code>go tool trace</code>来查看一下，可以看到与前面每像素一个goroutine类似的trace图。
+因为有大量的数据，所以被切分成了很多<code>View trace</code>行。</p>
+
+<p>这里先不去看<code>View trace</code>，首先看一下<code>Synchronization blocking profile</code>如下所示：
+<img src="/images/mandelbrot-trace-5.png" alt="Trace" /></p>
+
+<p>由上图可知，大量时间用于<code>chansend</code>和<code>chanrecv</code>，即用于发送和接收channel数据。
+为什么会造成这样的情况呢？是由于上面代码中使用了阻塞channel（即channel中只能容纳一条数据）。</p>
+
+<h3 id="改造代码-四">改造代码（四）</h3>
+
+<p>将上面的channel改造成为非阻塞channel来进行优化：</p>
+
+<pre><code class="language-go">func create(width, height int) image.Image {
+	m := image.NewGray(image.Rect(0, 0, width, height))
+
+	// 将worker数量设置为处理器核心数量
+	numWorkers := 4
+
+	// 创建一个新的包含每一像素点的结构体
+	type px struct{ x, y int }
+
+	// 创建一个非阻塞分发channel，最大容纳量为所有像素数
+	c := make(chan px, width*height)
+
+	var wg sync.WaitGroup
+	wg.Add(numWorkers)
+	for i := 0; i &lt; numWorkers; i++ {
+		go func() {
+			for px := range c {
+				m.Set(px.x, px.y, pixel(px.x, px.y, width, height))
+			}
+			wg.Done()
+		}()
+	}
+
+	for i := 0; i &lt; width; i++ {
+		for j := 0; j &lt; height; j++ {
+			c &lt;- px{i, j}
+		}
+	}
+	close(c)
+	wg.Wait()
+	return m
+}
+</code></pre>
+
+<p>得到程序运行时间：</p>
+
+<pre><code>real	0m2.964s
+user	0m7.619s
+sys	0m0.680s
+</code></pre>
+
+<p>接近于每列一个goroutine形式的性能。</p>
+
+<h3 id="改造代码-五">改造代码（五）</h3>
+
+<p>上面使用worker方式代码，我们向channel中写入了四百多万次。即使写入开销很低，因为次数多了，也是有一定影响的。
+这里我们可以按照前面goroutine优化方式，以每像素改为每列来进行优化：</p>
+
+<pre><code class="language-go">func create(width, height int) image.Image {
+	m := image.NewGray(image.Rect(0, 0, width, height))
+
+	// 将worker数量设置为处理器核心数量
+	numWorkers := 4
+
+	// 创建一个分发channel
+	c := make(chan int)
+
+	var wg sync.WaitGroup
+	wg.Add(numWorkers)
+	for i := 0; i &lt; numWorkers; i++ {
+		go func() {
+			for i := range c {
+				for j := 0; j &lt; height; j++ {
+					m.Set(i, j, pixel(i, j, width, height))
+				}
+			}
+			wg.Done()
+		}()
+	}
+
+	for i := 0; i &lt; width; i++ {
+		c &lt;- i
+	}
+	close(c)
+	wg.Wait()
+	return m
+}
+</code></pre>
+
+<p>得到程序运行时间：</p>
+
+<pre><code>real	0m2.095s
+user	0m6.186s
+sys	0m0.044s
+</code></pre>
+
+<p>可以看到，程序运行时间大致与每列一个goroutine方式相同。</p>
+
+<p>同样，我们可以使用非阻塞channel来进行优化，程序运行时间为：</p>
+
+<pre><code>real	0m2.018s
+user	0m6.214s
+sys	0m0.037s
+</code></pre>
+
+<p>可以看到优化后会有一点改进，但是效果不明显。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>综上可知，每列一个goroutine方式似乎是最优的。但是，根据不同情况可能会有不同的结果。
+因为虽然在Go语言中，创建一个goroutine的代价是很低的，但是始终还是有内存开销。
+所以有时候使用worker方式，可能是最优的。具体情况还是需要根据实际场景进行判断选择。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ol>
+<li><a href="https://medium.com/@francesc/using-the-go-execution-tracer-to-speed-up-fractal-rendering-c06bb3760507">Using the Go execution tracer to speed up fractal rendering</a></li>
+<li><a href="https://www.youtube.com/watch?v=ySy3sR1LFCQ">Youtube 视频</a></li>
+</ol>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://dmdgeeker.com/post/goreman/" title="Goreman 基本用法">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  本站文章除注明转载外，均为本站原创或编译。未经本人书面允许，不得擅自转载。
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://dmdgeeker.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on 随笔小记</title>
-    <link>http://dmdgeeker.com/topics/kubernetes/</link>
+    <link>http://yeeef.com/topics/kubernetes/</link>
     <description>Recent content in Kubernetes on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Sun, 20 Aug 2017 22:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://dmdgeeker.com/topics/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://yeeef.com/topics/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>K8S系列-Minikube使用简介</title>
-      <link>http://dmdgeeker.com/post/minikube-usage/</link>
+      <link>http://yeeef.com/post/minikube-usage/</link>
       <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/post/minikube-usage/</guid>
+      <guid>http://yeeef.com/post/minikube-usage/</guid>
       <description>关于 Minikube Minikube 相当于一个运行在你开发电脑上的微型 Kubernetes， 它拥有大部份的标准 Kubernetes 特性，但是运行在你个人电脑上，而不是在一个几十几百台机器的集群中。
 Minikube 安装流程 Minikube 在个人电脑上运行时，需要一个虚拟驱动层如 VirtualBox、xhyve、VMWARE、KVM、Hyper-V 等（只需要一种即可）。 本人在 macOS 上，选用的是 VirtualBox 虚拟机。
  安装 VirtualBox 虚拟机 安装 Minikube

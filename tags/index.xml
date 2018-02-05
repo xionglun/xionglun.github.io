@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 随笔小记</title>
-    <link>http://dmdgeeker.com/tags/</link>
+    <link>http://yeeef.com/tags/</link>
     <description>Recent content in Tags on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
@@ -11,141 +11,141 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Sun, 28 Aug 2016 14:36:06 +0800</lastBuildDate>
     
-	<atom:link href="http://dmdgeeker.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://yeeef.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Auth</title>
-      <link>http://dmdgeeker.com/tags/auth/</link>
+      <link>http://yeeef.com/tags/auth/</link>
       <pubDate>Sun, 28 Aug 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/auth/</guid>
+      <guid>http://yeeef.com/tags/auth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cncf</title>
-      <link>http://dmdgeeker.com/tags/cncf/</link>
+      <link>http://yeeef.com/tags/cncf/</link>
       <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/cncf/</guid>
+      <guid>http://yeeef.com/tags/cncf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Complaint</title>
-      <link>http://dmdgeeker.com/tags/complaint/</link>
+      <link>http://yeeef.com/tags/complaint/</link>
       <pubDate>Wed, 24 Aug 2016 00:34:11 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/complaint/</guid>
+      <guid>http://yeeef.com/tags/complaint/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Database</title>
-      <link>http://dmdgeeker.com/tags/database/</link>
+      <link>http://yeeef.com/tags/database/</link>
       <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/database/</guid>
+      <guid>http://yeeef.com/tags/database/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dev</title>
-      <link>http://dmdgeeker.com/tags/dev/</link>
+      <link>http://yeeef.com/tags/dev/</link>
       <pubDate>Mon, 06 Nov 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/dev/</guid>
+      <guid>http://yeeef.com/tags/dev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Devops</title>
-      <link>http://dmdgeeker.com/tags/devops/</link>
+      <link>http://yeeef.com/tags/devops/</link>
       <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/devops/</guid>
+      <guid>http://yeeef.com/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Digest</title>
-      <link>http://dmdgeeker.com/tags/digest/</link>
+      <link>http://yeeef.com/tags/digest/</link>
       <pubDate>Wed, 24 Aug 2016 00:37:55 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/digest/</guid>
+      <guid>http://yeeef.com/tags/digest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>http://dmdgeeker.com/tags/golang/</link>
+      <link>http://yeeef.com/tags/golang/</link>
       <pubDate>Mon, 06 Nov 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/golang/</guid>
+      <guid>http://yeeef.com/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ipfs</title>
-      <link>http://dmdgeeker.com/tags/ipfs/</link>
+      <link>http://yeeef.com/tags/ipfs/</link>
       <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/ipfs/</guid>
+      <guid>http://yeeef.com/tags/ipfs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>http://dmdgeeker.com/tags/kubernetes/</link>
+      <link>http://yeeef.com/tags/kubernetes/</link>
       <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/kubernetes/</guid>
+      <guid>http://yeeef.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Learn</title>
-      <link>http://dmdgeeker.com/tags/learn/</link>
+      <link>http://yeeef.com/tags/learn/</link>
       <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/learn/</guid>
+      <guid>http://yeeef.com/tags/learn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Minikube</title>
-      <link>http://dmdgeeker.com/tags/minikube/</link>
+      <link>http://yeeef.com/tags/minikube/</link>
       <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/minikube/</guid>
+      <guid>http://yeeef.com/tags/minikube/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tidb</title>
-      <link>http://dmdgeeker.com/tags/tidb/</link>
+      <link>http://yeeef.com/tags/tidb/</link>
       <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/tidb/</guid>
+      <guid>http://yeeef.com/tags/tidb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tool</title>
-      <link>http://dmdgeeker.com/tags/tool/</link>
+      <link>http://yeeef.com/tags/tool/</link>
       <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/tool/</guid>
+      <guid>http://yeeef.com/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Work</title>
-      <link>http://dmdgeeker.com/tags/work/</link>
+      <link>http://yeeef.com/tags/work/</link>
       <pubDate>Fri, 30 Jun 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://dmdgeeker.com/tags/work/</guid>
+      <guid>http://yeeef.com/tags/work/</guid>
       <description></description>
     </item>
     

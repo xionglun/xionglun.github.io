@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on 随笔小记</title>
-    <link>http://yeeef.com/tags/golang/</link>
+    <link>http://blog.yeeef.com/tags/golang/</link>
     <description>Recent content in Golang on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Mon, 06 Nov 2017 20:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://yeeef.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yeeef.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go 并发与调试</title>
-      <link>http://yeeef.com/post/golang-concurrency/</link>
+      <link>http://blog.yeeef.com/post/golang-concurrency/</link>
       <pubDate>Mon, 06 Nov 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/golang-concurrency/</guid>
+      <guid>http://blog.yeeef.com/post/golang-concurrency/</guid>
       <description>本文是对Using the Go execution tracer to speed up fractal rendering这篇文章的翻译和整理。
 作者源代码参见：Github
  前言 本文中使用Go语言的版本为：1.9.2
@@ -30,10 +30,10 @@ package main import ( &amp;quot;image&amp;quot; &amp;quot;image/color&amp;quot; 
     
     <item>
       <title>Go 语言之信号量</title>
-      <link>http://yeeef.com/post/golang-signal/</link>
+      <link>http://blog.yeeef.com/post/golang-signal/</link>
       <pubDate>Sun, 28 May 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/golang-signal/</guid>
+      <guid>http://blog.yeeef.com/post/golang-signal/</guid>
       <description>Go 信号 Go 语言中的信号量主要是用于Unix/Linux系统，但是也部份兼容Windows。 在标准库中，主要涉及到os/signal和syscall这两个包。
 其中，os/signal包主要是提供信号操作函数，而syscall里定义了许多信号常量。
 简单示例 这里先看一段简短的代码：
@@ -44,10 +44,10 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;os&amp;quot; &amp;quot;o
     
     <item>
       <title>一次慢请求优化</title>
-      <link>http://yeeef.com/post/optimize-slow-request/</link>
+      <link>http://blog.yeeef.com/post/optimize-slow-request/</link>
       <pubDate>Sat, 01 Apr 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/optimize-slow-request/</guid>
+      <guid>http://blog.yeeef.com/post/optimize-slow-request/</guid>
       <description>前言 最近的项目中，有一个用户数据导入的需求，导入的数据量大致应该是几百条左右。 但是由于每条用户数据都包含有其它子数据，并需要对这些数据进行单一处理，所以 预期处理时间比较长。
 在完成接口之后，进行测试，大致在2秒左右可以完成300条左右数据导入，基本符合预期。
 由于最近项目上了opentracing这个性能监控工具，所以想找一找倒底是哪里出现处理时间过长的问题。

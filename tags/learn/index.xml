@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learn on 随笔小记</title>
-    <link>http://yeeef.com/tags/learn/</link>
+    <link>http://blog.yeeef.com/tags/learn/</link>
     <description>Recent content in Learn on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Tue, 22 Aug 2017 22:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://yeeef.com/tags/learn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yeeef.com/tags/learn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CoreDNS 上手</title>
-      <link>http://yeeef.com/post/coredns-try/</link>
+      <link>http://blog.yeeef.com/post/coredns-try/</link>
       <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/coredns-try/</guid>
+      <guid>http://blog.yeeef.com/post/coredns-try/</guid>
       <description>关于 CoreDNS CoreDNS 是一个从 Caddy 中Fork出来的项目（同时继承了它的链式中间件风格），作为CNCF项目中的一员，它的目标是提供一个快速且灵活的DNS服务。
 部署 CoreDNS 当前（2017/08/22）CoreDNS 还处于早期阶段，直接在Github上下载对应执行文件压缩包。
 Linux上下载安装（这里以 v010 版本为例）：
@@ -30,10 +30,10 @@ wget https://github.com/coredns/coredns/releases/download/v010/coredns_010_linux
     
     <item>
       <title>Spacemacs入门与基本用法</title>
-      <link>http://yeeef.com/post/spacemacs_usage/</link>
+      <link>http://blog.yeeef.com/post/spacemacs_usage/</link>
       <pubDate>Wed, 10 May 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/spacemacs_usage/</guid>
+      <guid>http://blog.yeeef.com/post/spacemacs_usage/</guid>
       <description>关于Spacemacs 总体来说，Spacemacs其实就是一个Emacs的壳，在原来Emacs上加入了许多插件及配置，所以对Spacemacs的配置也很像Emacs。但在文本编辑的时候，可以使用几乎完全VIM特性（个人暂时没发现有什么不兼容的地方）。
 安装Spacemacs Spacemacs的Github地址为：https://github.com/syl20bnr/spacemacs
 如果你的系统已装有Emacs，请先备份Emacs配置文件。因为Spacemacs的配置会覆盖掉原Emacs的配置文件。
@@ -53,10 +53,10 @@ SPC 空格键 C Ctrl M Meta (alt/option)  PS: 本文是基于VIM模式（即evil
     
     <item>
       <title>使用dot画流程图</title>
-      <link>http://yeeef.com/post/dot-graphviz/</link>
+      <link>http://blog.yeeef.com/post/dot-graphviz/</link>
       <pubDate>Sat, 18 Feb 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/dot-graphviz/</guid>
+      <guid>http://blog.yeeef.com/post/dot-graphviz/</guid>
       <description>关于dot dot是一门用文字表达图形的语言，而graphviz是一个将dot语言文本转化为图片(png, svg &amp;hellip;)的工具。
 这里先看一个dot语言示例：
 digraph example { a [label=&amp;quot;Hi, One&amp;quot; shape=box] b [label=&amp;quot;This two&amp;quot; shape=diamond] c [label=&amp;quot;And three&amp;quot; shape=oval] d [label=&amp;quot;Now, four&amp;quot; shape=triangle] a -&amp;gt; b [label=&amp;quot;a-&amp;gt;b&amp;quot; color=&amp;quot;red&amp;quot;]; b -&amp;gt; c [label=&amp;quot;b&amp;lt;-&amp;gt;c&amp;quot; color=&amp;quot;green&amp;quot; penwidth=2.5]; c -&amp;gt; d [label=&amp;quot;c-d&amp;quot;]; d -&amp;gt; a; }  其使用graphviz转化(dot -Tpng example.dot -o example.png)后结果如下图所示:

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dev on 随笔小记</title>
-    <link>http://yeeef.com/tags/dev/</link>
+    <link>http://blog.yeeef.com/tags/dev/</link>
     <description>Recent content in Dev on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Mon, 06 Nov 2017 20:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://yeeef.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yeeef.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go 并发与调试</title>
-      <link>http://yeeef.com/post/golang-concurrency/</link>
+      <link>http://blog.yeeef.com/post/golang-concurrency/</link>
       <pubDate>Mon, 06 Nov 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/golang-concurrency/</guid>
+      <guid>http://blog.yeeef.com/post/golang-concurrency/</guid>
       <description>本文是对Using the Go execution tracer to speed up fractal rendering这篇文章的翻译和整理。
 作者源代码参见：Github
  前言 本文中使用Go语言的版本为：1.9.2
@@ -30,10 +30,10 @@ package main import ( &amp;quot;image&amp;quot; &amp;quot;image/color&amp;quot; 
     
     <item>
       <title>Goreman 基本用法</title>
-      <link>http://yeeef.com/post/goreman/</link>
+      <link>http://blog.yeeef.com/post/goreman/</link>
       <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/goreman/</guid>
+      <guid>http://blog.yeeef.com/post/goreman/</guid>
       <description>Goreman Goreman 是一个Foreman的Go语言的克隆版本，一般在开发过程中的调试多个进程时使用。
 当前开发趋势中，微服务架构以及分布式架构很流行，很多应用依赖于其它应用或者集群化。这样在本地调试时，会有很多不方便的地方。而使用Goreman同时批量管理多个进程，可以方便开发。
 下载安装 可以通过go get来下载安装最二进制文件
@@ -44,10 +44,10 @@ go get github.com/mattn/goreman  也可以在releases页面下载相应平台的
     
     <item>
       <title>CoreDNS 上手</title>
-      <link>http://yeeef.com/post/coredns-try/</link>
+      <link>http://blog.yeeef.com/post/coredns-try/</link>
       <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/coredns-try/</guid>
+      <guid>http://blog.yeeef.com/post/coredns-try/</guid>
       <description>关于 CoreDNS CoreDNS 是一个从 Caddy 中Fork出来的项目（同时继承了它的链式中间件风格），作为CNCF项目中的一员，它的目标是提供一个快速且灵活的DNS服务。
 部署 CoreDNS 当前（2017/08/22）CoreDNS 还处于早期阶段，直接在Github上下载对应执行文件压缩包。
 Linux上下载安装（这里以 v010 版本为例）：
@@ -58,10 +58,10 @@ wget https://github.com/coredns/coredns/releases/download/v010/coredns_010_linux
     
     <item>
       <title>K8S系列-Minikube使用简介</title>
-      <link>http://yeeef.com/post/minikube-usage/</link>
+      <link>http://blog.yeeef.com/post/minikube-usage/</link>
       <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/minikube-usage/</guid>
+      <guid>http://blog.yeeef.com/post/minikube-usage/</guid>
       <description>关于 Minikube Minikube 相当于一个运行在你开发电脑上的微型 Kubernetes， 它拥有大部份的标准 Kubernetes 特性，但是运行在你个人电脑上，而不是在一个几十几百台机器的集群中。
 Minikube 安装流程 Minikube 在个人电脑上运行时，需要一个虚拟驱动层如 VirtualBox、xhyve、VMWARE、KVM、Hyper-V 等（只需要一种即可）。 本人在 macOS 上，选用的是 VirtualBox 虚拟机。
  安装 VirtualBox 虚拟机 安装 Minikube
@@ -74,10 +74,10 @@ brew install kubernetes-cli   配置与启动 Minikube 由于 Kubernetes 是 Goo
     
     <item>
       <title>火焰图性能分析</title>
-      <link>http://yeeef.com/post/flamegraph/</link>
+      <link>http://blog.yeeef.com/post/flamegraph/</link>
       <pubDate>Sun, 09 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/flamegraph/</guid>
+      <guid>http://blog.yeeef.com/post/flamegraph/</guid>
       <description>前言 应用程序性能一直是软件开发过程中一个很重要的话题，性能的好坏不仅会直接影响到所消耗的资源和投入的金钱， 而且会直接影响到用户的使用体验，从而间接影响一款产品的生命周期。
 在软件开发过程中，一般会使用多种手段来量化性能、追踪性能问题等。比如使用ab及wrk等工具来压测网络应用，使用Zipkin或Opentracing等跟踪性能问题，使用日志来定位性能问题，使用gdb等工具调试性能问题。
 而火焰图是一个可以让你直观了解性能问题的方式，最终一般会生成一张SVG格式的图片，你可以会方便地进行缩放以及进一步查看局部区域，如下所示。 关于火焰图 生成火焰图，需要经历采集、转化、渲染等多个步骤，不同步骤需要用到不同的工具。
@@ -95,10 +95,10 @@ WARNING: perf not found for kernel 4.4.0-81 You may need to install the followin
     
     <item>
       <title>Uber Jaeger安装与使用</title>
-      <link>http://yeeef.com/post/uber_jaeger/</link>
+      <link>http://blog.yeeef.com/post/uber_jaeger/</link>
       <pubDate>Fri, 30 Jun 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/uber_jaeger/</guid>
+      <guid>http://blog.yeeef.com/post/uber_jaeger/</guid>
       <description>关于Jaeger Jaeger是Uber推出的一款调用链追踪系统，类似于Zipkin和Dapper，为微服务调用追踪而生。 其主要用于多个服务调用过程追踪分析，图形化服务调用轨迹，便于快速准确定位问题。
 组件分析 Jaeger主要组件有：
  数据存储Cassandra 数据收集处理Collector 客户端代理Agent 数据查询Query 前端界面展示UI 客户端库jaeger-client-*  相互之间关系如下图所示: 数据存储 目前Jaeger收集到的数据都是持久化到Cassandra里面。
@@ -119,10 +119,10 @@ cmd/collector/collector-linux # Collector cmd/agent/agent-linux # Agent cmd/quer
     
     <item>
       <title>Go 语言之信号量</title>
-      <link>http://yeeef.com/post/golang-signal/</link>
+      <link>http://blog.yeeef.com/post/golang-signal/</link>
       <pubDate>Sun, 28 May 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/golang-signal/</guid>
+      <guid>http://blog.yeeef.com/post/golang-signal/</guid>
       <description>Go 信号 Go 语言中的信号量主要是用于Unix/Linux系统，但是也部份兼容Windows。 在标准库中，主要涉及到os/signal和syscall这两个包。
 其中，os/signal包主要是提供信号操作函数，而syscall里定义了许多信号常量。
 简单示例 这里先看一段简短的代码：
@@ -133,10 +133,10 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;os&amp;quot; &amp;quot;o
     
     <item>
       <title>Spacemacs入门与基本用法</title>
-      <link>http://yeeef.com/post/spacemacs_usage/</link>
+      <link>http://blog.yeeef.com/post/spacemacs_usage/</link>
       <pubDate>Wed, 10 May 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/spacemacs_usage/</guid>
+      <guid>http://blog.yeeef.com/post/spacemacs_usage/</guid>
       <description>关于Spacemacs 总体来说，Spacemacs其实就是一个Emacs的壳，在原来Emacs上加入了许多插件及配置，所以对Spacemacs的配置也很像Emacs。但在文本编辑的时候，可以使用几乎完全VIM特性（个人暂时没发现有什么不兼容的地方）。
 安装Spacemacs Spacemacs的Github地址为：https://github.com/syl20bnr/spacemacs
 如果你的系统已装有Emacs，请先备份Emacs配置文件。因为Spacemacs的配置会覆盖掉原Emacs的配置文件。
@@ -156,10 +156,10 @@ SPC 空格键 C Ctrl M Meta (alt/option)  PS: 本文是基于VIM模式（即evil
     
     <item>
       <title>一次慢请求优化</title>
-      <link>http://yeeef.com/post/optimize-slow-request/</link>
+      <link>http://blog.yeeef.com/post/optimize-slow-request/</link>
       <pubDate>Sat, 01 Apr 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/optimize-slow-request/</guid>
+      <guid>http://blog.yeeef.com/post/optimize-slow-request/</guid>
       <description>前言 最近的项目中，有一个用户数据导入的需求，导入的数据量大致应该是几百条左右。 但是由于每条用户数据都包含有其它子数据，并需要对这些数据进行单一处理，所以 预期处理时间比较长。
 在完成接口之后，进行测试，大致在2秒左右可以完成300条左右数据导入，基本符合预期。
 由于最近项目上了opentracing这个性能监控工具，所以想找一找倒底是哪里出现处理时间过长的问题。
@@ -182,10 +182,10 @@ BenchmarkEncryptPassword 500	3514588 ns/op  由上可知，每一次加密动作
     
     <item>
       <title>使用dot画流程图</title>
-      <link>http://yeeef.com/post/dot-graphviz/</link>
+      <link>http://blog.yeeef.com/post/dot-graphviz/</link>
       <pubDate>Sat, 18 Feb 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/dot-graphviz/</guid>
+      <guid>http://blog.yeeef.com/post/dot-graphviz/</guid>
       <description>关于dot dot是一门用文字表达图形的语言，而graphviz是一个将dot语言文本转化为图片(png, svg &amp;hellip;)的工具。
 这里先看一个dot语言示例：
 digraph example { a [label=&amp;quot;Hi, One&amp;quot; shape=box] b [label=&amp;quot;This two&amp;quot; shape=diamond] c [label=&amp;quot;And three&amp;quot; shape=oval] d [label=&amp;quot;Now, four&amp;quot; shape=triangle] a -&amp;gt; b [label=&amp;quot;a-&amp;gt;b&amp;quot; color=&amp;quot;red&amp;quot;]; b -&amp;gt; c [label=&amp;quot;b&amp;lt;-&amp;gt;c&amp;quot; color=&amp;quot;green&amp;quot; penwidth=2.5]; c -&amp;gt; d [label=&amp;quot;c-d&amp;quot;]; d -&amp;gt; a; }  其使用graphviz转化(dot -Tpng example.dot -o example.png)后结果如下图所示:
@@ -201,10 +201,10 @@ digraph example { }  这里声明，需要画一个digraph类型的图，其名�
     
     <item>
       <title>gRPC基本使用</title>
-      <link>http://yeeef.com/post/grpc-usage/</link>
+      <link>http://blog.yeeef.com/post/grpc-usage/</link>
       <pubDate>Thu, 16 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/grpc-usage/</guid>
+      <guid>http://blog.yeeef.com/post/grpc-usage/</guid>
       <description>通过RPC，客户端的应用程序可以方便地调用另外一台机器上的服务端程序，就像调用本地函数一样。
 安装gRPC 标准安装可参考gRPC Install
 这里摘录不同语言安装gRPC时的操作
@@ -217,10 +217,10 @@ syntax = &amp;quot;proto3&amp;quot;; option java_multiple_files = true; option j
     
     <item>
       <title>Linux定时器</title>
-      <link>http://yeeef.com/post/linux-cron/</link>
+      <link>http://blog.yeeef.com/post/linux-cron/</link>
       <pubDate>Wed, 15 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/linux-cron/</guid>
+      <guid>http://blog.yeeef.com/post/linux-cron/</guid>
       <description>在linux中，定时器一般是使用cron这个系统工具来实现的。 但是，在systemd中也可以使用Timer进行定时控制。
  Cron 在linux下，可以使用crontab -e来编辑修改定时任务(重点在最后一行)
 # Edit this file to introduce tasks to be run by cron. # # Each task to run has to be defined through a single line # indicating with different fields when the task will be run # and what command to run for the task # # To define the time you can provide concrete values for # minute (m), hour (h), day of month (dom), month (mon), # and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).</description>
@@ -228,20 +228,20 @@ syntax = &amp;quot;proto3&amp;quot;; option java_multiple_files = true; option j
     
     <item>
       <title>使用rsyslog集中管理日志</title>
-      <link>http://yeeef.com/post/rsyslog-collect-logs/</link>
+      <link>http://blog.yeeef.com/post/rsyslog-collect-logs/</link>
       <pubDate>Fri, 10 Feb 2017 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/rsyslog-collect-logs/</guid>
+      <guid>http://blog.yeeef.com/post/rsyslog-collect-logs/</guid>
       <description>关于syslog Syslog是linux上传统的日志管理工具，而rsyslog是其改进版。很多系统都已将syslog替换为rsyslog进行日志管理了。
 Syslog相关知识  Facility设施     代码 名称 描述     0 kern 内核   1 user 用户级   2 mail 邮件   3 daemon 系统   4 auth 安全与授权   5 syslog 守护进程   6 lpr 打印相关   7 news 网络消息   8 uucp uucp子系统   9  时钟   10 authpriv 安全与授权   11 ftp FTP   12 - NTP   13 - 日志审计   14 - 日志报警   15 cron 定时器   16 local0 用户自定义   17 local1 用户自定义   18 local2 用户自定义   19 local3 用户自定义   20 local4 用户自定义   21 local5 用户自定义   22 local6 用户自定义   23 local7 用户自定义     Level级别(重要性从高到低)     代码 级别 名称 描述     0 Emergency emerg 紧急   1 Alert alert 报警   2 Critical crit 关键   3 Error err 错误   4 Warning warn 警告   5 Notice notice 通知   6 Informational info 消息   7 Debug debug 调试    使用rsyslog记录日志 当前很多应用都已支持syslog进行日志记录</description>
     </item>
     
     <item>
       <title>tcpdump 基本使用方法</title>
-      <link>http://yeeef.com/post/tcpdump-basic-usage/</link>
+      <link>http://blog.yeeef.com/post/tcpdump-basic-usage/</link>
       <pubDate>Fri, 10 Feb 2017 10:00:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/tcpdump-basic-usage/</guid>
+      <guid>http://blog.yeeef.com/post/tcpdump-basic-usage/</guid>
       <description>基本使用  将捕获到的流量写入到某个文件
 # -s 0 表示将完整数据包抓取下来，默认只抓取68字节 # -c 1000 表示抓1000个包, 避免抓取过多的包 # -w 表示写入 tcpdump -s 0 -c 1000 -w filename # 将监听到的输出写入到filename这个文件中  根据网卡来过滤流量
 tcpdump -i eth1 # 监听eth1网卡的流量 tcpdump -i docker0 # 监听docker0网卡的流量  根据端口号来过滤
@@ -250,10 +250,10 @@ tcpdump tcp port 8080 # 监听本机8080端口TCP通讯 tcpdump udp port 567 # �
     
     <item>
       <title>MySQL 基本操作</title>
-      <link>http://yeeef.com/post/mysql-usage/</link>
+      <link>http://blog.yeeef.com/post/mysql-usage/</link>
       <pubDate>Sun, 01 Jan 2017 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/mysql-usage/</guid>
+      <guid>http://blog.yeeef.com/post/mysql-usage/</guid>
       <description>安装使用 安装 Ubuntu 16.04
 sudo apt-get install mysql-server sudo mysql_secure_installation # 生产环境必备，安装一些安全策略  访问mysql mysql -u root -p  其它参数：
  -u username 登陆数据库所使用的数据库用户 -p password 使用密码登陆，如果没指定，则会在下面提示输入 -D database 此次登陆默认使用的数据库  基本操作 mysql&amp;gt; SHOW DATABASES; # 显示所有数据库 mysql&amp;gt; USE DATABASE; # 选择某个数据库 mysql&amp;gt; SHOW TABLES; # 显示当前数据库的所有表 mysql&amp;gt; SHOW VARIABLES LIKE &#39;%char%&#39;; # 显示数据库所用字符集 mysql&amp;gt; SHOW FULL COLUMNS FROM database.table; # 显示某个表的字符集 mysql&amp;gt; DESC TABLENAME; # 查看某个表的结构 mysql&amp;gt; SHOW GRANTS; # 查看当前用户权限 mysql&amp;gt; SHOW GRANTS FOR &#39;username&#39;@&#39;host&#39;; # 查看某个用户的权限 mysql&amp;gt; CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;; # 创建用户 # host使用%为允许从任意地方登录，如果只允许用户本地登录，改成localhost即可 mysql&amp;gt; GRANT privileges ON databasename.</description>
@@ -261,10 +261,10 @@ sudo apt-get install mysql-server sudo mysql_secure_installation # 生产环境�
     
     <item>
       <title>使用Systemd管理应用</title>
-      <link>http://yeeef.com/post/systemd-usage/</link>
+      <link>http://blog.yeeef.com/post/systemd-usage/</link>
       <pubDate>Tue, 08 Nov 2016 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/systemd-usage/</guid>
+      <guid>http://blog.yeeef.com/post/systemd-usage/</guid>
       <description>关于systemd Systemd在新版Linux操作系统(Ubuntu 15.04+, RHEL 7+, Debian 8+)里基本都已成为内置软件
 systemctl --version # 查看systemd版本号  Unit Systemd以Unit作为基本管理单元，用户级的 SERVICE.service 文件一般可存放于/etc/systemd/system/目录。
 其支持类型有：SERVICE.service, SOCKET.socket, DEVICE.device, MOUNT.mount, AUTOMOUNT.automount, SWAP.swap, TARGET.target, PATH.path, TIMER.timer, SLICE.slice, SCOPE.scope
@@ -278,10 +278,10 @@ echo &amp;ldquo;This is hello program!&amp;rdquo;
     
     <item>
       <title>部署EBK进行日志收集与性能监控</title>
-      <link>http://yeeef.com/post/ebk-usage/</link>
+      <link>http://blog.yeeef.com/post/ebk-usage/</link>
       <pubDate>Tue, 08 Nov 2016 17:06:40 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/ebk-usage/</guid>
+      <guid>http://blog.yeeef.com/post/ebk-usage/</guid>
       <description>关于EBK EBK 指的是elastic公司开发的一系列软件的简称，其分别代表：Elasticsearch, Beats与Kibana这三种软件。
 其中:
  Elasticsearch 主要是用来存储数据，并根据索引进行检索数据。 Beats 其实是几个软件的组合(Filebeat, Metricbeat, Packetbeat, Winlogbeat)，是用于收集数据并输出到某一个地方。 Kibana 是用来展示数据的一个UI界面。  如何使用 关于EBK如何使用可以参考下图：
@@ -293,10 +293,10 @@ Elasticsearch安装需要先安装Java
     
     <item>
       <title>Gitlab安装</title>
-      <link>http://yeeef.com/post/install-gitlab/</link>
+      <link>http://blog.yeeef.com/post/install-gitlab/</link>
       <pubDate>Sat, 08 Oct 2016 12:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>http://yeeef.com/post/install-gitlab/</guid>
+      <guid>http://blog.yeeef.com/post/install-gitlab/</guid>
       <description>安装环境配置 环境配置参见Github
  Ubuntu/Debian/CentOS/RHEL Ruby (MRI) 2.3 Git 2.7.4+ Redis 2.8+ MySQL or PostgreSQL  安装步骤  安装相关依赖
 sudo apt-get install curl openssh-server ca-certificates  添加gitlab-ce到apt仓库中并安装

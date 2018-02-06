@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Docker Swarm试用  &middot; 随笔小记</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Docker Swarm是Docker公司推出的一个集群管理方案。" />
+
+<meta name="keywords" content="docker, swarm, container, ">
+
+
+<meta property="og:title" content="Docker Swarm试用  &middot; 随笔小记 ">
+<meta property="og:site_name" content="随笔小记"/>
+<meta property="og:url" content="http://blog.yeeef.com/post/docker-swarm-cluster/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Docker Swarm是Docker公司推出的一个集群管理方案。"/>
+<meta property="og:article:published_time" content="2017-02-18T22:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2017-02-18T22:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="docker">
+    
+<meta property="og:article:tag" content="swarm">
+    
+<meta property="og:article:tag" content="container">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Docker Swarm试用" />
+<meta name="twitter:description" content="Docker Swarm是Docker公司推出的一个集群管理方案。" />
+<meta name="twitter:url" content="http://blog.yeeef.com/post/docker-swarm-cluster/" />
+<meta name="twitter:domain" content="http://blog.yeeef.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Docker Swarm试用",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-02-18",
+    "description": "Docker Swarm是Docker公司推出的一个集群管理方案。",
+    "wordCount": 159
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://blog.yeeef.com/post/docker-swarm-cluster/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.yeeef.com/touch-icon-144-precomposed.png">
+<link href="http://blog.yeeef.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.35" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://blog.yeeef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://blog.yeeef.com/css/style.css">
+<link rel="stylesheet" href="http://blog.yeeef.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://blog.yeeef.com/">
+  X Blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://blog.yeeef.com/">主页</a>
+
+
+  
+<a href="http://blog.yeeef.com/post" title="所有文章">文章</a>
+
+<a href="http://blog.yeeef.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>DRAFT :: Docker Swarm试用
+</h1>
+
+  <div class="metas">
+<time datetime="2017-02-18">18 Feb, 2017</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (159 Words)
+  <br>
+  
+<a class="label" href="http://blog.yeeef.com/tags/dev">dev</a>
+
+<a class="label" href="http://blog.yeeef.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="关于docker-swarm">关于Docker Swarm</h3>
+
+<p>Docker Swarm(swarm mode)是 <strong>Docker .inc</strong> 于docker 1.12版本中集成的集群管理解决方案。</p>
+
+<h3 id="配置">配置</h3>
+
+<p>机器配置</p>
+
+<table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>IP地址</th>
+<th>主从类型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>master2</td>
+<td>192.168.8.2</td>
+<td>Master</td>
+</tr>
+
+<tr>
+<td>master3</td>
+<td>192.168.8.3</td>
+<td>Master</td>
+</tr>
+
+<tr>
+<td>master4</td>
+<td>192.168.8.4</td>
+<td>Master</td>
+</tr>
+
+<tr>
+<td>worker5</td>
+<td>192.168.8.5</td>
+<td>Worker</td>
+</tr>
+
+<tr>
+<td>worker6</td>
+<td>192.168.8.6</td>
+<td>Worker</td>
+</tr>
+
+<tr>
+<td>worker7</td>
+<td>192.168.8.7</td>
+<td>Worker</td>
+</tr>
+</tbody>
+</table>
+
+<p>版本：</p>
+
+<pre><code>OS:     Ubuntu 16.04 amd64
+Docker: docker v1.13.1
+</code></pre>
+
+<h3 id="配置swarm-cluster">配置Swarm Cluster</h3>
+
+<p>在master2主机上，初始化一个swarm集群</p>
+
+<pre><code class="language-sh">docker swarm init
+</code></pre>
+
+<h3 id="基本使用">基本使用</h3>
+
+<ol>
+<li><p>网络创建</p>
+
+<pre><code class="language-sh"># 创建一个可挂载的overlay类型网络inetw
+docker network create -d overlay --attachable inetw
+</code></pre></li>
+
+<li><p>新建服务</p>
+
+<pre><code class="language-sh"># 创建一个拥有三个实例的nginx服务，将其绑定在网络inetw下面，将其端口号80映射到主机80端口上
+docker service create --name tt --replicas 3 --network inetw -p 80:80 nginx
+</code></pre></li>
+
+<li><p>更新服务</p>
+
+<pre><code class="language-sh"># 更新名为tt的nginx服务，强制让其进行更新（即使容器的镜像未发生变化）
+docker service update --with-registry-auth --force --image nginx tt
+# --with-registry-auth 是因为docker 1.13的bug，参见：https://github.com/docker/docker/issues/30703
+</code></pre></li>
+</ol>
+
+<h3 id="配合compose使用">配合Compose使用</h3>
+
+<p>Docker Swarm mode并不能直接使用Docker Compose进行管理使用。
+但是，Docker在1.13版本中提出了一个<code>stack</code>的概念，提供类似Compose实现的功能。</p>
+
+<p>Docker stack配置文件示例：</p>
+
+<pre><code>version: '3'
+
+services:
+  api:
+    image: hub.private.com/dev/api
+    environment:
+      - DEBUG=true
+    ports:
+      - 8060:8090
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+  sso:
+    image: hub.private.com/dev/sso
+    ports:
+      - 8068:8080
+    depends_on:
+      - api
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+  console:
+    image: hub.private.com/dev/console
+    ports:
+      - 8061:3000
+    depends_on:
+      - api
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+  ldap:
+    image: hub.private.com/dev/ldap
+    ports:
+      - 8063:389
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+</code></pre>
+
+<h3 id="其它">其它</h3>
+
+<p>当前(2017.03)的Docker Swarm还存在着很多问题，特别是网络这一块，入坑需谨慎。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://blog.yeeef.com/post/charles-sniffer/" title="charles抓包流程">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://blog.yeeef.com/post/optimize-slow-request/" title="一次慢请求优化">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  本站文章除注明转载外，均为本站原创或编译。未经本人书面允许，不得擅自转载。
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://blog.yeeef.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

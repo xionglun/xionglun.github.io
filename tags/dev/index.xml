@@ -9,10 +9,25 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Mon, 06 Nov 2017 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Feb 2018 10:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://blog.yeeef.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Puppeteer 基本概念介绍</title>
+      <link>http://blog.yeeef.com/post/puppeteer-introduction/</link>
+      <pubDate>Tue, 06 Feb 2018 10:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://blog.yeeef.com/post/puppeteer-introduction/</guid>
+      <description>关于Puppeteer 对于Puppeteer是个什么东西，有什么用途，这里不作详细介绍。网上相关介绍特别多，小白也可自行Google一下。 简单一句话来说，它就是类似于PhantomJS或者Nightmare的一个Node库。
+开发配置 推荐使用Node.js 8+和ES 2015以上语法进行开发
+下载安装：
+# 中国用户需要设置下载源(选择下面任一方法即可) # export PUPPETEER_DOWNLOAD_HOST=https://npm.taobao.org/mirrors # 或者 set PUPPETEER_DOWNLOAD_HOST=https://npm.taobao.org/mirrors # 或者 npm config set puppeteer_download_host=https://npm.taobao.org/mirrors npm i puppeteer  详细了解请参考Taobao源下载
+当然，也可以选择不下载Puppeteer默认使用的Chromium，而是使用自己电脑上的Chrome进行开发。
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm i puppeteer  开始使用 使用Puppeteer非常简单，与使用一个Node.js第三库一样。
+const puppeteer = require(&#39;puppeteer&#39;) async function start() { const browser = await puppeteer.launch({ headless: false, args: [&#39;--disable-infobars&#39;, &#39;--no-sandbox&#39;, &#39;--disable-setuid-sandbox&#39;], }) const page = await browser.newPage() await page.goto(&#39;https://www.example.com&#39;) await page.screenshot({path: &#39;screenshot.png&#39;}) await browser.close() } start()  使用自己电脑上的Chrome进行测试开发(这里以macOS为例，Windows上需要配置相应路径):</description>
+    </item>
     
     <item>
       <title>Go 并发与调试</title>

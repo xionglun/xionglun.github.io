@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Puppeteer 基本概念介绍  &middot; 随笔小记</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Puppeteer 是Google Chrome浏览器团队提供的一款通过DevTools协议控制无界面Chrome或者Chromium的工具。它基本上可以模拟人在浏览器里的一切操作，以及浏览器提供的一些特性来辅助Web开发。" />
+
+<meta name="keywords" content="puppeteer, chrome headless, ">
+
+
+<meta property="og:title" content="Puppeteer 基本概念介绍  &middot; 随笔小记 ">
+<meta property="og:site_name" content="随笔小记"/>
+<meta property="og:url" content="http://blog.yeeef.com/post/puppeteer-introduction/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Puppeteer 是Google Chrome浏览器团队提供的一款通过DevTools协议控制无界面Chrome或者Chromium的工具。它基本上可以模拟人在浏览器里的一切操作，以及浏览器提供的一些特性来辅助Web开发。"/>
+<meta property="og:article:published_time" content="2018-02-06T10:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2018-02-06T10:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="puppeteer">
+    
+<meta property="og:article:tag" content="chrome headless">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Puppeteer 基本概念介绍" />
+<meta name="twitter:description" content="Puppeteer 是Google Chrome浏览器团队提供的一款通过DevTools协议控制无界面Chrome或者Chromium的工具。它基本上可以模拟人在浏览器里的一切操作，以及浏览器提供的一些特性来辅助Web开发。" />
+<meta name="twitter:url" content="http://blog.yeeef.com/post/puppeteer-introduction/" />
+<meta name="twitter:domain" content="http://blog.yeeef.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Puppeteer 基本概念介绍",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-02-06",
+    "description": "Puppeteer 是Google Chrome浏览器团队提供的一款通过DevTools协议控制无界面Chrome或者Chromium的工具。它基本上可以模拟人在浏览器里的一切操作，以及浏览器提供的一些特性来辅助Web开发。",
+    "wordCount": 138
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://blog.yeeef.com/post/puppeteer-introduction/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.yeeef.com/touch-icon-144-precomposed.png">
+<link href="http://blog.yeeef.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.35" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://blog.yeeef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://blog.yeeef.com/css/style.css">
+<link rel="stylesheet" href="http://blog.yeeef.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://blog.yeeef.com/">
+  X Blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://blog.yeeef.com/">主页</a>
+
+
+  
+<a href="http://blog.yeeef.com/post" title="所有文章">文章</a>
+
+<a href="http://blog.yeeef.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Puppeteer 基本概念介绍
+</h1>
+
+  <div class="metas">
+<time datetime="2018-02-06">6 Feb, 2018</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (138 Words)
+  <br>
+  
+<a class="label" href="http://blog.yeeef.com/tags/dev">dev</a>
+
+<a class="label" href="http://blog.yeeef.com/tags/tool">tool</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h3 id="关于puppeteer">关于Puppeteer</h3>
+
+<p>对于Puppeteer是个什么东西，有什么用途，这里不作详细介绍。网上相关介绍特别多，小白也可自行Google一下。
+简单一句话来说，它就是类似于<a href="https://github.com/ariya/phantomjs">PhantomJS</a>或者<a href="https://github.com/segmentio/nightmare">Nightmare</a>的一个Node库。</p>
+
+<h3 id="开发配置">开发配置</h3>
+
+<p>推荐使用Node.js 8+和ES 2015以上语法进行开发</p>
+
+<p>下载安装：</p>
+
+<pre><code># 中国用户需要设置下载源(选择下面任一方法即可)
+# export PUPPETEER_DOWNLOAD_HOST=https://npm.taobao.org/mirrors
+# 或者 set PUPPETEER_DOWNLOAD_HOST=https://npm.taobao.org/mirrors
+# 或者 npm config set puppeteer_download_host=https://npm.taobao.org/mirrors
+npm i puppeteer
+</code></pre>
+
+<p>详细了解请参考<a href="https://github.com/GoogleChrome/puppeteer/issues/1597#issuecomment-351945645">Taobao源下载</a></p>
+
+<p>当然，也可以选择不下载Puppeteer默认使用的Chromium，而是使用自己电脑上的Chrome进行开发。</p>
+
+<pre><code>export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+npm i puppeteer
+</code></pre>
+
+<h3 id="开始使用">开始使用</h3>
+
+<p>使用Puppeteer非常简单，与使用一个Node.js第三库一样。</p>
+
+<pre><code class="language-js">const puppeteer = require('puppeteer')
+
+async function start() {
+  const browser = await puppeteer.launch({
+    headless: false,
+    args: ['--disable-infobars', '--no-sandbox', '--disable-setuid-sandbox'],
+  })
+  const page = await browser.newPage()
+  await page.goto('https://www.example.com')
+  await page.screenshot({path: 'screenshot.png'})
+  await browser.close()
+}
+start()
+</code></pre>
+
+<p>使用自己电脑上的Chrome进行测试开发(这里以macOS为例，Windows上需要配置相应路径):</p>
+
+<pre><code class="language-js">const browser = await puppeteer.launch({
+  headless: false,
+  args: ['--disable-infobars', '--no-sandbox', '--disable-setuid-sandbox'],
+  executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+})
+</code></pre>
+
+<h3 id="基本概念">基本概念</h3>
+
+<p>如果想要了解Puppeteer所有功能的话，可能去查阅一下它的API文档，这里大致简述一下它的几个模块。</p>
+
+<p>从API文档上可以看到，它通过Class形式，分为几个大类：<strong>Page</strong>, <strong>Frame</strong>, <strong>Keyboard</strong>, <strong>Mouse</strong>, <strong>TouchScreen</strong>, <strong>Tracing</strong>, <strong>Dialog</strong>, <strong>ConsoleMessage</strong>, <strong>ExecutionContext</strong>, <strong>JSHandle</strong>, <strong>ElementHandle</strong>, <strong>Request</strong>, <strong>Response</strong>, <strong>Target</strong>, <strong>CDPSession</strong>, <strong>Coverage</strong></p>
+
+<p>其大致结构如下：
+<img src="/images/puppeteer-structure.png" alt="puppeteer" /></p>
+
+<p>一个Puppeteer可以控制一个或多个浏览器(Browser)，而一个浏览器可以有多个页面(Page)，一个页面至少有一个Frame。</p>
+
+<p>这里主要说明一下可能误解或者不好理解的几个概念：</p>
+
+<ol>
+<li><p>Page</p>
+
+<p>这里的Page可能和你想象中的有一点出入。在通常开发中，一般认为一个URL对应着一个页面，不同URL会是不同页面。但是在Puppeteer中，Page更多相当于是浏览器中的Tab，即一个标签页。当标签页里URL跳转到不同地址时，仍然处于同一个Page中。</p></li>
+
+<li><p>Frame</p>
+
+<p>Frame与Web开发中的概念差不多，每一个Page至少有一个Frame。当页面进行跳转等时，Frame基本上都会发生改变。每一个Frame都会有一个执行上下文，可以在这个上下文中执行一些JavaScript操作。注意，当发生页面跳转等使得Frame脱离Page时，Frame仍有可能存在，但是执行方法时会报错。</p></li>
+
+<li><p>ElementHandle</p>
+
+<p>ElementHandle 其实就相当于<code>document.querySelector()</code>获得的DOM元素(但是不是完全对等的)，你可以对其类似地进行操作，比如进行click动作或者获取元素大小宽高。</p></li>
+
+<li><p>JSHandle</p>
+
+<p>JSHandle 相当于页面内的JavaScript元素，比如window对象或者document对象。</p></li>
+
+<li><p>Request</p>
+
+<p>Request 代表页面内发出的请求(如请求一个CSS文件或者一张图片)，你可以对 Request 进行预处理、后处理等操作。</p></li>
+
+<li><p>Response</p>
+
+<p>Response 代表页面接收到的请求响应。</p></li>
+</ol>
+
+<h3 id="大概流程">大概流程</h3>
+
+<p>在使用时候，需要先创建一个Browser对象，也就是需要一个浏览器环境。在默认情况下，一般是使用Chromium浏览器，你也可以选择使用自行安装的Chrome浏览器，但是需要注意版本匹配。在很多情况下，稳定版的Chrome浏览器在功能上是要弱于开发版的Chromium的，而且Puppeteer团队开发的功能也是基于Chromium的。<br />
+在创建完浏览器实例后，需要创建一个页面来承载你的请求或者测试等。在页面加载完成后，会对应有一个Frame。你可以使用Frame上的方法，也可以使用Page上的方法，两者基本一致(Page很多页面处理方法其实就是调用mainFrame上的方法)。</p>
+
+<h3 id="使用场景">使用场景</h3>
+
+<p>Puppeteer的使用场景包括但不限于下面几种：</p>
+
+<ul>
+<li>自动化测试</li>
+<li>本地开发测试修改线上Bug的代码</li>
+<li>页面截屏预览</li>
+</ul>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer">Puppeteer Github</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">Puppeteer API文档</a></li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://blog.yeeef.com/post/golang-concurrency/" title="Go 并发与调试">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  本站文章除注明转载外，均为本站原创或编译。未经本人书面允许，不得擅自转载。
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://blog.yeeef.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

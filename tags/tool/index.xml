@@ -9,10 +9,23 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Tue, 06 Feb 2018 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Feb 2018 10:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://blog.yeeef.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Puppeteer 在线调试</title>
+      <link>http://blog.yeeef.com/post/puppeteer-online-debug/</link>
+      <pubDate>Wed, 07 Feb 2018 10:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://blog.yeeef.com/post/puppeteer-online-debug/</guid>
+      <description>本文主要是讲述Puppeteer拦截请求以及其应用场景，如果对Puppeteer基本概念不熟悉，请参考前一篇文章Puppeteer 基本概念介绍。
+说明 由于Puppeteer可以完全控制浏览器，所以可以拦截到任何从浏览器发出的请求以及浏览器接收到的响应。所以，可以对请求的响应生效前进行修改或者直接替换。
+应用场景  需要对线上页面进行调试修改 本地新功能开发需部署至测试环境查看效果 篡改目标页面  示例 这里以Baidu作为研究对象，假设我们想修改Baidu首页页面的背景色，但是不改变其它样式。
+首先，我们观察一下Baidu首页所用到的CSS文件。打开Baidu页面，通过Chrome调试面板可以看到，有一个CSS的请求soutu.css。 我们可以拦截这个CSS请求，替换成我们想要的那个CSS文件。
+ 将soutu.css下载下来，保存到本地 修改soutu.css，添加一行html,body{background-color: red} 编写添加puppter库的JS文件，代码如下  const puppeteer = require(&#39;puppeteer&#39;) const fs = require(&#39;fs&#39;) const util = require(&#39;util&#39;) const readFile = util.promisify(fs.readFile) (async function start() { const browser = await puppeteer.launch({ args: [&#39;--disable-infobars&#39;, &#39;--no-sandbox&#39;, &#39;--disable-setuid-sandbox&#39;], // 因为我们需要直接看到UI效果，所以这里不能使用headless模式 headless: false, // 也可以直接使用本地Chrome查看效果，不使用Puppeteer自带的Chromium浏览器 //executablePath: &#39;/Applications/Google Chrome.app/Contents/MacOS/Google Chrome&#39;, }) let page = await browser.newPage() // 读写本地的CSS文件 let customResponse = await readFile(&#39;.</description>
+    </item>
     
     <item>
       <title>Puppeteer 基本概念介绍</title>

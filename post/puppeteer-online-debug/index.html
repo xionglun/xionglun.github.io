@@ -5,34 +5,34 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>爬虫入门  &middot; 随笔小记</title>
+  <title>Puppeteer 在线调试  &middot; 随笔小记</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="description" content="爬虫入门相关知识" />
+<meta name="description" content="Puppeteer 可以在请求发出前进行拦截与替换，所以很方便地在本地开发解决线上Bug以及新需求。这样可以减少无谓的提交同时真实地检验其在线上环境中的效果。" />
 
-<meta name="keywords" content="crawler, proxy, ">
+<meta name="keywords" content="puppeteer, chrome headless, ">
 
 
-<meta property="og:title" content="爬虫入门  &middot; 随笔小记 ">
+<meta property="og:title" content="Puppeteer 在线调试  &middot; 随笔小记 ">
 <meta property="og:site_name" content="随笔小记"/>
-<meta property="og:url" content="http://blog.yeeef.com/post/crawler-knowledges/" />
+<meta property="og:url" content="http://blog.yeeef.com/post/puppeteer-online-debug/" />
 <meta property="og:locale" content="zh-CN">
 
 
 <meta property="og:type" content="article" />
-<meta property="og:description" content="爬虫入门相关知识"/>
-<meta property="og:article:published_time" content="2017-07-08T20:00:00&#43;08:00" />
-<meta property="og:article:modified_time" content="2017-07-08T20:00:00&#43;08:00" />
+<meta property="og:description" content="Puppeteer 可以在请求发出前进行拦截与替换，所以很方便地在本地开发解决线上Bug以及新需求。这样可以减少无谓的提交同时真实地检验其在线上环境中的效果。"/>
+<meta property="og:article:published_time" content="2018-02-07T10:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2018-02-07T10:00:00&#43;08:00" />
 
   
     
-<meta property="og:article:tag" content="crawler">
+<meta property="og:article:tag" content="puppeteer">
     
-<meta property="og:article:tag" content="proxy">
+<meta property="og:article:tag" content="chrome headless">
     
   
 
@@ -40,9 +40,9 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@" />
-<meta name="twitter:title" content="爬虫入门" />
-<meta name="twitter:description" content="爬虫入门相关知识" />
-<meta name="twitter:url" content="http://blog.yeeef.com/post/crawler-knowledges/" />
+<meta name="twitter:title" content="Puppeteer 在线调试" />
+<meta name="twitter:description" content="Puppeteer 可以在请求发出前进行拦截与替换，所以很方便地在本地开发解决线上Bug以及新需求。这样可以减少无谓的提交同时真实地检验其在线上环境中的效果。" />
+<meta name="twitter:url" content="http://blog.yeeef.com/post/puppeteer-online-debug/" />
 <meta name="twitter:domain" content="http://blog.yeeef.com/">
   
 
@@ -50,20 +50,20 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "爬虫入门",
+    "headline": "Puppeteer 在线调试",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
-    "datePublished": "2017-07-08",
-    "description": "爬虫入门相关知识",
-    "wordCount": 5
+    "datePublished": "2018-02-07",
+    "description": "Puppeteer 可以在请求发出前进行拦截与替换，所以很方便地在本地开发解决线上Bug以及新需求。这样可以减少无谓的提交同时真实地检验其在线上环境中的效果。",
+    "wordCount": 132
   }
 </script>
 
 
 
-<link rel="canonical" href="http://blog.yeeef.com/post/crawler-knowledges/" />
+<link rel="canonical" href="http://blog.yeeef.com/post/puppeteer-online-debug/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.yeeef.com/touch-icon-144-precomposed.png">
 <link href="http://blog.yeeef.com/favicon.png" rel="icon">
@@ -171,16 +171,16 @@
 
 <article id="main-content" class="container main_content single">
   <header class="container hat">
-  <h1>DRAFT :: 爬虫入门
+  <h1>Puppeteer 在线调试
 </h1>
 
   <div class="metas">
-<time datetime="2017-07-08">8 Jul, 2017</time>
+<time datetime="2018-02-07">7 Feb, 2018</time>
 
 
   
   &middot; Read in about 1 min
-  &middot; (5 Words)
+  &middot; (132 Words)
   <br>
   
 <a class="label" href="http://blog.yeeef.com/tags/dev">dev</a>
@@ -196,12 +196,87 @@
   <div class="container content">
   
 
+<p>本文主要是讲述Puppeteer拦截请求以及其应用场景，如果对Puppeteer基本概念不熟悉，请参考前一篇文章<a href="/post/puppeteer-introduction/">Puppeteer 基本概念介绍</a>。</p>
+
+<h3 id="说明">说明</h3>
+
+<p>由于Puppeteer可以完全控制浏览器，所以可以拦截到任何从浏览器发出的请求以及浏览器接收到的响应。所以，可以对请求的响应生效前进行修改或者直接替换。</p>
+
+<h3 id="应用场景">应用场景</h3>
+
+<ul>
+<li>需要对线上页面进行调试修改</li>
+<li>本地新功能开发需部署至测试环境查看效果</li>
+<li>篡改目标页面</li>
+</ul>
+
+<h3 id="示例">示例</h3>
+
+<p>这里以<a href="https://www.baidu.com">Baidu</a>作为研究对象，假设我们想修改Baidu首页页面的背景色，但是不改变其它样式。</p>
+
+<p>首先，我们观察一下Baidu首页所用到的CSS文件。打开Baidu页面，通过Chrome调试面板可以看到，有一个CSS的请求<code>soutu.css</code>。
+我们可以拦截这个CSS请求，替换成我们想要的那个CSS文件。</p>
+
+<ol>
+<li>将<code>soutu.css</code>下载下来，保存到本地</li>
+<li>修改<code>soutu.css</code>，添加一行<code>html,body{background-color: red}</code></li>
+<li>编写添加puppter库的JS文件，代码如下</li>
+</ol>
+
+<pre><code class="language-js">const puppeteer = require('puppeteer')
+const fs = require('fs')
+const util = require('util')
+const readFile = util.promisify(fs.readFile)
+
+(async function start() {
+  const browser = await puppeteer.launch({
+    args: ['--disable-infobars', '--no-sandbox', '--disable-setuid-sandbox'],
+    // 因为我们需要直接看到UI效果，所以这里不能使用headless模式
+    headless: false,
+    // 也可以直接使用本地Chrome查看效果，不使用Puppeteer自带的Chromium浏览器
+    //executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  })
+  let page = await browser.newPage()
+  // 读写本地的CSS文件
+  let customResponse = await readFile('./soutu.css')
+  try {
+    await page.setViewport({width: 1280, height: 620})
+    // 设置拦截请求
+    await page.setRequestInterception(true)
+    page.on('request', req =&gt; {
+      let addr = req.url()
+      // 根据URL拦截，这里拦截所有以CSS结尾的文件，可以自由修改
+      if (addr.endsWith('css')) {
+        req.respond({
+          status: 200,
+          contentType: 'text/css',
+          body: customResponse
+        })
+      } else {
+        // 其它请求放行
+        req.continue()
+      }
+    })
+    // 加载页面
+    await page.goto('https://www.baidu.com/', {waitUntil: 'domcontentloaded'})
+  } catch (err) {
+    console.error('Launch:', err.toString())
+  }
+})()
+</code></pre>
+
+<p>安装完puppeteer环境后，就可以直接运行了。可以看到，首页背景色已变成红色。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>这里虽然以修改CSS文件为例，但是其实可以修改任何类型(如javascript, image)的请求。
+在开发时使用puppeteer，就可以做到不用每改一步就需要提交一次代码来查看线上效果。</p>
+
 <h3 id="参考资料">参考资料</h3>
 
 <ul>
-<li><a href="http://www.xnathan.com/2017/03/02/squid-proxy-pool/">自己搭建亿级爬虫IP代理池</a></li>
-<li><a href="http://www.xnathan.com/2017/02/28/squid-proxy/">Squid 搭建正向代理服务器</a></li>
-<li><a href="http://www.frostsky.com/manual/squid/index.html">Squid权威指南</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer">Puppeteer Github</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">Puppeteer API文档</a></li>
 </ul>
 
 </div>
@@ -214,15 +289,11 @@
   
 
     
-    <a class="prev" href="http://blog.yeeef.com/post/uber_jaeger/" title="Uber Jaeger安装与使用">
+    <a class="prev" href="http://blog.yeeef.com/post/puppeteer-introduction/" title="Puppeteer 基本概念介绍">
       Previous
     </a>
     
 
-    
-    <a class="next" href="http://blog.yeeef.com/post/flamegraph/" title="火焰图性能分析">
-      Next
-    </a>
     
 
   

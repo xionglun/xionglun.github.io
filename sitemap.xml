@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.yeeef.com/post/puppeteer-online-debug/</loc>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.yeeef.com/post/puppeteer-introduction/</loc>
     <lastmod>2018-02-06T10:00:00+08:00</lastmod>
   </url>
@@ -153,7 +158,7 @@
   
   <url>
     <loc>http://blog.yeeef.com/tags/dev/</loc>
-    <lastmod>2018-02-06T10:00:00+08:00</lastmod>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -164,14 +169,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/topics/devops/</loc>
-    <lastmod>2018-02-06T10:00:00+08:00</lastmod>
+    <loc>http://blog.yeeef.com/tags/devops/</loc>
+    <lastmod>2017-10-28T11:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/tags/devops/</loc>
-    <lastmod>2017-10-28T11:00:00+08:00</lastmod>
+    <loc>http://blog.yeeef.com/topics/devops/</loc>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -182,14 +187,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/topics/golang/</loc>
-    <lastmod>2017-05-28T11:00:00+08:00</lastmod>
+    <loc>http://blog.yeeef.com/tags/golang/</loc>
+    <lastmod>2017-11-06T20:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/tags/golang/</loc>
-    <lastmod>2017-11-06T20:00:00+08:00</lastmod>
+    <loc>http://blog.yeeef.com/topics/golang/</loc>
+    <lastmod>2017-05-28T11:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -200,13 +205,13 @@
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/topics/kubernetes/</loc>
+    <loc>http://blog.yeeef.com/tags/kubernetes/</loc>
     <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/tags/kubernetes/</loc>
+    <loc>http://blog.yeeef.com/topics/kubernetes/</loc>
     <lastmod>2017-08-20T22:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -225,7 +230,7 @@
   
   <url>
     <loc>http://blog.yeeef.com/post/</loc>
-    <lastmod>2018-02-06T10:00:00+08:00</lastmod>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -242,14 +247,20 @@
   </url>
   
   <url>
+    <loc>http://blog.yeeef.com/tags/tidb/</loc>
+    <lastmod>2016-07-28T10:20:25+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.yeeef.com/topics/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/tags/tidb/</loc>
-    <lastmod>2016-07-28T10:20:25+08:00</lastmod>
+    <loc>http://blog.yeeef.com/tags/tool/</loc>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -260,20 +271,8 @@
   </url>
   
   <url>
-    <loc>http://blog.yeeef.com/tags/tool/</loc>
-    <lastmod>2018-02-06T10:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.yeeef.com/topics/</loc>
     <lastmod>2017-11-06T20:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yeeef.com/topics/work/</loc>
-    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -284,12 +283,18 @@
   </url>
   
   <url>
+    <loc>http://blog.yeeef.com/topics/work/</loc>
+    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.yeeef.com/about/</loc>
   </url>
   
   <url>
     <loc>http://blog.yeeef.com/</loc>
-    <lastmod>2018-02-06T10:00:00+08:00</lastmod>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

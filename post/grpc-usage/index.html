@@ -59,7 +59,7 @@
     },
     "datePublished": "2017-02-16",
     "description": "RPC是服务端开发中常用的通信手段, gRPC是Google推出的RPC解决方案。",
-    "wordCount": 467
+    "wordCount": 464
   }
 </script>
 
@@ -182,7 +182,7 @@
 
   
   &middot; Read in about 3 min
-  &middot; (467 Words)
+  &middot; (464 Words)
   <br>
   
 <a class="label" href="http://blog.yeeef.com/tags/dev">dev</a>
@@ -379,8 +379,7 @@ const msg = require('./lib/hello_pb.js');
 
 function greet() {
   let req = new msg.HelloRequest();
-  req.setName(&quot;beijin&quot;);
-
+  req.setName(&quot;beijing&quot;);
   let client = new svc.GreeterClient('localhost:8041', grpc.credentials.createInsecure());
   client.sayHello(req, (err, resp) =&gt; {
     if (err) {
@@ -389,7 +388,6 @@ function greet() {
       console.log(resp.getMessage());
     }
   });
-
 }
 greet();
 </code></pre></li>
@@ -407,7 +405,7 @@ greet();
 )
 creds, err := credentials.NewServerTLSFromFile(cert, key)
 if err != nil {
-    return fmt.Errorf(&quot;could not load TLS keys: %s&quot;, err)
+    return fmt.Errorf(&quot;Load TLS keys error: %v&quot;, err)
 }
 server := grpc.NewServer(grpc.Creds(creds))
 </code></pre>
@@ -417,11 +415,11 @@ server := grpc.NewServer(grpc.Creds(creds))
 <pre><code class="language-go">var cert = &quot;server.crt&quot;
 creds, err := credentials.NewClientTLSFromFile(cert, &quot;&quot;)
 if err != nil {
-    return fmt.Errorf(&quot;could not load tls cert: %s&quot;, err)
+    return fmt.Errorf(&quot;Load TLS cert error: %v&quot;, err)
 }
 conn, err := grpc.Dial(addr, grpc.WithTransportCredentials(creds))
 if err != nil {
-    return fmt.Errorf(&quot;could not dial %s: %s&quot;, addr, err)
+    return fmt.Errorf(&quot;Dial error: %s %v&quot;, addr, err)
 }
 client := pb.NewSecureClient(conn) // 调用自定义 protobuf 函数
 </code></pre>

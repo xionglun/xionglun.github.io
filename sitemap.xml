@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.yeeef.com/post/protobuf-in-browser/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.yeeef.com/post/puppeteer-online-debug/</loc>
     <lastmod>2018-02-07T10:00:00+08:00</lastmod>
   </url>
@@ -158,13 +163,13 @@
   
   <url>
     <loc>http://blog.yeeef.com/tags/dev/</loc>
-    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.yeeef.com/topics/develop/</loc>
-    <lastmod>2017-11-06T20:00:00+08:00</lastmod>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -230,7 +235,7 @@
   
   <url>
     <loc>http://blog.yeeef.com/post/</loc>
-    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -272,13 +277,13 @@
   
   <url>
     <loc>http://blog.yeeef.com/topics/</loc>
-    <lastmod>2017-11-06T20:00:00+08:00</lastmod>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.yeeef.com/tags/work/</loc>
-    <lastmod>2017-06-30T20:00:00+08:00</lastmod>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -294,7 +299,7 @@
   
   <url>
     <loc>http://blog.yeeef.com/</loc>
-    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

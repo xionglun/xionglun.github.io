@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>浏览器中使用Protobuf  &middot; 随笔小记</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Protobuf 常见于服务端技术讨论话题，但是却很少有浏览器中使用的例子。本文主要说明如何在浏览器中使用 protobuf 这一数据格式化标准" />
+
+<meta name="keywords" content="browser, rpc, protobuf, ">
+
+
+<meta property="og:title" content="浏览器中使用Protobuf  &middot; 随笔小记 ">
+<meta property="og:site_name" content="随笔小记"/>
+<meta property="og:url" content="http://blog.yeeef.com/post/protobuf-in-browser/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Protobuf 常见于服务端技术讨论话题，但是却很少有浏览器中使用的例子。本文主要说明如何在浏览器中使用 protobuf 这一数据格式化标准"/>
+<meta property="og:article:published_time" content="2018-03-28T19:00:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2018-03-28T19:00:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="browser">
+    
+<meta property="og:article:tag" content="rpc">
+    
+<meta property="og:article:tag" content="protobuf">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="浏览器中使用Protobuf" />
+<meta name="twitter:description" content="Protobuf 常见于服务端技术讨论话题，但是却很少有浏览器中使用的例子。本文主要说明如何在浏览器中使用 protobuf 这一数据格式化标准" />
+<meta name="twitter:url" content="http://blog.yeeef.com/post/protobuf-in-browser/" />
+<meta name="twitter:domain" content="http://blog.yeeef.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "浏览器中使用Protobuf",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-03-28",
+    "description": "Protobuf 常见于服务端技术讨论话题，但是却很少有浏览器中使用的例子。本文主要说明如何在浏览器中使用 protobuf 这一数据格式化标准",
+    "wordCount": 173
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://blog.yeeef.com/post/protobuf-in-browser/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.yeeef.com/touch-icon-144-precomposed.png">
+<link href="http://blog.yeeef.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://blog.yeeef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://blog.yeeef.com/css/style.css">
+<link rel="stylesheet" href="http://blog.yeeef.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48344744-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://blog.yeeef.com/">
+  X Blog
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  TBD
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://blog.yeeef.com/">主页</a>
+
+
+  
+<a href="http://blog.yeeef.com/post" title="所有文章">文章</a>
+
+<a href="http://blog.yeeef.com/tags" title="所有标签">标签</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:xheavey@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>浏览器中使用Protobuf
+</h1>
+
+  <div class="metas">
+<time datetime="2018-03-28">28 Mar, 2018</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (173 Words)
+  <br>
+  
+<a class="label" href="http://blog.yeeef.com/tags/dev">dev</a>
+
+<a class="label" href="http://blog.yeeef.com/tags/work">work</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p><strong>Protobuf</strong> 作为Google推出的一种二进制结构化数据的格式，可以很好地压缩数据大小，便于传输，同时序列与反序列化的性能很好，所以得到广泛地使用。</p>
+
+<p>但是，前端圈一直以来是以JSON作为数据格式。主要原因如下：</p>
+
+<ol>
+<li><p>原生支持</p>
+
+<p>JSON格式支持已添加到JavaScript标准中，已经是前端的事实以及规范标准。</p></li>
+
+<li><p>易操作性</p>
+
+<p>JSON格式不仅易于阅读，而且可以直接由JavaScript对象序列化而来，同时可以直接反序列化为JavaScript对象，很便捷。</p></li>
+
+<li><p>性能良好</p>
+
+<p>JSON格式不管是解析还是序列化的性能都很不错，而且不像XML那样臃肿。</p></li>
+</ol>
+
+<p><strong><em>注意</em></strong> 本文并不是为了论证Protobuf比JSON格式优秀，或者说是要在前端弃用JSON。仅仅是为了研究Protobuf在前端使用的可行性，以及如何去使用。</p>
+
+<p>因为前端技术日新月异，很多新技术如WebAssembly, WebRTC，WebSocket, HTTP2等的出现，以及对实时性要求越来越高，使得消息如何传递重新进入话题中心。而Protobuf作为一种优秀的新数据格式标准，很适合消息传递。</p>
+
+<h3 id="关于-protobuf">关于 Protobuf</h3>
+
+<p>对于 Protobuf 是个什么东西，如何编写，网上已经有太多示例了，这里就不再展开描述了。</p>
+
+<p>如果你对 Protobuf 不太熟悉，请参考 <a href="http://colobu.com/2017/03/16/Protobuf3-language-guide/">Protobuf3 语法指南</a>。</p>
+
+<h3 id="编写-proto-文件">编写 proto 文件</h3>
+
+<p>使用protobuf作为传输数据格式时，需要先编写相应proto文件。示例(example.proto)如下：</p>
+
+<pre><code class="language-protobuf">syntax = &quot;proto3&quot;;
+
+message User {
+    string name = 1;
+    int32 age = 2;
+    bool male = 3;
+}
+
+message Like {
+    string sender = 1;
+    string post = 2;
+    int64 timestamp = 3;
+}
+</code></pre>
+
+<p>这里写了两个数据模型，分别是<code>User</code>和<code>Like</code>模型。
+在有了数据模型文件后，需要将其编译成 JavaScript 文件，才能用在前端浏览器中。</p>
+
+<h3 id="编译-proto-文件">编译 proto 文件</h3>
+
+<p>进行编译之前，需要先安装相应的 Protobuf 工具。</p>
+
+<p><strong>注意:</strong> 这里有两种方式，一种是使用 <a href="https://github.com/dcodeIO/ProtoBuf.js/">dcodeIO/Protobuf.js</a>，另一种是使用 Protobuf 官方的 <a href="https://github.com/google/protobuf/tree/master/js">google-protobuf</a></p>
+
+<p>相对来说，前一种能找到的示例可能更多，后一种很少。甚至连 gRPC 中 <a href="https://github.com/grpc/grpc/tree/master/examples/node">Node.js 示例</a> 都提到的是前一种。
+但是个人觉得前一种使用方式太过繁琐，甚至有 README 都看不完的感觉。所以这里使用后一种方式。</p>
+
+<p>将 proto 文件编译成代码:</p>
+
+<pre><code class="language-sh">protoc --js_out=import_style=commonjs,binary:. example.proto
+</code></pre>
+
+<p>经过编译之后，会在当前目录生成一个<code>example_pb.js</code>的文件。这里生成的是 commonjs 风格的代码，还有一种是 Closure 风格的，但是因为对 Closure 不太熟悉，所以略过了&hellip;</p>
+
+<h3 id="使用编译后的文件">使用编译后的文件</h3>
+
+<p>因为编译成的 commonjs 风格的代码并不能直接在浏览器中使用，所以需要<code>webpack</code>之类的工具将代码融合进去。</p>
+
+<pre><code class="language-js">const messages = require('./example_pb.js')
+// 生成一个 User 对象
+let user = new messages.User()
+user.setName('Protobuf')
+user.setAge(3)
+user.setMale(true)
+// 将 User 对象序列化成二进制字符串，便于发送到服务端
+let bytes = user.serializeBinary()
+
+// 通过 HTTP API 或者 WebSocket 接收到发送过来的数据，反序列化成对象
+let like = messages.Like.deserializeBinary(data)
+let sender = like.getSender()
+</code></pre>
+
+<p>将最终的代码文件通过<code>webpack</code>或者<code>browserify</code>等打包工具打包即可在浏览器中引用并正常使用了。</p>
+
+<h3 id="其它">其它</h3>
+
+<p>由于 Protobuf 数据是二进制的，所以对其进行处理（特别是接收数据）时，需要注意数据格式的选取。
+比如，在使用 WebSocket 的时候，将其类型改为<code>arraybuffer</code>可能会解决某些解析成空对象的错误。</p>
+
+<pre><code>let ws = new WebSocket('ws://localhost:8080/ws')
+ws.binaryType = 'arraybuffer'
+</code></pre>
+
+<p>总体来说，在前端使用 protobuf 并不是太成熟，很可能会遇到一些问题，可以在 Protobuf 的 <a href="https://github.com/google/protobuf/issues">Github issues</a> 页面搜寻一下相关解决方案或提出你的问题。</p>
+
+<h3 id="引用资料">引用资料</h3>
+
+<ol>
+<li><a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers 3 语言指南</a></li>
+</ol>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://blog.yeeef.com/post/puppeteer-online-debug/" title="Puppeteer 在线调试">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  本站文章除注明转载外，均为本站原创或编译。未经本人书面允许，不得擅自转载。
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2016-2017 Allen Heavey.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//dmdgeeker.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://blog.yeeef.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

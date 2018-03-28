@@ -9,10 +9,32 @@
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Fri, 30 Jun 2017 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Mar 2018 19:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://blog.yeeef.com/tags/work/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>浏览器中使用Protobuf</title>
+      <link>http://blog.yeeef.com/post/protobuf-in-browser/</link>
+      <pubDate>Wed, 28 Mar 2018 19:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>http://blog.yeeef.com/post/protobuf-in-browser/</guid>
+      <description>Protobuf 作为Google推出的一种二进制结构化数据的格式，可以很好地压缩数据大小，便于传输，同时序列与反序列化的性能很好，所以得到广泛地使用。
+但是，前端圈一直以来是以JSON作为数据格式。主要原因如下：
+ 原生支持
+JSON格式支持已添加到JavaScript标准中，已经是前端的事实以及规范标准。
+ 易操作性
+JSON格式不仅易于阅读，而且可以直接由JavaScript对象序列化而来，同时可以直接反序列化为JavaScript对象，很便捷。
+ 性能良好
+JSON格式不管是解析还是序列化的性能都很不错，而且不像XML那样臃肿。
+  注意 本文并不是为了论证Protobuf比JSON格式优秀，或者说是要在前端弃用JSON。仅仅是为了研究Protobuf在前端使用的可行性，以及如何去使用。
+因为前端技术日新月异，很多新技术如WebAssembly, WebRTC，WebSocket, HTTP2等的出现，以及对实时性要求越来越高，使得消息如何传递重新进入话题中心。而Protobuf作为一种优秀的新数据格式标准，很适合消息传递。
+关于 Protobuf 对于 Protobuf 是个什么东西，如何编写，网上已经有太多示例了，这里就不再展开描述了。
+如果你对 Protobuf 不太熟悉，请参考 Protobuf3 语法指南。
+编写 proto 文件 使用protobuf作为传输数据格式时，需要先编写相应proto文件。示例(example.proto)如下：
+syntax = &amp;quot;proto3&amp;quot;; message User { string name = 1; int32 age = 2; bool male = 3; } message Like { string sender = 1; string post = 2; int64 timestamp = 3; }  这里写了两个数据模型，分别是User和Like模型。 在有了数据模型文件后，需要将其编译成 JavaScript 文件，才能用在前端浏览器中。</description>
+    </item>
     
     <item>
       <title>Uber Jaeger安装与使用</title>

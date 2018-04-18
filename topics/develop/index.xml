@@ -194,12 +194,12 @@ syntax = &amp;quot;proto3&amp;quot;; option java_multiple_files = true; option j
     </item>
     
     <item>
-      <title>Linux定时器</title>
+      <title>Linux 定时器</title>
       <link>http://blog.yeeef.com/post/linux-cron/</link>
       <pubDate>Wed, 15 Feb 2017 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
       <guid>http://blog.yeeef.com/post/linux-cron/</guid>
-      <description>在linux中，定时器一般是使用cron这个系统工具来实现的。 但是，在systemd中也可以使用Timer进行定时控制。
+      <description>在 Linux 系统中，定时器一般是使用cron这个系统工具来实现的。 或者，在 systemd 中也可以使用Timer进行定时控制。
  Cron 在linux下，可以使用crontab -e来编辑修改定时任务(重点在最后一行)
 # Edit this file to introduce tasks to be run by cron. # # Each task to run has to be defined through a single line # indicating with different fields when the task will be run # and what command to run for the task # # To define the time you can provide concrete values for # minute (m), hour (h), day of month (dom), month (mon), # and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).</description>
     </item>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Devops on 随笔小记</title>
-    <link>https://blog.yeeef.com/tags/devops/</link>
-    <description>Recent content in Devops on 随笔小记</description>
+    <title>devops on 随笔小记</title>
+    <link>https://ifun.dev/tags/devops/</link>
+    <description>Recent content in devops on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Sat, 28 Oct 2017 11:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Goreman 基本用法</title>
-      <link>https://blog.yeeef.com/post/goreman/</link>
+      <link>https://ifun.dev/post/goreman/</link>
       <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/goreman/</guid>
+      <guid>https://ifun.dev/post/goreman/</guid>
       <description>Goreman Goreman 是一个Foreman的Go语言的克隆版本，一般在开发过程中的调试多个进程时使用。
 当前开发趋势中，微服务架构以及分布式架构很流行，很多应用依赖于其它应用或者集群化。这样在本地调试时，会有很多不方便的地方。而使用Goreman同时批量管理多个进程，可以方便开发。
 下载安装 可以通过go get来下载安装最二进制文件

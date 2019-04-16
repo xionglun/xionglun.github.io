@@ -2,150 +2,150 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 随笔小记</title>
-    <link>https://blog.yeeef.com/tags/</link>
+    <link>https://ifun.dev/tags/</link>
     <description>Recent content in Tags on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
     <webMaster>xheavey@gmail.com (Allen Heavey)</webMaster>
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
-    <lastBuildDate>Sun, 28 Aug 2016 14:36:06 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Mar 2018 19:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Auth</title>
-      <link>https://blog.yeeef.com/tags/auth/</link>
-      <pubDate>Sun, 28 Aug 2016 14:36:06 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/auth/</guid>
-      <description></description>
-    </item>
     
     <item>
-      <title>Cncf</title>
-      <link>https://blog.yeeef.com/tags/cncf/</link>
-      <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/cncf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Complaint</title>
-      <link>https://blog.yeeef.com/tags/complaint/</link>
-      <pubDate>Wed, 24 Aug 2016 00:34:11 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/complaint/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Database</title>
-      <link>https://blog.yeeef.com/tags/database/</link>
-      <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dev</title>
-      <link>https://blog.yeeef.com/tags/dev/</link>
+      <title>dev</title>
+      <link>https://ifun.dev/tags/dev/</link>
       <pubDate>Wed, 28 Mar 2018 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/dev/</guid>
+      <guid>https://ifun.dev/tags/dev/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Devops</title>
-      <link>https://blog.yeeef.com/tags/devops/</link>
-      <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
+      <title>work</title>
+      <link>https://ifun.dev/tags/work/</link>
+      <pubDate>Wed, 28 Mar 2018 19:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/devops/</guid>
+      <guid>https://ifun.dev/tags/work/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Digest</title>
-      <link>https://blog.yeeef.com/tags/digest/</link>
-      <pubDate>Wed, 24 Aug 2016 00:37:55 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/digest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>https://blog.yeeef.com/tags/golang/</link>
-      <pubDate>Mon, 06 Nov 2017 20:00:00 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ipfs</title>
-      <link>https://blog.yeeef.com/tags/ipfs/</link>
-      <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/ipfs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://blog.yeeef.com/tags/kubernetes/</link>
-      <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Learn</title>
-      <link>https://blog.yeeef.com/tags/learn/</link>
-      <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/learn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Minikube</title>
-      <link>https://blog.yeeef.com/tags/minikube/</link>
-      <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/minikube/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tidb</title>
-      <link>https://blog.yeeef.com/tags/tidb/</link>
-      <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
-      <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/tidb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tool</title>
-      <link>https://blog.yeeef.com/tags/tool/</link>
+      <title>tool</title>
+      <link>https://ifun.dev/tags/tool/</link>
       <pubDate>Wed, 07 Feb 2018 10:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/tool/</guid>
+      <guid>https://ifun.dev/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Work</title>
-      <link>https://blog.yeeef.com/tags/work/</link>
-      <pubDate>Wed, 28 Mar 2018 19:00:00 +0800</pubDate>
+      <title>golang</title>
+      <link>https://ifun.dev/tags/golang/</link>
+      <pubDate>Mon, 06 Nov 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/tags/work/</guid>
+      <guid>https://ifun.dev/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://ifun.dev/tags/devops/</link>
+      <pubDate>Sat, 28 Oct 2017 11:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CNCF</title>
+      <link>https://ifun.dev/tags/cncf/</link>
+      <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/cncf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>learn</title>
+      <link>https://ifun.dev/tags/learn/</link>
+      <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/learn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://ifun.dev/tags/kubernetes/</link>
+      <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>minikube</title>
+      <link>https://ifun.dev/tags/minikube/</link>
+      <pubDate>Sun, 20 Aug 2017 22:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/minikube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ipfs</title>
+      <link>https://ifun.dev/tags/ipfs/</link>
+      <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/ipfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>auth</title>
+      <link>https://ifun.dev/tags/auth/</link>
+      <pubDate>Sun, 28 Aug 2016 14:36:06 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/auth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>digest</title>
+      <link>https://ifun.dev/tags/digest/</link>
+      <pubDate>Wed, 24 Aug 2016 00:37:55 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/digest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>complaint</title>
+      <link>https://ifun.dev/tags/complaint/</link>
+      <pubDate>Wed, 24 Aug 2016 00:34:11 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/complaint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>database</title>
+      <link>https://ifun.dev/tags/database/</link>
+      <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tidb</title>
+      <link>https://ifun.dev/tags/tidb/</link>
+      <pubDate>Thu, 28 Jul 2016 10:20:25 +0800</pubDate>
+      <author>xheavey@gmail.com (Allen Heavey)</author>
+      <guid>https://ifun.dev/tags/tidb/</guid>
       <description></description>
     </item>
     

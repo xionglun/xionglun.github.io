@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on 随笔小记</title>
-    <link>https://blog.yeeef.com/topics/test/</link>
-    <description>Recent content in Test on 随笔小记</description>
+    <title>test on 随笔小记</title>
+    <link>https://ifun.dev/topics/test/</link>
+    <description>Recent content in test on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Fri, 14 Jul 2017 20:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/topics/test/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/topics/test/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IPFS 上手试玩</title>
-      <link>https://blog.yeeef.com/post/ipfs-try/</link>
+      <link>https://ifun.dev/post/ipfs-try/</link>
       <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/ipfs-try/</guid>
+      <guid>https://ifun.dev/post/ipfs-try/</guid>
       <description>关于IPFS IPFS 是一个很宏大的理念，而不简单地是一个应用或一个文件系统。 它希望建立一个点对点的分布式文件系统，使用内容Hash地址代替原Web网络中的域名，来获取得相应的资源。
 IPFS 说明文档对IPFS的介绍如下：
  IPFS is a protocol IPFS is a filesystem IPFS is a web IPFS is modular IPFS uses crypto IPFS is p2p IPFS is a cdn IPFS has a name service  当前IPFS虽经历了几年的开发，但仍处于很早期的阶段（go-ipfs/0.4.10 ipfs/0.1.0），所以未来可能会有比较大变化（也可能失败&amp;hellip;）。

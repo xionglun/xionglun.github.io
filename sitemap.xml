@@ -3,304 +3,304 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.yeeef.com/post/protobuf-in-browser/</loc>
+    <loc>https://ifun.dev/post/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/topics/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/dev/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/topics/develop/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/work/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/protobuf-in-browser/</loc>
     <lastmod>2018-03-28T19:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/puppeteer-online-debug/</loc>
+    <loc>https://ifun.dev/</loc>
+    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/puppeteer-online-debug/</loc>
     <lastmod>2018-02-07T10:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/puppeteer-introduction/</loc>
+    <loc>https://ifun.dev/topics/devops/</loc>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/tool/</loc>
+    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/puppeteer-introduction/</loc>
     <lastmod>2018-02-06T10:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/golang-concurrency/</loc>
+    <loc>https://ifun.dev/post/golang-concurrency/</loc>
     <lastmod>2017-11-06T20:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/goreman/</loc>
+    <loc>https://ifun.dev/tags/golang/</loc>
+    <lastmod>2017-11-06T20:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/goreman/</loc>
     <lastmod>2017-10-28T11:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/coredns-try/</loc>
+    <loc>https://ifun.dev/tags/devops/</loc>
+    <lastmod>2017-10-28T11:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/cncf/</loc>
+    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/coredns-try/</loc>
     <lastmod>2017-08-22T22:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/minikube-usage/</loc>
+    <loc>https://ifun.dev/tags/learn/</loc>
+    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/topics/tool/</loc>
+    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/minikube-usage/</loc>
     <lastmod>2017-08-20T22:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/ipfs-try/</loc>
+    <loc>https://ifun.dev/topics/kubernetes/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/kubernetes/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/tags/minikube/</loc>
+    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/ipfs-try/</loc>
     <lastmod>2017-07-14T20:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/flamegraph/</loc>
+    <loc>https://ifun.dev/tags/ipfs/</loc>
+    <lastmod>2017-07-14T20:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/topics/test/</loc>
+    <lastmod>2017-07-14T20:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/flamegraph/</loc>
     <lastmod>2017-07-09T20:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/uber_jaeger/</loc>
+    <loc>https://ifun.dev/post/uber_jaeger/</loc>
     <lastmod>2017-06-30T20:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/golang-signal/</loc>
+    <loc>https://ifun.dev/post/golang-signal/</loc>
     <lastmod>2017-05-28T11:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/spacemacs_usage/</loc>
+    <loc>https://ifun.dev/topics/golang/</loc>
+    <lastmod>2017-05-28T11:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/spacemacs_usage/</loc>
     <lastmod>2017-05-10T22:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/optimize-slow-request/</loc>
+    <loc>https://ifun.dev/post/optimize-slow-request/</loc>
     <lastmod>2017-04-01T22:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/dot-graphviz/</loc>
+    <loc>https://ifun.dev/post/dot-graphviz/</loc>
     <lastmod>2017-02-18T22:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/grpc-usage/</loc>
+    <loc>https://ifun.dev/post/grpc-usage/</loc>
     <lastmod>2017-02-16T19:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/linux-cron/</loc>
+    <loc>https://ifun.dev/post/linux-cron/</loc>
     <lastmod>2017-02-15T19:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/rsyslog-collect-logs/</loc>
+    <loc>https://ifun.dev/post/rsyslog-collect-logs/</loc>
     <lastmod>2017-02-10T17:06:40+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/tcpdump-basic-usage/</loc>
+    <loc>https://ifun.dev/post/tcpdump-basic-usage/</loc>
     <lastmod>2017-02-10T10:00:40+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/mysql-usage/</loc>
+    <loc>https://ifun.dev/post/mysql-usage/</loc>
     <lastmod>2017-01-01T17:06:40+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/systemd-usage/</loc>
+    <loc>https://ifun.dev/post/systemd-usage/</loc>
     <lastmod>2016-11-08T17:06:40+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/ebk-usage/</loc>
+    <loc>https://ifun.dev/post/ebk-usage/</loc>
     <lastmod>2016-11-08T17:06:40+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/install-gitlab/</loc>
+    <loc>https://ifun.dev/post/install-gitlab/</loc>
     <lastmod>2016-10-08T12:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/markdown-syntax/</loc>
+    <loc>https://ifun.dev/post/markdown-syntax/</loc>
     <lastmod>2016-09-24T14:36:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/two-factor-verification/</loc>
+    <loc>https://ifun.dev/tags/auth/</loc>
+    <lastmod>2016-08-28T14:36:06+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/two-factor-verification/</loc>
     <lastmod>2016-08-28T14:36:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/authority-merit/</loc>
+    <loc>https://ifun.dev/post/authority-merit/</loc>
     <lastmod>2016-08-24T00:37:55+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/product-manager/</loc>
+    <loc>https://ifun.dev/tags/digest/</loc>
+    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/topics/work/</loc>
+    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ifun.dev/post/product-manager/</loc>
     <lastmod>2016-08-24T00:34:11+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/post/deploy-tidb-cluster/</loc>
-    <lastmod>2016-07-28T10:20:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/auth/</loc>
-    <lastmod>2016-08-28T14:36:06+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/cncf/</loc>
-    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/complaint/</loc>
+    <loc>https://ifun.dev/tags/complaint/</loc>
     <lastmod>2016-08-24T00:34:11+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/tags/database/</loc>
+    <loc>https://ifun.dev/topics/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/tags/dev/</loc>
-    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
+    <loc>https://ifun.dev/post/deploy-tidb-cluster/</loc>
+    <lastmod>2016-07-28T10:20:25+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/topics/develop/</loc>
-    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/devops/</loc>
-    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/devops/</loc>
-    <lastmod>2017-10-28T11:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/digest/</loc>
-    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/golang/</loc>
-    <lastmod>2017-05-28T11:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/golang/</loc>
-    <lastmod>2017-11-06T20:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/ipfs/</loc>
-    <lastmod>2017-07-14T20:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/kubernetes/</loc>
-    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/kubernetes/</loc>
-    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/learn/</loc>
-    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/minikube/</loc>
-    <lastmod>2017-08-20T22:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/post/</loc>
-    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/</loc>
-    <lastmod>2016-08-28T14:36:06+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/test/</loc>
-    <lastmod>2017-07-14T20:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/tidb/</loc>
+    <loc>https://ifun.dev/tags/database/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/tags/tidb/</loc>
+    <loc>https://ifun.dev/tags/tidb/</loc>
     <lastmod>2016-07-28T10:20:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.yeeef.com/topics/tool/</loc>
-    <lastmod>2017-08-22T22:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/tool/</loc>
-    <lastmod>2018-02-07T10:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/</loc>
-    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/topics/work/</loc>
-    <lastmod>2016-08-24T00:37:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/tags/work/</loc>
-    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://blog.yeeef.com/</loc>
-    <lastmod>2018-03-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
+    <loc>https://ifun.dev/about/</loc>
   </url>
   
 </urlset>

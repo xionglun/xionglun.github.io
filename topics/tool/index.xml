@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tool on 随笔小记</title>
-    <link>https://blog.yeeef.com/topics/tool/</link>
-    <description>Recent content in Tool on 随笔小记</description>
+    <title>tool on 随笔小记</title>
+    <link>https://ifun.dev/topics/tool/</link>
+    <description>Recent content in tool on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Tue, 22 Aug 2017 22:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/topics/tool/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/topics/tool/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CoreDNS 上手</title>
-      <link>https://blog.yeeef.com/post/coredns-try/</link>
+      <link>https://ifun.dev/post/coredns-try/</link>
       <pubDate>Tue, 22 Aug 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/coredns-try/</guid>
+      <guid>https://ifun.dev/post/coredns-try/</guid>
       <description>关于 CoreDNS CoreDNS 是一个从 Caddy 中Fork出来的项目（同时继承了它的链式中间件风格），作为CNCF项目中的一员，它的目标是提供一个快速且灵活的DNS服务。
 部署 CoreDNS 当前（2017/08/22）CoreDNS 还处于早期阶段，直接在Github上下载对应执行文件压缩包。
 Linux上下载安装（这里以 v010 版本为例）：
@@ -30,10 +30,10 @@ wget https://github.com/coredns/coredns/releases/download/v010/coredns_010_linux
     
     <item>
       <title>IPFS 上手试玩</title>
-      <link>https://blog.yeeef.com/post/ipfs-try/</link>
+      <link>https://ifun.dev/post/ipfs-try/</link>
       <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/ipfs-try/</guid>
+      <guid>https://ifun.dev/post/ipfs-try/</guid>
       <description>关于IPFS IPFS 是一个很宏大的理念，而不简单地是一个应用或一个文件系统。 它希望建立一个点对点的分布式文件系统，使用内容Hash地址代替原Web网络中的域名，来获取得相应的资源。
 IPFS 说明文档对IPFS的介绍如下：
  IPFS is a protocol IPFS is a filesystem IPFS is a web IPFS is modular IPFS uses crypto IPFS is p2p IPFS is a cdn IPFS has a name service  当前IPFS虽经历了几年的开发，但仍处于很早期的阶段（go-ipfs/0.4.10 ipfs/0.1.0），所以未来可能会有比较大变化（也可能失败&amp;hellip;）。
@@ -48,10 +48,10 @@ ipfs add readme.txt #added Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof readme
     
     <item>
       <title>Spacemacs入门与基本用法</title>
-      <link>https://blog.yeeef.com/post/spacemacs_usage/</link>
+      <link>https://ifun.dev/post/spacemacs_usage/</link>
       <pubDate>Wed, 10 May 2017 22:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/spacemacs_usage/</guid>
+      <guid>https://ifun.dev/post/spacemacs_usage/</guid>
       <description>关于Spacemacs 总体来说，Spacemacs其实就是一个Emacs的壳，在原来Emacs上加入了许多插件及配置，所以对Spacemacs的配置也很像Emacs。但在文本编辑的时候，可以使用几乎完全VIM特性（个人暂时没发现有什么不兼容的地方）。
 安装Spacemacs Spacemacs的Github地址为：https://github.com/syl20bnr/spacemacs
 如果你的系统已装有Emacs，请先备份Emacs配置文件。因为Spacemacs的配置会覆盖掉原Emacs的配置文件。

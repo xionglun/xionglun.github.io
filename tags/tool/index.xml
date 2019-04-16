@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tool on 随笔小记</title>
-    <link>https://blog.yeeef.com/tags/tool/</link>
-    <description>Recent content in Tool on 随笔小记</description>
+    <title>tool on 随笔小记</title>
+    <link>https://ifun.dev/tags/tool/</link>
+    <description>Recent content in tool on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Wed, 07 Feb 2018 10:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/tags/tool/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Puppeteer 调试线上页面</title>
-      <link>https://blog.yeeef.com/post/puppeteer-online-debug/</link>
+      <link>https://ifun.dev/post/puppeteer-online-debug/</link>
       <pubDate>Wed, 07 Feb 2018 10:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/puppeteer-online-debug/</guid>
+      <guid>https://ifun.dev/post/puppeteer-online-debug/</guid>
       <description>本文主要是讲述Puppeteer拦截请求以及其应用场景，如果对Puppeteer基本概念不熟悉，请参考前一篇文章Puppeteer 基本概念介绍。
 说明 由于 Puppeteer 可以在请求发出前进行拦截与替换，所以很方便地在本地开发解决线上Bug以及新需求。这样可以减少无谓的提交同时真实地检验其在线上环境中的效果。
 应用场景  需要对线上页面进行调试修改 本地新功能开发需部署至测试环境查看效果 篡改目标页面  示例 这里以Baidu作为研究对象，假设我们想修改Baidu首页页面的背景色，但是不改变其它样式。
@@ -29,10 +29,10 @@
     
     <item>
       <title>Puppeteer 基本概念介绍</title>
-      <link>https://blog.yeeef.com/post/puppeteer-introduction/</link>
+      <link>https://ifun.dev/post/puppeteer-introduction/</link>
       <pubDate>Tue, 06 Feb 2018 10:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/puppeteer-introduction/</guid>
+      <guid>https://ifun.dev/post/puppeteer-introduction/</guid>
       <description>关于Puppeteer Puppeteer 是通过 DevTools 协议控制无界面 Chrome 或者 Chromium 的工具。它基本上可以模拟人在浏览器里的一切操作，以及浏览器提供的一些特性来辅助 Web 开发。 简单一句话来说，它就是类似于PhantomJS或者Nightmare的一个 Node.js 库。
 开发配置 推荐使用 Node.js 8+ 和 ES 2015 以上语法进行开发
 下载安装：
@@ -44,10 +44,10 @@ const puppeteer = require(&#39;puppeteer&#39;) async function start() { const br
     
     <item>
       <title>IPFS 上手试玩</title>
-      <link>https://blog.yeeef.com/post/ipfs-try/</link>
+      <link>https://ifun.dev/post/ipfs-try/</link>
       <pubDate>Fri, 14 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/ipfs-try/</guid>
+      <guid>https://ifun.dev/post/ipfs-try/</guid>
       <description>关于IPFS IPFS 是一个很宏大的理念，而不简单地是一个应用或一个文件系统。 它希望建立一个点对点的分布式文件系统，使用内容Hash地址代替原Web网络中的域名，来获取得相应的资源。
 IPFS 说明文档对IPFS的介绍如下：
  IPFS is a protocol IPFS is a filesystem IPFS is a web IPFS is modular IPFS uses crypto IPFS is p2p IPFS is a cdn IPFS has a name service  当前IPFS虽经历了几年的开发，但仍处于很早期的阶段（go-ipfs/0.4.10 ipfs/0.1.0），所以未来可能会有比较大变化（也可能失败&amp;hellip;）。
@@ -62,10 +62,10 @@ ipfs add readme.txt #added Qmc7m4k5KUtEbyrTVjP6k8cRt7C99Rhe28hqFThGgGgEof readme
     
     <item>
       <title>火焰图性能分析</title>
-      <link>https://blog.yeeef.com/post/flamegraph/</link>
+      <link>https://ifun.dev/post/flamegraph/</link>
       <pubDate>Sun, 09 Jul 2017 20:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/flamegraph/</guid>
+      <guid>https://ifun.dev/post/flamegraph/</guid>
       <description>前言 应用程序性能一直是软件开发过程中一个很重要的话题，性能的好坏不仅会直接影响到所消耗的资源和投入的金钱， 而且会直接影响到用户的使用体验，从而间接影响一款产品的生命周期。
 在软件开发过程中，一般会使用多种手段来量化性能、追踪性能问题等。比如使用ab及wrk等工具来压测网络应用，使用Zipkin或Opentracing等跟踪性能问题，使用日志来定位性能问题，使用gdb等工具调试性能问题。
 而火焰图是一个可以让你直观了解性能问题的方式，最终一般会生成一张SVG格式的图片，你可以会方便地进行缩放以及进一步查看局部区域，如下所示。 关于火焰图 生成火焰图，需要经历采集、转化、渲染等多个步骤，不同步骤需要用到不同的工具。
@@ -83,10 +83,10 @@ WARNING: perf not found for kernel 4.4.0-81 You may need to install the followin
     
     <item>
       <title>Markdown 语法</title>
-      <link>https://blog.yeeef.com/post/markdown-syntax/</link>
+      <link>https://ifun.dev/post/markdown-syntax/</link>
       <pubDate>Sat, 24 Sep 2016 14:36:06 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/markdown-syntax/</guid>
+      <guid>https://ifun.dev/post/markdown-syntax/</guid>
       <description>Markdown 在用于写简单文本非常方便。在这里将给出一些示例来示范Markdown所支持的标记语法。 这里并没有介绍所有Markdown文档，如果你需要完整版来进行深入了解，请查看Markdown这个网站。
  强调 删除 代码 链接 图像 标题 段落 引用 列表 表格 代码高亮 水平分隔线  强调 Markdown 通过 * (星号) 和 _ (下划线) 来作为着重表示的标记。 如下所示：
 单个星号

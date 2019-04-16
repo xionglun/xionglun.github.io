@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Digest on 随笔小记</title>
-    <link>https://blog.yeeef.com/tags/digest/</link>
-    <description>Recent content in Digest on 随笔小记</description>
+    <title>digest on 随笔小记</title>
+    <link>https://ifun.dev/tags/digest/</link>
+    <description>Recent content in digest on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Wed, 24 Aug 2016 00:37:55 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/tags/digest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/tags/digest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Authority &amp; Merit</title>
-      <link>https://blog.yeeef.com/post/authority-merit/</link>
+      <link>https://ifun.dev/post/authority-merit/</link>
       <pubDate>Wed, 24 Aug 2016 00:37:55 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/authority-merit/</guid>
+      <guid>https://ifun.dev/post/authority-merit/</guid>
       <description>@reference: Medium
 An email to the team at Square.
  Subject: Authority &amp;amp; Merit

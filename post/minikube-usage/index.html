@@ -19,7 +19,7 @@
 
 <meta property="og:title" content="K8S系列-Minikube使用简介  &middot; 随笔小记 ">
 <meta property="og:site_name" content="随笔小记"/>
-<meta property="og:url" content="https://blog.yeeef.com/post/minikube-usage/" />
+<meta property="og:url" content="https://ifun.dev/post/minikube-usage/" />
 <meta property="og:locale" content="zh-CN">
 
 
@@ -42,8 +42,8 @@
 <meta name="twitter:creator" content="@" />
 <meta name="twitter:title" content="K8S系列-Minikube使用简介" />
 <meta name="twitter:description" content="Minikube 是 Kubernetes 社区为了方便开发者在本地开发而提供的一个微型Kubernetes，保障开发与线上运行环境一致。" />
-<meta name="twitter:url" content="https://blog.yeeef.com/post/minikube-usage/" />
-<meta name="twitter:domain" content="https://blog.yeeef.com/">
+<meta name="twitter:url" content="https://ifun.dev/post/minikube-usage/" />
+<meta name="twitter:domain" content="https://ifun.dev/">
   
 
 <script type="application/ld+json">
@@ -57,18 +57,18 @@
     },
     "datePublished": "2017-08-20",
     "description": "Minikube 是 Kubernetes 社区为了方便开发者在本地开发而提供的一个微型Kubernetes，保障开发与线上运行环境一致。",
-    "wordCount": 208
+    "wordCount":  209 
   }
 </script>
 
 
 
-<link rel="canonical" href="https://blog.yeeef.com/post/minikube-usage/" />
+<link rel="canonical" href="https://ifun.dev/post/minikube-usage/" />
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.yeeef.com/touch-icon-144-precomposed.png">
-<link href="https://blog.yeeef.com/favicon.png" rel="icon">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ifun.dev/touch-icon-144-precomposed.png">
+<link href="https://ifun.dev/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.40.2" />
+<meta name="generator" content="Hugo 0.55.1" />
 
   
 <!--[if lt IE 9]>
@@ -77,9 +77,9 @@
 <![endif]-->
 
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://blog.yeeef.com/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://blog.yeeef.com/css/style.css">
-<link rel="stylesheet" href="https://blog.yeeef.com/css/highlight/default.css">
+<link rel="stylesheet" href="https://ifun.dev/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://ifun.dev/css/style.css">
+<link rel="stylesheet" href="https://ifun.dev/css/highlight/default.css">
 
   
   
@@ -100,7 +100,7 @@
     <header id="main-header" class="container main_header">
   <div class="container brand">
   <div class="container title h1-like">
-  <a class="baselink" href="https://blog.yeeef.com/">
+  <a class="baselink" href="https://ifun.dev/">
   X Blog
 
 </a>
@@ -121,13 +121,13 @@
   <nav class="container nav primary no-print">
   
 
-<a class="homelink" href="https://blog.yeeef.com/">主页</a>
+<a class="homelink" href="https://ifun.dev/">主页</a>
 
 
   
-<a href="https://blog.yeeef.com/post" title="所有文章">文章</a>
+<a href="https://ifun.dev/post" title="所有文章">文章</a>
 
-<a href="https://blog.yeeef.com/tags" title="所有标签">标签</a>
+<a href="https://ifun.dev/tags" title="所有标签">标签</a>
 
 
 </nav>
@@ -180,14 +180,14 @@
 
   
   &middot; Read in about 1 min
-  &middot; (208 Words)
+  &middot; (209 Words)
   <br>
   
-<a class="label" href="https://blog.yeeef.com/tags/dev">dev</a>
+<a class="label" href="https://ifun.dev/tags/dev">dev</a>
 
-<a class="label" href="https://blog.yeeef.com/tags/minikube">minikube</a>
+<a class="label" href="https://ifun.dev/tags/minikube">minikube</a>
 
-<a class="label" href="https://blog.yeeef.com/tags/kubernetes">kubernetes</a>
+<a class="label" href="https://ifun.dev/tags/kubernetes">kubernetes</a>
 
 
 
@@ -249,10 +249,10 @@
 
 <li><p>启动 Minikube (使用代理<a href="https://github.com/kubernetes/minikube/blob/master/docs/http_proxy.md">文档</a>)</p>
 
-<pre><code>minikube start --docker-env HTTP_PROXY=http://192.168.99.1:7087 --docker-env HTTPS_PROXY=http://192.168.99.1:7087 --docker-env NO_PROXY=192.168.99.0/24,hub.yourdomain.com
+<pre><code>https_proxy=http://192.168.99.1:7087 minikube start --docker-env http_proxy=http://192.168.99.1:7087 --docker-env https_proxy=http://192.168.99.1:7087 --docker-env no_proxy=192.168.99.0/24,hub.yourdomain.com
 </code></pre>
 
-<p>这里还添加了一项<code>NO_PROXY</code>是因为 VirtualBox 网络中及你的Docker镜像仓库一般不需要代理。其它不需要代理的地址也可以添加在后面。<br />
+<p>这里还添加了一项<code>no_proxy</code>是因为 VirtualBox 网络中及你的Docker镜像仓库一般不需要代理。其它不需要代理的地址也可以添加在后面。<br />
 这里代理是本地代理，如果你使用的是一个独立的代理服务（如：10.25.117.45:8080），则将代理中IP与端口替换即可。</p></li>
 
 <li><p>查看运行状态<br />
@@ -338,13 +338,13 @@ kubectl expose deployment hello --type=NodePort
   
 
     
-    <a class="prev" href="https://blog.yeeef.com/post/ipfs-try/" title="IPFS 上手试玩">
+    <a class="prev" href="https://ifun.dev/post/ipfs-try/" title="IPFS 上手试玩">
       Previous
     </a>
     
 
     
-    <a class="next" href="https://blog.yeeef.com/post/coredns-try/" title="CoreDNS 上手">
+    <a class="next" href="https://ifun.dev/post/coredns-try/" title="CoreDNS 上手">
       Next
     </a>
     
@@ -428,7 +428,7 @@ kubectl expose deployment hello --type=NodePort
 
 
 
-<script src="https://blog.yeeef.com/js/highlight.pack.js"></script>
+<script src="https://ifun.dev/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 

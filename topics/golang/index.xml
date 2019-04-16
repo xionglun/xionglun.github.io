@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on 随笔小记</title>
-    <link>https://blog.yeeef.com/topics/golang/</link>
-    <description>Recent content in Golang on 随笔小记</description>
+    <title>golang on 随笔小记</title>
+    <link>https://ifun.dev/topics/golang/</link>
+    <description>Recent content in golang on 随笔小记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>xheavey@gmail.com (Allen Heavey)</managingEditor>
@@ -11,15 +11,15 @@
     <copyright>(c) 2016-2017 Allen Heavey.</copyright>
     <lastBuildDate>Sun, 28 May 2017 11:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yeeef.com/topics/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ifun.dev/topics/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go 语言之信号量</title>
-      <link>https://blog.yeeef.com/post/golang-signal/</link>
+      <link>https://ifun.dev/post/golang-signal/</link>
       <pubDate>Sun, 28 May 2017 11:00:00 +0800</pubDate>
       <author>xheavey@gmail.com (Allen Heavey)</author>
-      <guid>https://blog.yeeef.com/post/golang-signal/</guid>
+      <guid>https://ifun.dev/post/golang-signal/</guid>
       <description>Go 信号 Go 语言中的信号量主要是用于Unix/Linux系统，但是也部份兼容Windows。 在标准库中，主要涉及到os/signal和syscall这两个包。
 其中，os/signal包主要是提供信号操作函数，而syscall里定义了许多信号常量。
 简单示例 这里先看一段简短的代码：
